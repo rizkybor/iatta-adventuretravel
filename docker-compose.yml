@@ -1,14 +1,44 @@
+version: '3.9'
+
 services:
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" # hilangkan di production jika tidak perlu
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
   web:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        DATABASE_URL: ${DATABASE_URL}
+      # Hanya sertakan build args jika benar-benar diperlukan
+      # args:
+      #   SOME_BUILD_ARG: value
     ports:
       - "3000:3000"
-      - "3001:3001"
     environment:
-      # Pastikan ini digunakan di Dockerfile/runtime
-      DATABASE_URL: ${DATABASE_URL} 
-    restart: always
+      DATABASE_URL: ${DATABASE_URL} # contoh: postgresql://user:pass@db:5432/dbname
+      NODE_ENV: development
+      NUXT_HOST: 0.0.0.0
+      NUXT_PORT: 3000
+    volumes:
+      - .:/app      # hanya untuk development; hapus di production
+      - /app/node_modules
+    depends_on:
+      - db
+    command: [ "/bin/sh", "-c", "./docker/wait-for-db.sh && npx prisma generate && npm run dev" ]
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
