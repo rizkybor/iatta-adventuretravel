@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DATABASE_URL: ${DATABASE_URL}
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    environment:
+      # Pastikan ini digunakan di Dockerfile/runtime
+      DATABASE_URL: ${DATABASE_URL} 
+    restart: always
