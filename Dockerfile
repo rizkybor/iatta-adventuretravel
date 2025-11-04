@@ -1,40 +1,55 @@
 # syntax=docker/dockerfile:1
 
+##############################
+# 1️⃣ Build Stage
+##############################
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# dependencies metadata
+# Install dependencies metadata
 COPY package*.json ./
-# install all dependencies (dev + prod) for build
+
+# Install build dependencies
 RUN apk add --no-cache libc6-compat git python3 make g++ \
   && npm ci --silent
 
-# copy source and generate build
+# Copy all source code
 COPY . .
-# jika pakai prisma: generate client
+
+# Prisma generate (opsional)
 RUN npx prisma generate --silent || true
 
-# build nuxt
+# Build Nuxt / Nitro
 RUN npm run build
 
-# prepare production image
+# Debug: pastikan .output/server/index.mjs ada
+RUN ls -la .output
+RUN ls -la .output/server
+
+##############################
+# 2️⃣ Production Stage
+##############################
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-# set env
+# Set environment
 ENV NODE_ENV=production
-# copy package metadata and built output
+
+# Copy package.json & node_modules (production only)
 COPY --from=builder /app/package*.json ./
-# copy only node_modules needed for production from builder
-# (builder punya node_modules lengkap, kita salin agar runtime punya semua)
 COPY --from=builder /app/node_modules ./node_modules
-# copy built output (.output) and prisma client lib (jika ada)
-COPY --from=builder /app/.output ./
+
+# Copy built output
+COPY --from=builder /app/.output /app/.output
+
+# Copy prisma client jika ada
 COPY --from=builder /app/prisma ./prisma
-# copy any other runtime files if diperlukan (static, public, etc.)
+
+# Copy public folder jika ada static files
 COPY --from=builder /app/public ./public
 
+# Expose port
 EXPOSE 3000
 
-# default command — adjust bila kamu menjalankan dev/preview lain
+# Start command
 CMD ["node", ".output/server/index.mjs"]
