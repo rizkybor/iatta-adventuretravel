@@ -52,4 +52,12 @@ COPY --from=builder /app/public ./public
 EXPOSE 3000
 
 # Start command
-CMD ["node", ".output/server/index.mjs"]
+# CMD ["node", ".output/server/index.mjs"]
+
+
+# -------------------------------------------------------------
+# PERBAIKAN: JALANKAN MIGRASI SEBELUM START SERVER
+# -------------------------------------------------------------
+# Gunakan /bin/sh -c untuk menjalankan dua perintah secara berurutan.
+# Perintah pertama (migrate deploy) akan memastikan skema DB sudah ada.
+CMD ["/bin/sh", "-c", "npx prisma migrate deploy && node .output/server/index.mjs"]
