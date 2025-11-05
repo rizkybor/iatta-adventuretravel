@@ -1,7 +1,9 @@
 <template>
   <header
-    :class="headerClass"
-    class="sticky top-0 z-40 transition-colors duration-300 ease-[cubic-bezier(.2,.9,.2,1)]"
+    :class="[
+      'sticky top-0 z-40 transition-colors duration-300 ease-[cubic-bezier(.2,.9,.2,1)]',
+      headerClass
+    ]"
   >
     <nav
       class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3"
@@ -10,7 +12,6 @@
       <!-- left: brand + links -->
       <div class="flex items-center gap-6">
         <NuxtLink to="/" class="flex items-center gap-3">
-          <!-- refined inline SVG logo -->
           <svg
             class="w-8 h-8 shrink-0"
             viewBox="0 0 24 24"
@@ -33,24 +34,27 @@
         <div class="hidden md:flex items-center gap-3">
           <NuxtLink
             to="/home"
+            class="px-3 py-1 rounded-md text-sm transition transform"
             :class="desktopLinkClass('/home')"
-            class="px-3 py-1 rounded-md text-sm transition"
+            :aria-current="isActive('/home') ? 'page' : undefined"
           >
             Home
           </NuxtLink>
 
           <NuxtLink
             to="/about"
+            class="px-3 py-1 rounded-md text-sm transition transform"
             :class="desktopLinkClass('/about')"
-            class="px-3 py-1 rounded-md text-sm transition"
+            :aria-current="isActive('/about') ? 'page' : undefined"
           >
             About
           </NuxtLink>
 
           <NuxtLink
             to="/contact"
+            class="px-3 py-1 rounded-md text-sm transition transform"
             :class="desktopLinkClass('/contact')"
-            class="px-3 py-1 rounded-md text-sm transition"
+            :aria-current="isActive('/contact') ? 'page' : undefined"
           >
             Contact
           </NuxtLink>
@@ -70,7 +74,7 @@
         <!-- mobile menu button -->
         <button
           type="button"
-          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-current hover:bg-white/6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-current hover:bg-white/6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500"
           @click="open = !open"
           :aria-expanded="open"
           aria-controls="mobile-menu"
@@ -113,9 +117,7 @@
         id="mobile-menu"
         class="md:hidden border-t bg-white/90 backdrop-blur-sm"
       >
-        <div
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-1"
-        >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-1">
           <NuxtLink
             to="/home"
             class="block px-3 py-2 rounded-md text-sm"
@@ -160,6 +162,7 @@ const scrolled = ref(false);
 
 // scroll handler: toggles scrolled style
 function handleScroll() {
+  // throttle not necessary for simple site, but can add later
   scrolled.value = window.scrollY > 12;
 }
 
@@ -179,30 +182,26 @@ function isActive(path) {
 
 // dynamic classes
 const headerClass = computed(() => {
-  // when scrolled: strong background + subtle shadow + backdrop blur
-  if (scrolled.value) {
-    return "bg-white/95 backdrop-blur-sm shadow-sm border-b/10";
-  }
-  // default: transparent with subtle gradient overlay (light)
-  return "bg-gradient-to-r from-transparent via-white/30 to-transparent";
+  // when scrolled: strong bg + subtle shadow + border
+  return scrolled.value
+    ? "bg-white/95 backdrop-blur-sm shadow-sm border-b"
+    : "bg-transparent";
 });
 
 const brandClass = computed(() =>
-  scrolled.value
-    ? "text-slate-900 font-semibold"
-    : "text-slate-800 font-semibold"
+  scrolled.value ? "text-slate-900 font-semibold" : "text-slate-800 font-semibold"
 );
 
 function desktopLinkClass(path) {
   return isActive(path)
     ? "text-green-600 font-medium underline decoration-2 underline-offset-4"
-    : "text-slate-700 hover:text-slate-900 hover:translate-y-[-1px]";
+    : "text-slate-700 hover:text-slate-900 hover:-translate-y-0.5";
 }
 
 function mobileLinkClass(path) {
   return isActive(path)
-    ? "bg-green-50 text-green-600 font-medium"
-    : "text-slate-700 hover:bg-slate-50";
+    ? "bg-green-50 text-green-600 font-medium rounded"
+    : "text-slate-700 hover:bg-slate-50 rounded";
 }
 
 const ctaClass = computed(() =>
@@ -213,8 +212,8 @@ const ctaClass = computed(() =>
 
 const ctaMobileClass = computed(() =>
   scrolled.value
-    ? "bg-gradient-to-r from-green-600 to-teal-400 text-white text-center"
-    : "bg-green-50 text-green-600 text-center"
+    ? "bg-gradient-to-r from-green-600 to-teal-400 text-white text-center rounded"
+    : "bg-green-50 text-green-600 text-center rounded"
 );
 </script>
 
@@ -240,10 +239,5 @@ const ctaMobileClass = computed(() =>
   transform: translateY(-6px);
 }
 
-/* small polish: subtle lift on desktop link hover */
-@layer utilities {
-  .hover\:translate-y-\[-1px\]:hover {
-    transform: translateY(-1px);
-  }
-}
+/* small polish: use available Tailwind utilities instead of custom @layer inside component */
 </style>
