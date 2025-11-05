@@ -1,54 +1,80 @@
-<!-- client/app/pages/home/index.vue -->
 <template>
-  <main>
+  <main class="leading-relaxed text-slate-800">
+    <!-- HERO is handled by global hero store (set in onMounted) -->
+
     <!-- #2 CTA Buttons -->
     <section class="max-w-6xl mx-auto px-6 py-16 text-center">
-      <h2 class="text-2xl font-semibold text-slate-800 mb-8">Temukan Dunia IATTA</h2>
-      <div class="grid sm:grid-cols-3 gap-6">
-        <div
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-8">Temukan Dunia IATTA</h2>
+
+      <div class="grid gap-6 sm:grid-cols-3">
+        <router-link
           v-for="cta in ctas"
           :key="cta.title"
-          class="p-6 bg-white rounded-xl border hover:shadow-md transition cursor-pointer"
+          :to="cta.to || '#'
+          "
+          class="group p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col items-start"
+          role="link"
+          :aria-label="`Navigasi ke ${cta.title}`"
         >
-          <div class="text-3xl mb-3" aria-hidden="true">{{ cta.icon }}</div>
+          <div class="text-4xl mb-3" aria-hidden="true">{{ cta.icon }}</div>
           <h3 class="font-semibold text-lg mb-2 text-slate-800">{{ cta.title }}</h3>
           <p class="text-slate-500 text-sm">{{ cta.desc }}</p>
-        </div>
+          <span class="mt-4 inline-flex items-center text-xs font-medium tracking-wide px-3 py-1 rounded-full bg-slate-100 text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity">Lihat detail →</span>
+        </router-link>
       </div>
     </section>
 
     <!-- #3 Program Highlights -->
     <section class="bg-gray-50 py-16 px-6">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl font-semibold text-slate-800 mb-8 text-center">Program Unggulan</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div
+        <h2 class="text-3xl font-extrabold text-slate-800 mb-8 text-center">Program Unggulan</h2>
+
+        <div class="grid gap-8 md:grid-cols-3">
+          <article
             v-for="program in programs"
             :key="program.title"
-            class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition"
+            class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition transform hover:scale-[1.01] duration-300"
           >
-            <img :src="program.image" :alt="program.title" class="h-48 w-full object-cover" />
+            <img
+              :src="program.image"
+              :alt="program.title"
+              class="h-52 w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+
             <div class="p-5">
               <h3 class="font-semibold text-lg mb-1">{{ program.title }}</h3>
               <p class="text-sm text-slate-600">{{ program.desc }}</p>
+              <div class="mt-4">
+                <button class="inline-flex items-center gap-2 text-sm font-medium px-3 py-2 rounded-lg border border-slate-200 hover:bg-slate-50">Daftar</button>
+              </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- #4 Upcoming Events -->
     <section class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl font-semibold text-slate-800 mb-8 text-center">Event Mendatang</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 class="text-3xl font-extrabold text-slate-800 mb-8 text-center">Event Mendatang</h2>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="event in events"
           :key="event.title"
-          class="p-6 bg-white border rounded-xl hover:shadow-md transition"
+          class="p-6 bg-white border rounded-2xl hover:shadow-md transition"
         >
-          <h3 class="font-semibold text-lg text-green-700 mb-2">{{ event.title }}</h3>
-          <p class="text-sm text-slate-500 mb-3">{{ event.date }}</p>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold text-lg text-green-700">{{ event.title }}</h3>
+            <time class="text-xs text-slate-400" :datetime="formatDateISO(event.date)">{{ event.date }}</time>
+          </div>
+
           <p class="text-slate-600 text-sm">{{ event.desc }}</p>
+          <div class="mt-4 flex gap-3">
+            <button class="text-sm px-3 py-2 rounded-lg border border-slate-200">Detail</button>
+            <button class="text-sm px-3 py-2 rounded-lg bg-green-600 text-white">Daftar</button>
+          </div>
         </div>
       </div>
     </section>
@@ -56,34 +82,38 @@
     <!-- #5 Latest News -->
     <section class="bg-gray-50 py-16 px-6">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl font-semibold text-slate-800 mb-8 text-center">Berita Terbaru</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div
+        <h2 class="text-3xl font-extrabold text-slate-800 mb-8 text-center">Berita Terbaru</h2>
+
+        <div class="grid gap-8 md:grid-cols-3">
+          <article
             v-for="news in latestNews"
             :key="news.title"
-            class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+            class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition"
           >
-            <img :src="news.image" :alt="news.title" class="h-40 w-full object-cover" />
+            <img :src="news.image" :alt="news.title" class="h-44 w-full object-cover" loading="lazy" decoding="async" />
+
             <div class="p-5">
               <h3 class="font-semibold text-lg mb-2">{{ news.title }}</h3>
               <p class="text-sm text-slate-500 mb-4">{{ news.date }}</p>
               <p class="text-slate-600 text-sm">{{ news.desc }}</p>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- #6 Partners & Affiliates -->
     <section class="max-w-6xl mx-auto px-6 py-16 text-center">
-      <h2 class="text-2xl font-semibold text-slate-800 mb-10">Mitra & Afiliasi</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center justify-center opacity-70">
+      <h2 class="text-3xl font-extrabold text-slate-800 mb-10">Mitra & Afiliasi</h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center justify-center opacity-90">
         <img
           v-for="n in 5"
           :key="n"
           :src="`https://placehold.co/150x60?text=Logo+${n}`"
           :alt="`Logo mitra ${n}`"
-          class="mx-auto grayscale hover:grayscale-0 transition"
+          class="mx-auto grayscale hover:grayscale-0 transition w-36 h-14 object-contain"
+          loading="lazy"
         />
       </div>
     </section>
@@ -105,8 +135,8 @@ onMounted(() => {
   setHero({
     component: HeroSection,
     props: {
-      // Perhatikan: jika HeroSection tidak memakai v-html, kirim tanpa tag HTML
-      title: 'Indonesian Adventures in <strong>Tropical Paradise</strong>',
+      // Kirim plain text jika HeroSection tidak memakai v-html
+      title: 'Indonesian Adventures in Tropical Paradise',
       subtitle: 'Jelajahi keindahan nusantara — dari puncak gunung hingga laut terdalam.',
       kicker: 'IATTA Highlights',
       image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80',
@@ -125,9 +155,9 @@ onBeforeUnmount(() => {
 
 /* ---- sample data for sections ---- */
 const ctas = [
-  { icon: '🌏', title: 'Join Us', desc: 'Bergabunglah dengan komunitas petualang Indonesia.' },
-  { icon: '📖', title: 'Directory', desc: 'Temukan destinasi terbaik dari Sabang sampai Merauke.' },
-  { icon: '🎓', title: 'Training Program', desc: 'Ikuti pelatihan profesional pemandu wisata & konservasi.' }
+  { icon: '🌏', title: 'Join Us', desc: 'Bergabunglah dengan komunitas petualang Indonesia.', to: '/join' },
+  { icon: '📖', title: 'Directory', desc: 'Temukan destinasi terbaik dari Sabang sampai Merauke.', to: '/directory' },
+  { icon: '🎓', title: 'Training Program', desc: 'Ikuti pelatihan profesional pemandu wisata & konservasi.', to: '/programs' }
 ]
 
 const programs = [
@@ -147,4 +177,17 @@ const latestNews = [
   { title: 'Pemandu Wisata Lokal Berdaya', date: 'Des 2024', desc: 'Program pemberdayaan pemandu wisata lokal sukses dilaksanakan di Lombok.', image: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=60' },
   { title: 'Peluncuran Aplikasi IATTA', date: 'Nov 2024', desc: 'Aplikasi digital untuk memudahkan wisatawan menemukan perjalanan terbaik.', image: 'https://images.unsplash.com/photo-1556742400-b5b7c5121f4c?auto=format&fit=crop&w=800&q=60' }
 ]
+
+function formatDateISO(label) {
+  // Simple helper to create a machine-readable datetime when date is approximate like "Februari 2025"
+  const parts = String(label).split(' ')
+  if (parts.length === 2) {
+    const monthMap = {
+      Januari: '01', Jan: '01', Februari: '02', Feb: '02', Maret: '03', Mar: '03', April: '04', Apr: '04', Mei: '05', Juni: '06', Juli: '07', Agustus: '08', September: '09', Oktober: '10', November: '11', Desember: '12', Nov: '11', Dec: '12'
+    }
+    const month = monthMap[parts[0]] || '01'
+    return `${parts[1]}-${month}-01`
+  }
+  return ''
+}
 </script>
