@@ -1,40 +1,62 @@
 <template>
   <footer class="border-t bg-slate-50 text-slate-600">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-        <!-- Branding -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <!-- Branding + legal -->
         <div class="text-center sm:text-left">
           <p class="text-sm">
-            © {{ year }}
-            <span class="font-semibold text-slate-800">IATTA Adventure Travel</span>.
-            All rights reserved.
+            © <span class="font-medium text-slate-700">{{ year }}</span>
+            <span class="font-semibold text-slate-800">
+              IATTA Adventure Travel</span
+            >. All rights reserved.
           </p>
-          <p class="text-xs mt-1">
+          <p class="text-xs mt-1 text-slate-500">
             Built with
             <span class="font-medium text-green-600">Nuxt</span> • Powered by
-            <span class="font-medium text-slate-700">PostgreSQL</span> &
+            <span class="font-medium text-slate-700">PostgreSQL</span> &amp;
             <span class="font-medium text-slate-700">Docker</span>
           </p>
         </div>
 
-        <!-- Socials (placeholder) -->
-        <div class="flex items-center gap-4 mt-3 sm:mt-0">
+        <!-- Quick links -->
+        <nav class="flex items-center gap-4" aria-label="Footer">
+          <NuxtLink
+            to="/about"
+            class="text-sm hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-300 rounded"
+          >
+            About
+          </NuxtLink>
+          <NuxtLink
+            to="/programs"
+            class="text-sm hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-300 rounded"
+          >
+            Programs
+          </NuxtLink>
+          <NuxtLink
+            to="/contact"
+            class="text-sm hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-300 rounded"
+          >
+            Contact
+          </NuxtLink>
+        </nav>
+
+        <!-- Socials -->
+        <div class="flex items-center gap-3 mt-3 sm:mt-0">
           <a
             href="https://github.com/"
             target="_blank"
-            rel="noopener"
-            class="text-slate-500 hover:text-slate-800 transition"
-            aria-label="GitHub"
+            rel="noopener noreferrer"
+            aria-label="IATTA on GitHub"
+            class="p-1 rounded hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
           >
+            <!-- icon: currentColor so theme works -->
             <svg
-              class="w-5 h-5"
+              class="w-5 h-5 text-slate-600"
               viewBox="0 0 24 24"
               fill="currentColor"
               aria-hidden="true"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
                 d="M12 .5C5.649.5.5 5.65.5 12a11.5 11.5 0 0 0 7.867 10.933c.575.1.783-.25.783-.554v-1.9c-3.2.7-3.867-1.542-3.867-1.542-.525-1.333-1.283-1.692-1.283-1.692-1.05-.717.083-.7.083-.7 1.167.083 1.784 1.216 1.784 1.216 1.033 1.783 2.717 1.266 3.383.967.1-.75.4-1.266.733-1.55-2.55-.3-5.233-1.283-5.233-5.716 0-1.266.45-2.3 1.2-3.1-.117-.3-.517-1.517.117-3.166 0 0 .983-.317 3.217 1.183a11.038 11.038 0 0 1 5.867 0c2.233-1.5 3.217-1.183 3.217-1.183.633 1.65.233 2.867.117 3.166.75.8 1.2 1.834 1.2 3.1 0 4.45-2.7 5.417-5.267 5.7.417.366.783 1.083.783 2.2v3.266c0 .3.2.667.783.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
               />
             </svg>
@@ -43,12 +65,12 @@
           <a
             href="https://twitter.com/"
             target="_blank"
-            rel="noopener"
-            class="text-slate-500 hover:text-blue-500 transition"
-            aria-label="Twitter"
+            rel="noopener noreferrer"
+            aria-label="IATTA on Twitter"
+            class="p-1 rounded hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
           >
             <svg
-              class="w-5 h-5"
+              class="w-5 h-5 text-slate-600"
               viewBox="0 0 24 24"
               fill="currentColor"
               aria-hidden="true"
@@ -65,5 +87,5 @@
 </template>
 
 <script setup>
-const year = new Date().getFullYear()
+const year = new Date().getFullYear();
 </script>
