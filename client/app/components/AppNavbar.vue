@@ -51,6 +51,15 @@
           </NuxtLink>
 
           <NuxtLink
+            to="/members"
+            class="px-3 py-1 rounded-md text-sm transition transform"
+            :class="desktopLinkClass('/members')"
+            :aria-current="isActive('/members') ? 'page' : undefined"
+          >
+            Members
+          </NuxtLink>
+
+          <NuxtLink
             to="/contact"
             class="px-3 py-1 rounded-md text-sm transition transform"
             :class="desktopLinkClass('/contact')"
@@ -132,6 +141,15 @@
             @click="open = false"
             >About</NuxtLink
           >
+
+           <NuxtLink
+            to="/members"
+            class="block px-3 py-2 rounded-md text-sm"
+            :class="mobileLinkClass('/members')"
+            @click="open = false"
+            >Members</NuxtLink
+          >
+
           <NuxtLink
             to="/contact"
             class="block px-3 py-2 rounded-md text-sm"

@@ -1,64 +1,66 @@
 <template>
   <section
-    :class="[
-      'relative overflow-hidden',
-      fullBleed ? 'w-full' : 'w-full'
-    ]"
-    role="region"
+    :class="['w-full bg-gradient-to-b from-slate-800/80 to-transparent text-white overflow-hidden']"
     :aria-label="ariaLabel"
+    role="region"
   >
-    <!-- background image -->
-    <div
-      class="absolute inset-0 bg-center bg-cover"
-      :style="bgStyle"
-      aria-hidden="true"
-    ></div>
-
-    <!-- optional dark overlay -->
-    <div
-      class="absolute inset-0"
-      :style="{ backgroundColor: overlayColor }"
-      aria-hidden="true"
-    ></div>
-
-    <!-- content -->
-    <div class="relative z-10">
-      <div :class="contentWrapperClass">
-        <div class="text-center max-w-3xl mx-auto">
-          <p v-if="kicker" class="mb-3 text-sm font-semibold text-emerald-100 uppercase tracking-wider">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 py-16">
+        <!-- LEFT: Text -->
+        <div class="relative z-10">
+          <p v-if="kicker" class="inline-block text-sm font-semibold text-emerald-300 uppercase tracking-wide mb-3">
             {{ kicker }}
           </p>
 
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white drop-shadow-sm">
-            <span v-html="titleHtml"></span>
-          </h1>
+          <h1 class="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight" v-html="titleHtml"></h1>
 
-          <p v-if="subtitle" class="mt-4 text-lg sm:text-xl text-emerald-100">
+          <p v-if="subtitle" class="mt-4 text-lg text-slate-200 max-w-xl">
             {{ subtitle }}
           </p>
 
-          <!-- CTA group -->
-          <div v-if="ctas && ctas.length" class="mt-8 flex flex-wrap justify-center gap-3">
+          <!-- CTAs -->
+          <div v-if="ctas && ctas.length" class="mt-8 flex flex-wrap gap-3">
             <component
               v-for="(c, i) in ctas"
               :is="c.as || 'NuxtLink'"
               :key="i"
               :to="c.to"
               :href="c.href"
-              class="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-medium transition transform active:scale-[.98]"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-transform active:scale-[.98]"
               :class="ctaClasses(c.variant)"
               @click="$emit('cta-click', c)"
               v-bind="c.attrs || {}"
             >
-              <span v-if="c.icon" class="text-xl leading-none">{{ c.icon }}</span>
+              <span v-if="c.icon" class="text-lg leading-none">{{ c.icon }}</span>
               <span>{{ c.label }}</span>
             </component>
           </div>
 
-          <!-- default slot for extra content (e.g. small search bar, badges) -->
-          <div class="mt-6" v-if="$slots.default">
+          <!-- Optional slot for badges / small search -->
+          <div v-if="$slots.default" class="mt-6">
             <slot />
           </div>
+        </div>
+
+        <!-- RIGHT: Image -->
+        <div class="relative w-full h-64 sm:h-80 lg:h-96 rounded-xl overflow-hidden shadow-lg">
+          <img
+            :src="imageSrc"
+            :alt="imageAlt"
+            loading="lazy"
+            class="w-full h-full object-cover"
+            @error="onImgError"
+            ref="heroImg"
+          />
+
+          <!-- tasteful overlay gradient for legibility and style -->
+          <div
+            aria-hidden="true"
+            class="absolute inset-0 pointer-events-none"
+            :style="{
+              background: gradientOverlay
+            }"
+          />
         </div>
       </div>
     </div>
@@ -66,74 +68,69 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRuntimeConfig } from '#imports'
+import { computed, ref } from 'vue'
 
-/**
- * Props
- * - title: string | HTML (will be rendered as HTML via v-html)
- * - subtitle: string
- * - kicker: small label above title
- * - image: url string
- * - overlayOpacity: number 0..1 (default 0.35)
- * - overlayColorHex: color hex for overlay, defaults to black
- * - ctas: array of { label, to, href, variant, icon, as, attrs }
- * - fullBleed: whether hero should visually occupy full width (kept for future)
- * - ariaLabel: accessible label
- */
 const props = defineProps({
-  title: { type: String, required: true },
+  title: { type: String, required: true },           // supports HTML (v-html)
   subtitle: { type: String, default: '' },
   kicker: { type: String, default: '' },
-  image: { type: String, default: '' },
-  overlayOpacity: { type: Number, default: 0.36 },
-  overlayColorHex: { type: String, default: '#052e16' }, // dark green-ish
+  image: { type: String, default: '' },              // dynamic image URL
+  imageAlt: { type: String, default: 'Adventure image' },
+  overlayOpacity: { type: Number, default: 0.35 },
+  overlayColorHex: { type: String, default: '#03291F' },
   ctas: { type: Array, default: () => [] },
-  fullBleed: { type: Boolean, default: true },
-  ariaLabel: { type: String, default: 'Hero section' },
-  contentWide: { type: Boolean, default: false }
+  ariaLabel: { type: String, default: 'Hero: main' }
 })
 
 const emit = defineEmits(['cta-click'])
 
+// fallback Unsplash (adventure) if no image passed
+const unsplashFallback = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80'
+
+// reactive src so we can swap to fallback on error
+const imageSrc = ref(props.image || unsplashFallback)
+
+// provide a nice alt computed fallback
+const imageAlt = computed(() => props.imageAlt || 'Adventure image')
+
+// compute title as HTML-safe passthrough (component intentionally supports HTML)
 const titleHtml = computed(() => props.title || '')
-const bgStyle = computed(() => {
-  return props.image
-    ? { backgroundImage: `url('${props.image}')` }
-    : { backgroundColor: 'transparent' }
-})
 
-const overlayColor = computed(() => {
-  // rgba from hex + opacity
+// simple gradient overlay for image (fades to transparent)
+const gradientOverlay = computed(() => {
+  // convert hex to rgba with overlayOpacity
   const hex = props.overlayColorHex.replace('#', '')
-  const r = parseInt(hex.substring(0, 2), 16) || 5
-  const g = parseInt(hex.substring(2, 4), 16) || 46
-  const b = parseInt(hex.substring(4, 6), 16) || 22
-  return `rgba(${r}, ${g}, ${b}, ${props.overlayOpacity})`
+  const r = parseInt(hex.substring(0, 2), 16) || 3
+  const g = parseInt(hex.substring(2, 4), 16) || 41
+  const b = parseInt(hex.substring(4, 6), 16) || 31
+  const alpha = props.overlayOpacity
+  return `linear-gradient(180deg, rgba(${r}, ${g}, ${b}, ${alpha}) 0%, rgba(0,0,0,0) 60%)`
 })
 
-const contentWrapperClass = computed(() =>
-  props.contentWide
-    ? 'px-6 py-24'
-    : 'px-4 sm:px-6 lg:px-8 py-20'
-)
+function onImgError() {
+  if (imageSrc.value !== unsplashFallback) {
+    imageSrc.value = unsplashFallback
+  }
+}
 
+/* CTA style helper */
 function ctaClasses(variant = 'primary') {
   if (variant === 'secondary') {
-    return 'bg-white/10 text-white border border-white/30 hover:bg-white/20'
+    return 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
   }
   if (variant === 'ghost') {
     return 'bg-transparent text-white/90 border border-white/10 hover:bg-white/5'
   }
-  // default primary
-  return 'bg-white text-green-700 hover:shadow-lg'
+  return 'bg-emerald-500 text-white hover:bg-emerald-600'
 }
 </script>
 
 <style scoped>
-/* subtle gradient overlay fallback if no image */
-section { min-height: 52vh; display: block; }
+/* ensure section has a minimum visual presence */
+section { /* min height to feel like a hero */
+  min-height: 48vh;
+}
 @media (min-width: 1024px) {
-  section { min-height: 64vh; }
+  section { min-height: 56vh; }
 }
 </style>
