@@ -64,7 +64,7 @@
       <!-- right: actions + mobile toggle -->
       <div class="flex items-center gap-3">
         <NuxtLink
-          to="/signin"
+          to="/auth/signin"
           class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-md font-medium transition-transform active:scale-95"
           :class="ctaClass"
         >
@@ -140,7 +140,7 @@
             >Contact</NuxtLink
           >
           <NuxtLink
-            to="/signin"
+            to="/auth/signin"
             class="mt-2 inline-block px-3 py-2 rounded-md text-sm text-center font-medium"
             :class="ctaMobileClass"
             @click="open = false"
