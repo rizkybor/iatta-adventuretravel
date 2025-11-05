@@ -1,0 +1,36 @@
+{
+  "name": "iatta-adventuretravel",
+  "version": "1.0.0",
+  "description": "Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
+  "main": "index.js",
+  "scripts": {
+    "compose:config": "docker compose config",
+    "compose:up": "docker compose up -d --build",
+    "compose:down": "docker compose down",
+    "compose:ps": "docker compose ps",
+    "compose:logs": "docker compose logs -f",
+    "compose:build": "docker compose build --no-cache",
+    "compose:rebuild-server": "docker compose build --no-cache server && docker compose up -d server",
+    "compose:rebuild-client": "docker compose build --no-cache client && docker compose up -d client",
+    "client:dev": "docker compose up -d --build client",
+    "server:start": "docker compose up -d --build server",
+    "server:logs": "docker compose logs -f server",
+    "db:psql": "docker exec -it iatta-adventuretravel-db-1 psql -U rizkyajiekurniawan -d iatta_db",
+    "db:push": "docker exec -i iatta-adventuretravel-server-1 npx prisma db push",
+    "db:migrate": "docker exec -i iatta-adventuretravel-server-1 npx prisma migrate deploy",
+    "db:seed": "docker exec -i iatta-adventuretravel-server-1 npx prisma db seed",
+    "db:check": "docker exec -i iatta-adventuretravel-db-1 psql -U rizkyajiekurniawan -d iatta_db -c \"\\dt\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rizkybor/iatta-adventuretravel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rizkybor/iatta-adventuretravel/issues"
+  },
+  "homepage": "https://github.com/rizkybor/iatta-adventuretravel#readme"
+}

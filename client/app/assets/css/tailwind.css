@@ -1,3 +1,19 @@
-@tailwind base;
-@tailwind components;
+/* Tailwind v4 entry */
+@import "tailwindcss";
 @tailwind utilities;
+
+/* global theme rules using @apply safely in the Tailwind entry file */
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* optional design tokens or components */
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
