@@ -73,12 +73,3 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-
-# Run with docker : 
-# rebuild images
-docker compose build --no-cache client server
-# jalankan
-docker compose up -d
-# pantau logs
-docker compose logs -f client server
