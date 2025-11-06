@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/nuxt",
+      "config": {
+        "rootDir": "client",
+        "outputDirectory": ".output" 
+      }
+    }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/client/.output/server/index.mjs" }
+  ]
+}
