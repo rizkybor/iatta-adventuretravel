@@ -1,2 +1,7 @@
+node_modules
 .env
-DEV_GUIDE.md
+.vscode
+dist
+.nuxt
+.env.local
+.DS_Store
