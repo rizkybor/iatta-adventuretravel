@@ -4,8 +4,7 @@
       "src": "client/package.json",
       "use": "@vercel/nuxt",
       "config": {
-        "rootDir": "client",
-        "outputDirectory": ".output" 
+        "outputDirectory": ".output"
       }
     }
   ],
