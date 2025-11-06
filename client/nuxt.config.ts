@@ -36,6 +36,6 @@ export default defineNuxtConfig({
     }
   },
 
-  nitro: { preset: "node" },
+nitro: { preset: "vercel" },
   components: [{ path: '~/components', pathPrefix: false }]
 })

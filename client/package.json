@@ -10,6 +10,9 @@
     "postinstall": "nuxt prepare",
     "start": "node server-start.js"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@nuxt/eslint": "^1.10.0",
     "@nuxt/ui": "^4.1.0",
