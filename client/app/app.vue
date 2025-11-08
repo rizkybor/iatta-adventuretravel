@@ -1,5 +1,9 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans">
+  <div
+  style="cursor: pointer;"
+  class="min-h-screen flex flex-col font-sans text-slate-800
+         bg-gradient-to-br from-white via-white to-emerald-50"
+>
     <NuxtRouteAnnouncer />
     <AppNavbar />
 
@@ -9,6 +13,7 @@
       :is="hero.component"
       v-bind="hero.props"
       class="w-full"
+      style="margin-top: -7vh;"
     />
 
     <!-- MAIN CONTENT -->
