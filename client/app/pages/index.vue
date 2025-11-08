@@ -1,4 +1,4 @@
-<template></template>
 <script setup>
-definePageMeta({ redirect: '/home' })
+const router = useRouter()
+router.replace('/home')
 </script>
