@@ -1,12 +1,13 @@
 <template>
   <header
     :class="[
-      'sticky top-0 z-40 transition-colors duration-300 ease-[cubic-bezier(.2,.9,.2,1)]',
-      headerClass
+      'sticky top-0 z-40 transition-all duration-300 ease-[cubic-bezier(.2,.9,.2,1)]',
+      headerBackgroundClass,
+      headerSizeClass
     ]"
   >
     <nav
-      class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3"
+      class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2"
       aria-label="Primary"
     >
       <!-- left: brand + links -->
@@ -34,7 +35,7 @@
         <div class="hidden md:flex items-center gap-3">
           <NuxtLink
             to="/home"
-            class="px-3 py-1 rounded-md text-sm transition transform"
+            class="px-3 py-1 rounded-md text-sm transition-transform"
             :class="desktopLinkClass('/home')"
             :aria-current="isActive('/home') ? 'page' : undefined"
           >
@@ -43,7 +44,7 @@
 
           <NuxtLink
             to="/about"
-            class="px-3 py-1 rounded-md text-sm transition transform"
+            class="px-3 py-1 rounded-md text-sm transition-transform"
             :class="desktopLinkClass('/about')"
             :aria-current="isActive('/about') ? 'page' : undefined"
           >
@@ -52,7 +53,7 @@
 
           <NuxtLink
             to="/members"
-            class="px-3 py-1 rounded-md text-sm transition transform"
+            class="px-3 py-1 rounded-md text-sm transition-transform"
             :class="desktopLinkClass('/members')"
             :aria-current="isActive('/members') ? 'page' : undefined"
           >
@@ -61,7 +62,7 @@
 
           <NuxtLink
             to="/contact"
-            class="px-3 py-1 rounded-md text-sm transition transform"
+            class="px-3 py-1 rounded-md text-sm transition-transform"
             :class="desktopLinkClass('/contact')"
             :aria-current="isActive('/contact') ? 'page' : undefined"
           >
@@ -176,56 +177,72 @@ import { useRoute } from "vue-router";
 
 const open = ref(false);
 const route = useRoute();
+
+// true ketika user sudah meninggalkan very-top
 const scrolled = ref(false);
 
-// scroll handler: toggles scrolled style
-function handleScroll() {
-  // throttle not necessary for simple site, but can add later
-  scrolled.value = window.scrollY > 12;
+function checkScrolled() {
+  // gunakan pageYOffset untuk kompatibilitas, dan threshold kecil
+  const y = window.pageYOffset || document.documentElement.scrollTop || 0;
+  scrolled.value = y > 12;
 }
 
 onMounted(() => {
-  handleScroll();
-  window.addEventListener("scroll", handleScroll, { passive: true });
-});
-onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll);
+  // set awal eksplisit (hydratation-safe)
+  checkScrolled();
+
+  // listen pada scroll + resize + touchmove (mobile address bar edge-cases)
+  window.addEventListener("scroll", checkScrolled, { passive: true });
+  window.addEventListener("resize", checkScrolled, { passive: true });
+  window.addEventListener("touchmove", checkScrolled, { passive: true });
 });
 
-// helpers
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", checkScrolled);
+  window.removeEventListener("resize", checkScrolled);
+  window.removeEventListener("touchmove", checkScrolled);
+});
+
+/* helpers / classes sama seperti sebelumnya */
 function isActive(path) {
   if (!path) return false;
   return route.path === path || (path !== "/" && route.path.startsWith(path));
 }
 
-// dynamic classes
-const headerClass = computed(() => {
-  // when scrolled: strong bg + subtle shadow + border
-  return scrolled.value
-    ? "bg-white/95 backdrop-blur-sm shadow-sm border-b"
-    : "bg-transparent";
-});
+const headerBackgroundClass = computed(() =>
+  scrolled.value
+    ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-100"
+    : "bg-transparent"
+);
+
+const headerSizeClass = computed(() =>
+  scrolled.value ? "py-0.5" : "py-0.5 sm:py-0.5"
+);
 
 const brandClass = computed(() =>
-  scrolled.value ? "text-slate-900 font-semibold" : "text-slate-800 font-semibold"
+  scrolled.value ? "text-slate-900 font-semibold text-base" : "text-white font-semibold text-base"
 );
 
 function desktopLinkClass(path) {
   return isActive(path)
     ? "text-green-600 font-medium underline decoration-2 underline-offset-4"
-    : "text-slate-700 hover:text-slate-900 hover:-translate-y-0.5";
+    : scrolled.value
+    ? "text-slate-700 hover:text-slate-900 hover:-translate-y-0.5"
+    : "text-white/90 hover:text-white";
 }
 
 function mobileLinkClass(path) {
   return isActive(path)
     ? "bg-green-50 text-green-600 font-medium rounded"
-    : "text-slate-700 hover:bg-slate-50 rounded";
+    : scrolled.value
+    ? "text-slate-700 hover:bg-slate-50 rounded"
+    : "text-slate-800 hover:bg-slate-50 rounded";
 }
 
 const ctaClass = computed(() =>
   scrolled.value
     ? "bg-gradient-to-r from-green-600 to-teal-400 text-white shadow-md"
-    : "bg-white text-green-600 border border-slate-200 hover:shadow-sm"
+    : "bg-white text-green-600 border border-white/30"
 );
 
 const ctaMobileClass = computed(() =>
@@ -236,6 +253,7 @@ const ctaMobileClass = computed(() =>
 </script>
 
 <style scoped>
+/* menu animation */
 .menu-fade-enter-active,
 .menu-fade-leave-active {
   transition: opacity 0.18s ease, transform 0.18s ease;
@@ -257,5 +275,28 @@ const ctaMobileClass = computed(() =>
   transform: translateY(-6px);
 }
 
-/* small polish: use available Tailwind utilities instead of custom @layer inside component */
+/* ensure header items remain visible on hero bg: tweak link focus outline */
+a:focus,
+button:focus {
+  outline: 3px solid rgba(16, 185, 129, 0.12);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* small polish for sticky visual */
+header {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .menu-fade-enter-active,
+  .menu-fade-leave-active {
+    transition: none;
+  }
+  header {
+    transition: none;
+  }
+}
 </style>
