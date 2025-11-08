@@ -1,9 +1,9 @@
 <template>
   <header
     :class="[
-      'sticky top-0 z-40 transition-all duration-300 ease-[cubic-bezier(.2,.9,.2,1)]',
+      'sticky top-0 z-40 transition-colors duration-500 ease-[cubic-bezier(.4,0,.2,1)]',
       headerBackgroundClass,
-      headerSizeClass
+      headerSizeClass,
     ]"
   >
     <nav
@@ -13,22 +13,7 @@
       <!-- left: brand + links -->
       <div class="flex items-center gap-6">
         <NuxtLink to="/" class="flex items-center gap-3">
-          <svg
-            class="w-8 h-8 shrink-0"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stop-color="#059669" />
-                <stop offset="1" stop-color="#06b6d4" />
-              </linearGradient>
-            </defs>
-            <rect width="24" height="24" rx="6" fill="url(#g1)"></rect>
-            <circle cx="12" cy="10" r="2.2" fill="rgba(255,255,255,0.95)" />
-          </svg>
-          <span :class="brandClass">IATTA</span>
+          <img src="/images/logo-iatta.png" alt="Logo" class="bg-white rounded-xl p-1 mx-auto h-10 w-auto " />
         </NuxtLink>
 
         <!-- desktop links -->
@@ -84,7 +69,7 @@
         <!-- mobile menu button -->
         <button
           type="button"
-          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-current hover:bg-white/6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500"
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-current hover:bg-white/6 focus:outline-none"
           @click="open = !open"
           :aria-expanded="open"
           aria-controls="mobile-menu"
@@ -127,7 +112,9 @@
         id="mobile-menu"
         class="md:hidden border-t bg-white/90 backdrop-blur-sm"
       >
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-1">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-1"
+        >
           <NuxtLink
             to="/home"
             class="block px-3 py-2 rounded-md text-sm"
@@ -143,7 +130,7 @@
             >About</NuxtLink
           >
 
-           <NuxtLink
+          <NuxtLink
             to="/members"
             class="block px-3 py-2 rounded-md text-sm"
             :class="mobileLinkClass('/members')"
@@ -209,47 +196,82 @@ function isActive(path) {
   return route.path === path || (path !== "/" && route.path.startsWith(path));
 }
 
-const headerBackgroundClass = computed(() =>
-  scrolled.value
-    ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-100"
-    : "bg-transparent"
-);
+const headerBackgroundClass = computed(() => {
+  const isHome = route.path === "/" || route.path === "/home";
+
+  if (scrolled.value) {
+    return "bg-gradient-to-br from-white via-emerald-50 to-emerald-100";
+  }
+
+  return isHome
+    ? "bg-transparent"
+    : "bg-gradient-to-br from-white via-white to-emerald-100";
+});
 
 const headerSizeClass = computed(() =>
   scrolled.value ? "py-0.5" : "py-0.5 sm:py-0.5"
 );
 
 const brandClass = computed(() =>
-  scrolled.value ? "text-slate-900 font-semibold text-base" : "text-white font-semibold text-base"
+  scrolled.value
+    ? "text-slate-900 font-semibold text-base"
+    : "text-white font-semibold text-base"
 );
 
 function desktopLinkClass(path) {
-  return isActive(path)
-    ? "text-green-600 font-medium underline decoration-2 underline-offset-4"
-    : scrolled.value
-    ? "text-slate-700 hover:text-slate-900 hover:-translate-y-0.5"
-    : "text-white/90 hover:text-white";
+  const isHome = route.path === "/" || route.path === "/home";
+  if (isActive(path)) {
+    return "text-green-600 font-medium";
+  }
+  if (scrolled.value) {
+    return "text-slate-700 hover:text-slate-900 hover:-translate-y-0.5";
+  }
+  if (isHome) {
+    return "text-white/90 hover:text-white";
+  }
+  return "text-black/90 hover:text-black";
 }
 
 function mobileLinkClass(path) {
-  return isActive(path)
-    ? "bg-green-50 text-green-600 font-medium rounded"
-    : scrolled.value
-    ? "text-slate-700 hover:bg-slate-50 rounded"
-    : "text-slate-800 hover:bg-slate-50 rounded";
+  const isHome = route.path === "/" || route.path === "/home";
+
+  if (isActive(path)) {
+    return "text-green-600 font-medium bg-emerald-50 rounded";
+  }
+
+  if (scrolled.value) {
+    // saat di-scroll di mana pun
+    return "text-slate-700 hover:bg-slate-50 rounded";
+  }
+
+  // di halaman lain, belum scroll
+  return "text-black/90 hover:bg-emerald-50 rounded";
 }
 
-const ctaClass = computed(() =>
-  scrolled.value
-    ? "bg-gradient-to-r from-green-600 to-teal-400 text-white shadow-md"
-    : "bg-white text-green-600 border border-white/30"
-);
+const ctaClass = computed(() => {
+  const isHome = route.path === "/" || route.path === "/home";
 
-const ctaMobileClass = computed(() =>
-  scrolled.value
+  if (!isHome) {
+    return "bg-gradient-to-r from-green-600 to-teal-400 text-white shadow-md";
+  }
+
+  // home
+  return scrolled.value
+    ? "bg-gradient-to-r from-green-600 to-teal-400 text-white shadow-md"
+    : "bg-white text-green-600 border border-white/30";
+});
+
+const ctaMobileClass = computed(() => {
+  const isHome = route.path === "/" || route.path === "/home";
+
+  if (!isHome) {
+    return "bg-gradient-to-r from-white via-emerald-50 to-emerald-200 text-emerald-700 text-center rounded shadow-sm";
+  }
+
+  return scrolled.value
     ? "bg-gradient-to-r from-green-600 to-teal-400 text-white text-center rounded"
-    : "bg-green-50 text-green-600 text-center rounded"
-);
+    : "bg-green-50 text-green-600 text-center rounded";
+});
 </script>
 
 <style scoped>
@@ -278,25 +300,44 @@ const ctaMobileClass = computed(() =>
 /* ensure header items remain visible on hero bg: tweak link focus outline */
 a:focus,
 button:focus {
-  outline: 3px solid rgba(16, 185, 129, 0.12);
-  outline-offset: 2px;
-  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
 }
 
-/* small polish for sticky visual */
+
+/* di bagian style scoped */
 header {
+  /* fokus hanya pada properti yang ingin ditransisikan */
+  transition-property: background-color, background-image, color, box-shadow, border-color, backdrop-filter;
+  /* agar Tailwind classes tidak mencegah transisi custom */
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  /* backdrop */
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
-/* Respect reduced-motion preference */
+/* transisi warna untuk brand dan link */
+.brand-transition,
+.nav-link {
+  transition: color 320ms ease, opacity 220ms ease;
+}
+
+/* contoh: pasang pada link desktop */
+.nav-link:hover { transform: translateY(-1px); }
+
+/* transisi untuk box-shadow / border yang mungkin berubah pada scroll */
+.header-elevated {
+  transition: box-shadow 320ms ease, border-color 320ms ease;
+}
+
+/* prefer-reduced-motion respect */
 @media (prefers-reduced-motion: reduce) {
-  .menu-fade-enter-active,
-  .menu-fade-leave-active {
-    transition: none;
-  }
-  header {
-    transition: none;
+  header,
+  .brand-transition,
+  .nav-link,
+  .header-elevated {
+    transition: none !important;
   }
 }
 </style>
