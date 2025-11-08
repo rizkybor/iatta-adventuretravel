@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
+  <div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full">
       <div class="text-center">
-        <!-- <img src="/logo.svg" alt="Logo" class="mx-auto h-10 w-auto mb-4" /> -->
+        <img src="/images/logo-iatta.png" alt="Logo" class="mx-auto h-10 w-auto mb-4" />
         <h2 class="mt-2 text-2xl font-extrabold text-slate-800">Sign in to your account</h2>
         <p class="mt-1 text-sm text-slate-500">Enter your credentials to access the dashboard.</p>
       </div>

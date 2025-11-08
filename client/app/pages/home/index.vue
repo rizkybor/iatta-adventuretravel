@@ -2,13 +2,20 @@
   <main class="text-slate-800 antialiased">
     <!-- HERO (di-handle oleh global hero store seperti semula) -->
     <!-- HeroSection di-set via onMounted di script -->
-
-    <!-- marquee modern (replace bagian lama) -->
-    <section class="relative py-6 sm:py-8 overflow-hidden">
-      <!-- gradient fade kiri-kanan -->
+    <section class="relative py-6 sm:py-8 overflow-hidden bg-white">
+      <!-- gradient fade kiri-kanan (subtle) -->
       <div
         class="absolute inset-0 pointer-events-none z-10"
         aria-hidden="true"
+        style="
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 8%,
+            rgba(255, 255, 255, 0) 92%,
+            rgba(255, 255, 255, 1) 100%
+          );
+        "
       ></div>
 
       <div
@@ -33,7 +40,7 @@
             <template v-for="(logo, idx) in marqueeItems" :key="'a-' + idx">
               <img
                 :src="logo"
-                :alt="`Sponsor logo ${idx + 1}`"
+                :alt="`Logo partner ${idx + 1}`"
                 class="logo-img mx-4 object-contain"
                 loading="lazy"
                 draggable="false"
@@ -44,7 +51,7 @@
             <template v-for="(logo, idx) in marqueeItems" :key="'b-' + idx">
               <img
                 :src="logo"
-                :alt="`Sponsor logo duplicate ${idx + 1}`"
+                :alt="`Logo partner duplicate ${idx + 1}`"
                 class="logo-img mx-4 object-contain"
                 loading="lazy"
                 draggable="false"
@@ -55,15 +62,65 @@
       </div>
     </section>
 
-    <!-- KEY BENEFITS -->
+    <!-- HERO / LEAD-IN -->
+    <section class="bg-gradient-to-r from-emerald-50 to-white py-16 rounded-xl">
+      <div
+        class="max-w-6xl mx-auto px-6 grid gap-10 lg:grid-cols-2 items-center"
+      >
+        <div>
+          <h2
+            class="text-4xl sm:text-5xl font-extrabold leading-tight text-slate-900 mb-4"
+          >
+            IATTA — Indonesia Adventure Travel Trade Association
+          </h2>
+          <p class="text-lg text-slate-600 mb-6">
+            Mempromosikan pariwisata petualangan Indonesia yang berkelanjutan,
+            aman, dan kompetitif secara global. Di bawah kepemimpinan Amalia
+            Yunita (Ketua Umum 2025–2029), IATTA mendorong standar profesional,
+            pemberdayaan pemandu lokal, dan kolaborasi lintas sektor.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <router-link
+              to="/about"
+              class="inline-flex items-center gap-3 px-5 py-3 rounded-lg bg-emerald-600 text-white text-sm font-semibold shadow hover:opacity-95"
+            >
+              Tentang IATTA
+            </router-link>
+            <router-link
+              to="/programs"
+              class="inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-slate-200 text-sm font-medium hover:bg-slate-50"
+            >
+              Program & Sertifikasi
+            </router-link>
+          </div>
+
+          <div class="mt-6 text-sm text-slate-500">
+            <span class="font-semibold text-slate-700">Fokus:</span>
+            Keberlanjutan · Pelatihan · Kemitraan Lokal
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden shadow-lg bg-white">
+          <!-- representative image -->
+          <img
+            src="/images/logo-dummy.png"
+            alt="IATTA - Adventure"
+            class="w-full h-64 object-cover"
+            loading="lazy"
+            onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60'"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY BENEFITS (IATTA) -->
     <section class="py-16">
       <div class="max-w-6xl mx-auto px-6 text-center">
-        <h3 class="text-3xl font-extrabold mb-6">
-          Satu platform untuk seluruh tim
-        </h3>
+        <h3 class="text-3xl font-extrabold mb-6">Prioritas IATTA</h3>
         <p class="text-slate-600 max-w-2xl mx-auto mb-10">
-          API-first, component-based, dan dirancang supaya tim marketing dan
-          engineering bisa fokus pada yang penting.
+          Menyusun standar profesional, memperkuat kapasitas lokal, dan
+          mempromosikan praktik pariwisata yang bertanggung jawab.
         </p>
 
         <div class="grid gap-6 sm:grid-cols-3">
@@ -81,10 +138,10 @@
     </section>
 
     <!-- CUSTOMER STORIES / TESTIMONIALS -->
-    <section class="py-16">
+    <section class="bg-gray-50 py-16 rounded-xl">
       <div class="max-w-6xl mx-auto px-6">
         <h3 class="text-3xl font-extrabold text-center mb-8">
-          Customer stories that sizzle
+          Suara Pemangku Kepentingan
         </h3>
 
         <div class="grid gap-6 md:grid-cols-3">
@@ -111,11 +168,11 @@
       </div>
     </section>
 
-    <!-- PROGRAM HIGHLIGHTS (adapted from existing) -->
+    <!-- PROGRAM HIGHLIGHTS (IATTA) -->
     <section class="py-16">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-extrabold mb-8 text-center">
-          Program Unggulan
+          Program Unggulan IATTA
         </h2>
         <div class="grid gap-8 md:grid-cols-3">
           <article
@@ -145,10 +202,12 @@
       </div>
     </section>
 
-    <!-- LATEST NEWS -->
-    <section class="bg-gradient-to-t from-white via-slate-50 py-16">
+    <!-- LATEST NEWS (IATTA) -->
+    <section class="py-16">
       <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-extrabold text-center mb-8">Berita Terbaru</h2>
+        <h2 class="text-3xl font-extrabold text-center mb-8">
+          Berita & Pengumuman
+        </h2>
         <div class="grid gap-8 md:grid-cols-3">
           <article
             v-for="news in latestNews"
@@ -175,21 +234,22 @@
     <section class="py-12 bg-slate-900">
       <div class="max-w-6xl mx-auto px-6 text-center text-white">
         <h3 class="text-2xl font-extrabold mb-3">
-          Ready to start? Joy awaits.
+          Dukung Wisata Petualangan Indonesia
         </h3>
         <p class="text-slate-300 mb-6">
-          Create your free account to start building in just 5 minutes.
+          Bergabung sebagai anggota, ikut sertifikasi pemandu, dan promosikan
+          pengalaman lokal yang bertanggung jawab.
         </p>
         <div class="flex items-center justify-center gap-4">
           <router-link
-            to="/try"
-            class="px-6 py-3 rounded-lg bg-white text-slate-900 font-semibold"
-            >Try for free</router-link
+            to="/join"
+            class="px-6 py-3 rounded-lg bg-emerald-500 text-white font-semibold"
+            >Gabung Sekarang</router-link
           >
           <router-link
-            to="/demo"
+            to="/contact"
             class="px-6 py-3 rounded-lg border border-white text-white"
-            >Get a demo</router-link
+            >Hubungi Kami</router-link
           >
         </div>
       </div>
@@ -207,8 +267,17 @@ definePageMeta({ layout: "LandingPage" });
 /* ---------- marquee state & logic ---------- */
 const track = ref(null);
 const pauseMarquee = ref(false);
-const marqueeItems = Array.from({ length: 6 }, () => "/images/logo-dummy.png"); // public images
-const marqueeStyle = ref({ "--marquee-duration": "24s", animationPlayState: "running" });
+const marqueeItems = [
+  "/images/logo-dummy.png",
+  "/images/logo-dummy.png",
+  "/images/logo-dummy.png",
+  "/images/logo-dummy.png",
+  "/images/logo-dummy.png",
+]; // ganti dengan asset nyata di public/images
+const marqueeStyle = ref({
+  "--marquee-duration": "24s",
+  animationPlayState: "running",
+});
 
 function setPaused(val) {
   pauseMarquee.value = !!val;
@@ -220,17 +289,18 @@ function setPaused(val) {
 
 function recalcDuration() {
   if (!track.value) return;
-  const childNodes = Array.from(track.value.children).slice(0, marqueeItems.length);
+  const childNodes = Array.from(track.value.children).slice(
+    0,
+    marqueeItems.length
+  );
   if (!childNodes.length) return;
 
-  // calculate total width of first pass
   let totalWidth = 0;
   childNodes.forEach((el) => {
     const w = Math.max(0, el.getBoundingClientRect().width);
     totalWidth += w;
   });
 
-  // speedFactor: seconds per px (tweak if needed)
   const speedFactor = 0.045;
   let durationSeconds = Math.max(12, Math.round(totalWidth * speedFactor));
   if (durationSeconds > 80) durationSeconds = 80;
@@ -245,26 +315,29 @@ function recalcDuration() {
 /* ResizeObserver + listeners */
 let ro = null;
 onMounted(async () => {
-  // hero store (same behavior as before)
+  // set hero (keep for site consistency)
   const { setHero } = useHeroStore();
   setHero({
     component: HeroSection,
     props: {
-      title: "Create with Joy. Scale with Intelligence.",
+      title: "IATTA: Advancing Adventure Tourism",
       subtitle:
-        "Headless CMS yang intuitif dan AI-ready untuk tim modern — luncurkan lebih cepat tanpa mengorbankan kontrol.",
-      kicker: "Platform",
-      image:
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
+        "Membangun kapasitas, standar, dan promosi pariwisata petualangan Indonesia yang berkelanjutan.",
+      kicker: "IATTA",
+      image: "/images/iatta-hero.jpg",
       ctas: [
-        { label: "Try for free", to: "/try", variant: "primary", icon: "🚀" },
-        { label: "Get a demo", to: "/demo", variant: "ghost", icon: "📅" },
+        {
+          label: "Tentang IATTA",
+          to: "/about",
+          variant: "primary",
+          icon: "🗺️",
+        },
+        { label: "Program", to: "/programs", variant: "ghost", icon: "📚" },
       ],
-      eyebrow: "Headless CMS · AI-ready",
+      eyebrow: "Wisata Petualangan · Berkelanjutan",
     },
   });
 
-  // wait rendering then calc duration
   await nextTick();
   recalcDuration();
 
@@ -276,7 +349,6 @@ onMounted(async () => {
     window.addEventListener("resize", recalcDuration, { passive: true });
   }
 
-  // respect prefers-reduced-motion
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (mq && mq.matches) {
     marqueeStyle.value = { ...marqueeStyle.value, animation: "none" };
@@ -288,96 +360,85 @@ onBeforeUnmount(() => {
   window.removeEventListener("resize", recalcDuration);
 });
 
-/* ---------- sample data for other sections ---------- */
-const partnersLogos = [
-  "https://placehold.co/120x40?text=TomTom",
-  "https://placehold.co/120x40?text=Oatly",
-  "https://placehold.co/120x40?text=Disney",
-  "https://placehold.co/120x40?text=Netflix",
-  "https://placehold.co/120x40?text=Adidas",
-];
-
+/* ---------- content for IATTA ---------- */
 const features = [
   {
-    icon: "🧩",
-    title: "Component-based",
-    desc: "Bangun ulang bagian situs tanpa repot. Reuse komponen untuk konsistensi.",
+    icon: "🎓",
+    title: "Sertifikasi & Pelatihan",
+    desc: "Program sertifikasi pemandu, manajemen risiko, dan first aid untuk meningkatkan profesionalisme.",
   },
   {
-    icon: "⚡",
-    title: "Fast launches",
-    desc: "Setup proyek dalam hitungan menit dengan starter templates.",
+    icon: "🌱",
+    title: "Pariwisata Berkelanjutan",
+    desc: "Panduan praktik ramah lingkungan dan inisiatif pemulihan habitat untuk destinasi petualangan.",
   },
   {
-    icon: "🔒",
-    title: "Enterprise-grade",
-    desc: "Keamanan, SLA, dan governance untuk organisasi skala besar.",
+    icon: "🤝",
+    title: "Kemitraan & Advocacy",
+    desc: "Kolaborasi dengan pemerintah, pelaku usaha, dan komunitas lokal untuk memperkuat ekosistem wisata.",
   },
 ];
 
 const programs = [
   {
-    title: "Eco Adventure",
-    desc: "Jelajahi alam sambil menjaga lingkungan.",
-    image:
-      "https://images.unsplash.com/photo-1526481280698-8fcc2a9f3f4a?auto=format&fit=crop&w=800&q=60",
+    title: "Pelatihan Pemandu Lokal",
+    desc: "Kurikulum komprehensif untuk meningkatkan kemampuan pemandu dalam keselamatan dan storytelling lokal.",
+    image: "/images/program-guide.jpg",
   },
   {
-    title: "Cultural Heritage Tours",
-    desc: "Kenali budaya lokal Indonesia dengan pengalaman otentik.",
-    image:
-      "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=800&q=60",
+    title: "Eco Adventure Certification",
+    desc: "Standar operasional untuk tour operator yang menerapkan praktik konservasi dan manfaat ekonomi lokal.",
+    image: "/images/program-eco.jpg",
   },
   {
-    title: "Marine Exploration",
-    desc: "Eksplorasi bawah laut nusantara bersama tim profesional.",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60",
+    title: "Marine Stewardship Initiative",
+    desc: "Program pelatihan dan monitoring untuk tour selam/ snorkeling yang berkelanjutan.",
+    image: "/images/program-marine.jpg",
   },
 ];
 
 const testimonials = [
   {
-    quote: "We create web pages in 10 minutes.",
-    author: "Danielle van Zuijlen",
-    role: "TomTom",
-    avatar: "https://placehold.co/80x80",
+    quote:
+      "IATTA telah membantu meningkatkan standar layanan pemandu lokal di Lombok.",
+    author: "Cahyo Alkantana",
+    role: "Mantan Ketua Umum IATTA (2017–2025)",
+    avatar: "/images/testi-cahyo.jpg",
   },
   {
-    quote: "100 sites later, marketers love websites again.",
-    author: "Ronan Morris",
-    role: "Together Digital",
-    avatar: "https://placehold.co/80x80",
+    quote:
+      "Kepemimpinan Amalia membawa arah baru yang jelas untuk promosi global.",
+    author: "Asisten Deputi Kemenparekraf",
+    role: "Budi Supriyanto",
+    avatar: "/images/testi-budi.jpg",
   },
   {
-    quote: "Our content ops sped up by 50%.",
-    author: "Case Study",
-    role: "Retail",
-    avatar: "https://placehold.co/80x80",
+    quote:
+      "Program sertifikasi memberikan kepercayaan lebih kepada wisatawan internasional.",
+    author: "Hariyadi B. Sukamdani",
+    role: "PHRI / GIPI",
+    avatar: "/images/testi-hariyadi.jpg",
   },
 ];
 
 const latestNews = [
   {
-    title: "IATTA Gelar Workshop Nasional",
+    title: "Amalia Yunita Terpilih sebagai Ketua Umum IATTA 2025–2029",
+    date: "17 Sep 2025",
+    desc: "Musyawarah Nasional IATTA memilih Amalia Yunita untuk memimpin asosiasi, menekankan komitmen pada keberlanjutan dan kapasitas lokal.",
+    image: "/images/news-munas-2025.jpg",
+  },
+  {
+    title: "Workshop Sertifikasi Pemandu Lokal — Lombok",
     date: "Jan 2025",
-    desc: "IATTA sukses mengadakan workshop nasional tentang pariwisata berkelanjutan.",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=60",
+    desc: "Seri pelatihan dan sertifikasi dilaksanakan untuk meningkatkan kualitas pengalaman wisata petualangan.",
+    image: "/images/news-workshop.jpg",
   },
   {
-    title: "Pemandu Wisata Lokal Berdaya",
-    date: "Des 2024",
-    desc: "Program pemberdayaan pemandu wisata lokal sukses dilaksanakan di Lombok.",
-    image:
-      "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    title: "Peluncuran Aplikasi IATTA",
+    title: "Peluncuran Aplikasi Cari Perjalanan IATTA",
     date: "Nov 2024",
-    desc: "Aplikasi digital untuk memudahkan wisatawan menemukan perjalanan terbaik.",
-    image:
-      "https://images.unsplash.com/photo-1556742400-b5b7c5121f4c?auto=format&fit=crop&w=800&q=60",
+    desc: "Platform digital untuk memudahkan wisatawan menemukan paket petualangan yang bersertifikat IATTA.",
+    image: "/images/news-app.jpg",
   },
 ];
 </script>
@@ -387,7 +448,7 @@ const latestNews = [
 .marquee-track {
   display: flex;
   align-items: center;
-  gap: 2rem; /* lebih longgar supaya logo yang lebih besar tidak mepet */
+  gap: 2rem;
   animation: marquee-scroll var(--marquee-duration, 24s) linear infinite;
   transform: translateZ(0);
 }
@@ -427,7 +488,7 @@ const latestNews = [
 
 /* LOGO SIZING — diperbesar, tetap responsive */
 .logo-img {
-  max-height: 6rem; /* desktop fallback */
+  max-height: 6rem;
   height: auto;
   width: auto;
   user-select: none;

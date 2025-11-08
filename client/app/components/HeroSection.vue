@@ -46,6 +46,7 @@
               :key="i"
               :to="c.to"
               :href="c.href"
+              style="cursor: pointer;"
               class="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold transition-transform active:scale-[.98] shadow-sm"
               :class="ctaClasses(c.variant)"
               @click="$emit('cta-click', c)"
