@@ -150,7 +150,7 @@
             :key="i"
             class="bg-white p-6 rounded-2xl shadow-sm"
           >
-            <p class="text-slate-700 mb-4">“{{ t.quote }}”</p>
+            <p class="text-slate-400 italic mb-4">“{{ t.quote }}”</p>
             <div class="flex items-center gap-3">
               <img
                 :src="t.avatar"
@@ -323,8 +323,8 @@ onMounted(async () => {
       title: "IATTA: Advancing Adventure Tourism",
       subtitle:
         "Membangun kapasitas, standar, dan promosi pariwisata petualangan Indonesia yang berkelanjutan.",
-      kicker: "IATTA",
-      image: "/images/iatta-hero.jpg",
+      kicker: "Indonesia Adventure Travel Trade Association",
+      image: "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg",
       ctas: [
         {
           label: "Tentang IATTA",
@@ -383,17 +383,17 @@ const programs = [
   {
     title: "Pelatihan Pemandu Lokal",
     desc: "Kurikulum komprehensif untuk meningkatkan kemampuan pemandu dalam keselamatan dan storytelling lokal.",
-    image: "/images/program-guide.jpg",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80", 
   },
   {
     title: "Eco Adventure Certification",
     desc: "Standar operasional untuk tour operator yang menerapkan praktik konservasi dan manfaat ekonomi lokal.",
-    image: "/images/program-eco.jpg",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Marine Stewardship Initiative",
-    desc: "Program pelatihan dan monitoring untuk tour selam/ snorkeling yang berkelanjutan.",
-    image: "/images/program-marine.jpg",
+    desc: "Program pelatihan dan monitoring untuk tour selam/snorkeling yang berkelanjutan.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -403,21 +403,21 @@ const testimonials = [
       "IATTA telah membantu meningkatkan standar layanan pemandu lokal di Lombok.",
     author: "Cahyo Alkantana",
     role: "Mantan Ketua Umum IATTA (2017–2025)",
-    avatar: "/images/testi-cahyo.jpg",
+    avatar: "https://ui-avatars.com/api/?name=Cahyo+Alkantana&background=10B981&color=fff&size=128",
   },
   {
     quote:
       "Kepemimpinan Amalia membawa arah baru yang jelas untuk promosi global.",
-    author: "Asisten Deputi Kemenparekraf",
-    role: "Budi Supriyanto",
-    avatar: "/images/testi-budi.jpg",
+    author: "Budi Supriyanto",
+    role: "Asisten Deputi Kemenparekraf",
+    avatar: "https://ui-avatars.com/api/?name=Budi+Supriyanto&background=34D399&color=fff&size=128",
   },
   {
     quote:
       "Program sertifikasi memberikan kepercayaan lebih kepada wisatawan internasional.",
     author: "Hariyadi B. Sukamdani",
     role: "PHRI / GIPI",
-    avatar: "/images/testi-hariyadi.jpg",
+    avatar: "https://ui-avatars.com/api/?name=Hariyadi+B.+Sukamdani&background=6EE7B7&color=fff&size=128",
   },
 ];
 
@@ -426,19 +426,19 @@ const latestNews = [
     title: "Amalia Yunita Terpilih sebagai Ketua Umum IATTA 2025–2029",
     date: "17 Sep 2025",
     desc: "Musyawarah Nasional IATTA memilih Amalia Yunita untuk memimpin asosiasi, menekankan komitmen pada keberlanjutan dan kapasitas lokal.",
-    image: "/images/news-munas-2025.jpg",
+    image: "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0008-e1758092470249.jpg",
   },
   {
-    title: "Workshop Sertifikasi Pemandu Lokal — Lombok",
-    date: "Jan 2025",
-    desc: "Seri pelatihan dan sertifikasi dilaksanakan untuk meningkatkan kualitas pengalaman wisata petualangan.",
-    image: "/images/news-workshop.jpg",
+    title: "Musyawarah Nasional (Munas) 2025 — Jakarta",
+    date: "Sept 2025",
+    desc: "REDAKSI8.COM, JAKARTA – Indonesia kembali meneguhkan langkahnya menuju panggung internasional sebagai salah satu destinasi utama wisata petualangan dunia. Hal ini tampak jelas dalam Musyawarah Nasional (Munas) Indonesia Adventure Travel Trade Association (IATTA) 2025 yang sukses digelar di Jakarta Design Center, Selasa (16/9/2025).",
+    image: "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg",
   },
   {
     title: "Peluncuran Aplikasi Cari Perjalanan IATTA",
     date: "Nov 2024",
     desc: "Platform digital untuk memudahkan wisatawan menemukan paket petualangan yang bersertifikat IATTA.",
-    image: "/images/news-app.jpg",
+    image: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=900&q=80",
   },
 ];
 </script>

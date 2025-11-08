@@ -1,7 +1,7 @@
 <template>
   <section
     ref="root"
-    class="w-full text-white overflow-hidden relative"
+    class="w-full text-white py-10"
     :style="sectionStyleWithVars"
     :aria-label="ariaLabel"
     role="region"
@@ -25,7 +25,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 py-16">
         <!-- LEFT: Text -->
         <div class="relative z-10">
-          <p v-if="kicker" class="inline-block text-sm font-semibold text-emerald-300 uppercase tracking-wide mb-3">
+          <p v-if="kicker" class="inline-block text-sm font-semibold text-emerald-300 uppercase tracking-wide">
             {{ kicker }}
           </p>
 
@@ -162,7 +162,7 @@ const sectionStyle = computed(() => {
     backgroundImage: `${radial}, ${linear}, ${subtle}`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    color: '#ffffff'
+    color: '#ffffff',
   }
 })
 
