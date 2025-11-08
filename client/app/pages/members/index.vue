@@ -1,18 +1,18 @@
 <template>
   <main class="min-h-screen text-slate-900">
     <!-- Hero -->
-    <section class="bg-[#f8fafc] py-10 rounded-xl">
+    <section class="bg-gradient-to-b from-[#fef9ec] to-white border border-slate-100 py-10 rounded-xl">
       <div class="max-w-6xl mx-auto px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-start justify-between gap-6">
           <div>
-            <h1 class="text-3xl lg:text-4xl font-extrabold text-[#08a4ef]">KEANGGOTAAN IATTA</h1>
+            <h1 class="text-xl lg:text-2xl font-extrabold text-[#000000]">KEANGGOTAAN IATTA</h1>
             <p class="mt-2 text-slate-600 max-w-2xl">Bergabunglah dengan ekosistem: akses standar, alat, dan jaringan yang mempercepat dampak pariwisata berkelanjutan.</p>
           </div>
 
-          <div class="flex gap-3">
+          <!-- <div class="flex gap-3">
             <button @click="openRegister = true" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#08a4ef] text-white">Daftar Online</button>
             <button @click="showLogin = true" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200">Login Dewan Regional</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -150,7 +150,7 @@
             </label>
 
             <div class="flex items-center gap-3">
-              <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#d5e018] text-white">Kirim Pendaftaran</button>
+              <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 text-white">Kirim Pendaftaran</button>
               <button type="button" @click="resetForm" class="px-4 py-2 rounded-lg border bg-white border-gray-200">Reset</button>
             </div>
 
