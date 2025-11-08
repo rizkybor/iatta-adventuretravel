@@ -1,20 +1,12 @@
 <template>
-  <div
-    class="min-h-screen flex flex-col font-sans text-slate-800
-           bg-gradient-to-br from-white via-white to-emerald-50"
-  >
+  <div class="min-h-screen flex flex-col font-sans text-slate-800
+           bg-gradient-to-br from-white via-white to-emerald-50">
     <NuxtRouteAnnouncer />
-    <AppNavbar style="margin-top: -1vh;" />
+    <AppNavbar style="margin-top: -2vh;"/>
 
     <!-- HERO SECTION (hanya di / dan /home) -->
-<component
-  v-if="showHero && hero && hero.component"
-  :is="hero.component"
-  v-bind="hero.props"
-  class="w-full"
-  style="margin-top: -7vh;"
-  @cta-click="onHeroCtaClick"
-/>
+    <component v-if="showHero && hero && hero.component" :is="hero.component" v-bind="hero.props" class="w-full"
+      style="margin-top: -7vh;" @cta-click="onHeroCtaClick" />
 
     <!-- MAIN CONTENT -->
     <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">

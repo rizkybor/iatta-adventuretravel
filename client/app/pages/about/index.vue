@@ -1,24 +1,16 @@
 <template>
   <main class="min-h-screen text-slate-900">
     <!-- Hero / Header -->
-    <section class="py-12 shadow-sm rounded-xl">
+    <section class="py-12 shadow-sm rounded-xl bg-gradient-to-b from-[#fef9ec] to-white border border-slate-100">
       <div class="max-w-6xl mx-auto px-6 lg:px-8">
         <div class="flex items-center justify-between gap-6">
           <div>
-            <h1 class="text-4xl lg:text-5xl font-extrabold text-[#08a4ef]">TENTANG IATTA</h1>
+            <h1 class="text-xl lg:text-2xl font-extrabold text-[#232323]">TENTANG IATTA</h1>
             <p class="mt-3 text-slate-600 max-w-2xl">
               Profil organisasi, visi-misi, tata nilai, struktur, dan kontak resmi IATTA —
               disajikan secara ringkas, modern, dan mudah ditindaklanjuti.
             </p>
           </div>
-
-          <nav class="hidden md:flex gap-3 items-center" aria-label="Quick navigation">
-            <a href="#profile" class="text-sm px-3 py-2 rounded-lg hover:bg-[#fcb243]/10 transition">Profil</a>
-            <a href="#vision" class="text-sm px-3 py-2 rounded-lg hover:bg-[#d5e018]/10 transition">Visi & Misi</a>
-            <a href="#values" class="text-sm px-3 py-2 rounded-lg hover:bg-[#08a4ef]/10 transition">Nilai</a>
-            <a href="#board" class="text-sm px-3 py-2 rounded-lg hover:bg-[#fcb243]/10 transition">Dewan & Tim</a>
-            <a href="#contacts" class="text-sm px-3 py-2 rounded-lg hover:bg-[#d5e018]/10 transition">Kontak</a>
-          </nav>
         </div>
       </div>
     </section>

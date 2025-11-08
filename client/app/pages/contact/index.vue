@@ -4,7 +4,7 @@
       <!-- LEFT: form -->
       <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-md">
         <div class="mb-4">
-          <h1 class="text-2xl lg:text-3xl font-extrabold text-[#08a4ef]">
+          <h1 class="text-2xl lg:text-3xl font-extrabold text-[#000000]">
             Hubungi Kami
           </h1>
           <p class="mt-2 text-sm text-slate-600">
@@ -118,7 +118,7 @@
             <button
               :disabled="submitting"
               type="submit"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#08a4ef] text-white shadow hover:opacity-95 disabled:opacity-60"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 text-white shadow hover:opacity-95 disabled:opacity-60"
             >
               <svg
                 v-if="!submitting"

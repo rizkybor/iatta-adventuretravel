@@ -167,7 +167,7 @@
             />
             <button
               type="submit"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-300"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-500 text-white text-sm font-medium hover:bg-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-300"
             >
               Subscribe
             </button>
