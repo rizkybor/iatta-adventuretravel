@@ -104,9 +104,9 @@
         <div class="rounded-2xl overflow-hidden shadow-lg bg-white">
           <!-- representative image -->
           <img
-            src="https://berita.genpi.id/wp-content/uploads/2025/09/IMG-20250910-WA0036.jpg"
+            src="https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg"
             alt="IATTA - Adventure"
-            class="w-full h-64 object-cover"
+            class="w-full h-auto object-cover"
             loading="lazy"
             onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60'"
           />
@@ -333,7 +333,7 @@ onMounted(async () => {
       subtitle:
         "Membangun kapasitas, standar, dan promosi pariwisata petualangan Indonesia yang berkelanjutan.",
       kicker: "Indonesia Adventure Travel Trade Association",
-      image: "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg",
+      image: "https://berita.genpi.id/wp-content/uploads/2025/09/IMG-20250910-WA0036.jpg",
       ctas: [
         {
           label: "Tentang IATTA",

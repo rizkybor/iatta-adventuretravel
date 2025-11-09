@@ -64,7 +64,7 @@
         </div>
 
         <!-- RIGHT: Image card -->
-        <div class="relative w-full h-64 sm:h-80 lg:h-96 rounded-xl overflow-hidden shadow-2xl ring-1 ring-black/10 bg-white/5 backdrop-blur-sm">
+        <div class="relative w-full h-64 sm:h-auto lg:h-auto rounded-xl overflow-hidden shadow-2xl ring-1 ring-black/10 bg-white/5 backdrop-blur-sm">
           <img
             v-if="imageSrc"
             :src="imageSrc"
@@ -118,6 +118,7 @@ const emit = defineEmits(['cta-click'])
    Image fallback + text
    --------------------------- */
 const unsplashFallback = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80'
+
 const imageSrc = ref(props.image || unsplashFallback)
 const heroImg = ref(null)
 function onImgError() {
