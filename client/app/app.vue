@@ -23,34 +23,31 @@ import { useRoute } from 'vue-router'
 import AppNavbar from '~/components/AppNavbar.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import { useHeroStore } from '~/composables/useHeroStore'
-
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-function onHeroCtaClick(cta) {
-  // cta = object yang dikirim dari child; contoh: { label, to, href, variant }
-  if (!cta) return
+useSeoMeta({
+  titleTemplate: '%s | IATTA',
+  title: 'IATTA – Indonesia Adventure Travel Trade Association',
+  description: 'Mendorong ekosistem wisata petualangan berkelanjutan di Indonesia.',
+  og: { site_name: 'IATTA', locale: 'id_ID' }
+})
 
-  // contoh tindakan: navigasi jika ada `to`
+function onHeroCtaClick(cta) {
+  if (!cta) return
   if (cta.to) {
     router.push(cta.to)
     return
   }
-
-  // contoh: buka dialog/register kalau cta.as === 'modal'
   if (cta.action === 'open-register') {
-    openRegister.value = true // misal ada reactive state
+    openRegister.value = true
     return
   }
-
-  // fallback: log (debug)
   console.log('Hero CTA clicked:', cta)
 }
 
 const { hero } = useHeroStore()
 const route = useRoute()
-
-// tampilkan hero hanya di route "/" atau "/home"
 const showHero = computed(() => {
   return route.path === '/' || route.path === '/home'
 })
@@ -62,7 +59,6 @@ body {
   scroll-behavior: smooth;
 }
 
-/* pointer untuk semua button */
 button,
 [role="button"],
 a.button,
