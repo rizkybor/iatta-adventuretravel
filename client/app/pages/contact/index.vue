@@ -164,8 +164,8 @@
             </li>
             <li>
               <span class="font-medium text-slate-800">Email:</span>
-              <a class="text-[#08a4ef]" href="mailto:info@iatta.or.id"
-                >info@iatta.or.id</a
+              <a class="text-[#08a4ef]" href="mailto:indoadventure.travel@gmail.com"
+                > indoadventure.travel@gmail.com</a
               >
             </li>
             <li>
@@ -341,7 +341,7 @@ async function handleSubmit() {
   } catch (err) {
     statusType.value = "error";
     statusMessage.value =
-      "Terjadi kesalahan saat mengirim. Silakan coba lagi atau hubungi info@iatta.or.id";
+      "Terjadi kesalahan saat mengirim. Silakan coba lagi atau hubungi indoadventure.travel@gmail.com";
   } finally {
     submitting.value = false;
   }
