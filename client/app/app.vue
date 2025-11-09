@@ -28,7 +28,7 @@ const router = useRouter()
 
 useSeoMeta({
   titleTemplate: '%s | IATTA',
-  title: 'Home – Indonesia Adventure Travel Trade Association',
+  title: 'Indonesia Adventure Travel Trade Association',
   description: 'Menjadikan destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.',
   og: { site_name: 'IATTA', locale: 'id_ID' }
 })
