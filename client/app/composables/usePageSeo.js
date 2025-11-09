@@ -28,12 +28,12 @@ export function usePageSeo(payload) {
       return {
         title: 'IATTA – Indonesia Adventure Travel Trade Association',
         description:
-          'Mendorong ekosistem wisata petualangan berkelanjutan di Indonesia.',
+          'Menjadikan destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.',
         canonical: base,
         og: {
           title: 'IATTA – Indonesia Adventure Travel Trade Association',
           description:
-            'Mendorong ekosistem wisata petualangan berkelanjutan di Indonesia.',
+            'Menjadikan destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.',
           url: base,
           image: img,
           type: 'website',
@@ -45,7 +45,7 @@ export function usePageSeo(payload) {
           card: 'summary_large_image',
           title: 'IATTA – Indonesia Adventure Travel Trade Association',
           description:
-            'Mendorong ekosistem wisata petualangan berkelanjutan di Indonesia.',
+            'Menjadikan destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.',
           image: img,
         },
       }
@@ -58,7 +58,7 @@ export function usePageSeo(payload) {
       title: p.title || 'IATTA – Indonesia Adventure Travel Trade Association',
       description:
         p.description ||
-        'Mendorong ekosistem wisata petualangan berkelanjutan di Indonesia.',
+        'Menjadikan destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.',
       canonical,
       og: {
         title: p.title || 'IATTA – Indonesia Adventure Travel Trade Association',
