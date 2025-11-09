@@ -114,8 +114,9 @@
           <div class="mt-3 grid grid-cols-1 gap-3">
             <button
               @click.prevent="socialSign('google')"
+              :disabled="auth.loading"
               type="button"
-              class="flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 ease-in-out active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[#4285F4]"
+              class="disabled:opacity-60 flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 ease-in-out active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[#4285F4]"
             >
               <!-- Google Icon -->
               <svg

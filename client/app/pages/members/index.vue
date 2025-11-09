@@ -8,11 +8,6 @@
             <h1 class="text-xl lg:text-2xl font-extrabold text-[#000000]">KEANGGOTAAN IATTA</h1>
             <p class="mt-2 text-slate-600 max-w-2xl">Bergabunglah dengan ekosistem: akses standar, alat, dan jaringan yang mempercepat dampak pariwisata berkelanjutan.</p>
           </div>
-
-          <!-- <div class="flex gap-3">
-            <button @click="openRegister = true" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#08a4ef] text-white">Daftar Online</button>
-            <button @click="showLogin = true" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200">Login Dewan Regional</button>
-          </div> -->
         </div>
       </div>
     </section>
@@ -218,8 +213,16 @@
   </main>
 </template>
 
+<!-- pages/members.vue -->
 <script setup>
 import { ref } from 'vue'
+import { onMounted } from 'vue'
+import { navigateTo } from '#app'
+
+onMounted(() => {
+  // ganti replace: true ke false kalau mau bisa "back" ke halaman ini
+  navigateTo('/under-construction', { replace: true })
+})
 
 const showLogin = ref(false)
 const openRegister = ref(false)
