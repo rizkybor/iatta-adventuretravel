@@ -77,7 +77,7 @@
           <span class="sr-only">Open main menu</span>
           <svg
             v-if="!open"
-            class="w-6 h-6"
+            class="w-6 h-6 text-emerald-500 hover:text-emerald-600 transition-colors"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -90,7 +90,7 @@
           </svg>
           <svg
             v-else
-            class="w-6 h-6"
+            class="w-6 h-6 text-emerald-500 hover:text-emerald-600 transition-colors"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
