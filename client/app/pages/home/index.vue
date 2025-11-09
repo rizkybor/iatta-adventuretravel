@@ -104,7 +104,7 @@
         <div class="rounded-2xl overflow-hidden shadow-lg bg-white">
           <!-- representative image -->
           <img
-            src="/images/logo-dummy.png"
+            src="https://berita.genpi.id/wp-content/uploads/2025/09/IMG-20250910-WA0036.jpg"
             alt="IATTA - Adventure"
             class="w-full h-64 object-cover"
             loading="lazy"

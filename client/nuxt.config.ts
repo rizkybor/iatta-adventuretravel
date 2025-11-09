@@ -1,5 +1,5 @@
 // client/nuxt.config.ts
-import tailwindcss from "@tailwindcss/vite"; // Vite plugin for Tailwind v4
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   app: {
@@ -23,11 +23,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   // remove @nuxtjs/tailwindcss from modules if present
-  modules: ["@nuxt/eslint", "@nuxt/ui", "@nuxtjs/sitemap"],
-
+  modules: ["@nuxt/eslint", "@nuxt/ui"],
   // @ts-ignore
   sitemap: {
     siteUrl: "https://iatta.or.id",
+    gzip: true,
   },
 
   // CSS entry relative to srcDir (app/)
