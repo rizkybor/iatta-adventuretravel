@@ -195,7 +195,7 @@
             </div>
 
             <p v-if="loginMessage" class="text-sm text-red-600">{{ loginMessage }}</p>
-            <p class="mt-2 text-xs text-slate-500">Masalah akses? Hubungi sekretariat: <a href="mailto:info@iatta.or.id" class="text-[#08a4ef]">info@iatta.or.id</a></p>
+            <p class="mt-2 text-xs text-slate-500">Masalah akses? Hubungi sekretariat: <a href="mailto:indoadventure.travel@gmail.com" class="text-[#08a4ef]">indoadventure.travel@gmail.com</a></p>
           </form>
         </div>
       </div>

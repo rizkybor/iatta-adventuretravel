@@ -63,7 +63,9 @@
     </section>
 
     <!-- HERO / LEAD-IN -->
-    <section class="bg-gradient-to-r from-emerald-50 to-white py-16 rounded-xl">
+    <section
+      class="bg-gradient-to-r from-emerald-50 to-white py-16 rounded-xl mt-4"
+    >
       <div
         class="max-w-6xl mx-auto px-6 grid gap-10 lg:grid-cols-2 items-center"
       >
@@ -261,15 +263,16 @@
 import { onMounted, onBeforeUnmount, ref, nextTick } from "vue";
 import { useHeroStore } from "~/composables/useHeroStore";
 import HeroSection from "~/components/HeroSection.vue";
-import { usePageSeo } from '~/composables/usePageSeo'
+import { usePageSeo } from "~/composables/usePageSeo";
 
 usePageSeo({
-  title: 'Home – Indonesia Adventure Travel Trade Association',
-  description: 'Menjadikan destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.',
-  path: '/',
-  image: '/meta/og-image.png',
-  type: 'website'
-})
+  title: "Home – Indonesia Adventure Travel Trade Association",
+  description:
+    "Menjadikan destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.",
+  path: "/",
+  image: "/meta/og-image.png",
+  type: "website",
+});
 
 definePageMeta({ layout: "LandingPage" });
 
@@ -277,11 +280,12 @@ definePageMeta({ layout: "LandingPage" });
 const track = ref(null);
 const pauseMarquee = ref(false);
 const marqueeItems = [
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjBE6Mq3-HmNt8aq2H92xpIVuZXo_IQyMPMw&s",
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizhCe_iBnWcrlJnlXWRp3Umz1LTRIbS_KDHJLbG9nDgKsUl0UMMKxzzRKbTTEvczhtfIoUGowkcYlA6_X9ZY82V4wXewH-SuZqRn8KH_LkJK-yutE51KkymmbvhxQZAnaoboozZbhuR2DOjWfRHjjqejIq98GIfO_UBY7KZ9HwM2huU43zLwbLtGOVvpPu/w1200-h630-p-k-no-nu/Profil%20APGI_DPP%20APGI%202025-2028-1.png",
   "/images/logo-dummy.png",
-  "/images/logo-dummy.png",
-  "/images/logo-dummy.png",
-  "/images/logo-dummy.png",
-  "/images/logo-dummy.png",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqH0T_6jURtjHDPBotVnEBjhJ1LWRD9jBVrw&s",
+  "https://www.kuncoroleadership.org/wp-content/uploads/2022/08/logo-aeli.png",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOeD7esYg0MIrXoR_Hph_j-nkB4BwTwto_RA&s",
 ]; // ganti dengan asset nyata di public/images
 const marqueeStyle = ref({
   "--marquee-duration": "24s",
@@ -333,7 +337,8 @@ onMounted(async () => {
       subtitle:
         "Membangun kapasitas, standar, dan promosi pariwisata petualangan Indonesia yang berkelanjutan.",
       kicker: "Indonesia Adventure Travel Trade Association",
-      image: "https://berita.genpi.id/wp-content/uploads/2025/09/IMG-20250910-WA0036.jpg",
+      image:
+        "https://berita.genpi.id/wp-content/uploads/2025/09/IMG-20250910-WA0036.jpg",
       ctas: [
         {
           label: "Tentang IATTA",
@@ -392,17 +397,20 @@ const programs = [
   {
     title: "Pelatihan Pemandu Lokal",
     desc: "Kurikulum komprehensif untuk meningkatkan kemampuan pemandu dalam keselamatan dan storytelling lokal.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80", 
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Eco Adventure Certification",
     desc: "Standar operasional untuk tour operator yang menerapkan praktik konservasi dan manfaat ekonomi lokal.",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Marine Stewardship Initiative",
     desc: "Program pelatihan dan monitoring untuk tour selam/snorkeling yang berkelanjutan.",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -412,42 +420,50 @@ const testimonials = [
       "IATTA telah membantu meningkatkan standar layanan pemandu lokal di Lombok.",
     author: "Cahyo Alkantana",
     role: "Mantan Ketua Umum IATTA (2017–2025)",
-    avatar: "https://ui-avatars.com/api/?name=Cahyo+Alkantana&background=10B981&color=fff&size=128",
+    avatar:
+      "https://ui-avatars.com/api/?name=Cahyo+Alkantana&background=10B981&color=fff&size=128",
   },
   {
     quote:
       "Kepemimpinan Amalia membawa arah baru yang jelas untuk promosi global.",
     author: "Budi Supriyanto",
     role: "Asisten Deputi Kemenparekraf",
-    avatar: "https://ui-avatars.com/api/?name=Budi+Supriyanto&background=34D399&color=fff&size=128",
+    avatar:
+      "https://ui-avatars.com/api/?name=Budi+Supriyanto&background=34D399&color=fff&size=128",
   },
   {
     quote:
       "Program sertifikasi memberikan kepercayaan lebih kepada wisatawan internasional.",
     author: "Hariyadi B. Sukamdani",
     role: "PHRI / GIPI",
-    avatar: "https://ui-avatars.com/api/?name=Hariyadi+B.+Sukamdani&background=6EE7B7&color=fff&size=128",
+    avatar:
+      "https://ui-avatars.com/api/?name=Hariyadi+B.+Sukamdani&background=6EE7B7&color=fff&size=128",
   },
 ];
 
 const latestNews = [
   {
-    title: "Amalia Yunita Terpilih sebagai Ketua Umum IATTA 2025–2029",
-    date: "17 Sep 2025",
-    desc: "Musyawarah Nasional IATTA memilih Amalia Yunita untuk memimpin asosiasi, menekankan komitmen pada keberlanjutan dan kapasitas lokal.",
-    image: "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0008-e1758092470249.jpg",
+    title: "Amalia Yunita Pimpin IATTA, Targetkan Wisata Petualangan Indonesia Jadi Destinasi Dunia!",
+    date: "Sep 2025",
+    desc: "Indonesia Adventure Travel Trade Association (IATTA) memiliki visi besar untuk menjadikan Indonesia sebagai destinasi utama wisata petualangan Indonesia di kancah global. Visi ini mencakup aspek kualitas, keberlanjutan, dan daya saing yang tinggi di pasar internasional. Upaya serius terus dilakukan untuk mewujudkan impian tersebut, termasuk melalui Musyawarah Nasional (Munas) yang baru-baru ini diselenggarakan.",
+    image:
+      "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0008-e1758092470249.jpg",
   },
   {
     title: "Musyawarah Nasional (Munas) 2025 — Jakarta",
-    date: "Sept 2025",
+    date: "Sep 2025",
     desc: "REDAKSI8.COM, JAKARTA – Indonesia kembali meneguhkan langkahnya menuju panggung internasional sebagai salah satu destinasi utama wisata petualangan dunia. Hal ini tampak jelas dalam Musyawarah Nasional (Munas) Indonesia Adventure Travel Trade Association (IATTA) 2025 yang sukses digelar di Jakarta Design Center, Selasa (16/9/2025).",
-    image: "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg",
+    image:
+      "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg",
   },
   {
-    title: "Peluncuran Aplikasi Cari Perjalanan IATTA",
-    date: "Nov 2024",
-    desc: "Platform digital untuk memudahkan wisatawan menemukan paket petualangan yang bersertifikat IATTA.",
-    image: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=900&q=80",
+    title:
+      "IATTA Ingin Indonesia Jadi Destinasi Utama Wisata Petualangan Dunia",
+    date: "Sep 2025",
+    desc: `Indonesiainside.id – Indonesia Adventure Travel Trade Association (IATTA) ingin Indonesia menjadi destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.
+“Saya selalu katakan bahwa dagingnya orang datang ke Indonesia itu ada dua, petualangan dan budaya. Ini yang harus kita teriakkan bahwa wisata petualangan jangan dibiarkan, Komisi Pak Prabowo tadi mengatakan bahwa future-nya dari Pak Presiden sendiri bukan di migas, tapi pariwisata,” kata Ketua Umum IATTA 2017-2025 Cahyo Alkantana dalam Musyawarah Nasional IATTA di Jakarta, Selasa.`,
+    image:
+      "https://indonesiainside.id/wp-content/uploads/2025/09/964887_720.jpg",
   },
 ];
 </script>
