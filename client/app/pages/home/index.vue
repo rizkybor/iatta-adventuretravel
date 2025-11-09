@@ -261,6 +261,15 @@
 import { onMounted, onBeforeUnmount, ref, nextTick } from "vue";
 import { useHeroStore } from "~/composables/useHeroStore";
 import HeroSection from "~/components/HeroSection.vue";
+import { usePageSeo } from '~/composables/usePageSeo'
+
+usePageSeo({
+  title: 'IATTA – Indonesia Adventure Travel Trade Association',
+  description: 'Mendorong ekosistem wisata petualangan berkelanjutan di Indonesia.',
+  path: '/',
+  image: '/meta/og-image.png',
+  type: 'website'
+})
 
 definePageMeta({ layout: "LandingPage" });
 
