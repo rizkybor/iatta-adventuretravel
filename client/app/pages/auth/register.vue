@@ -1,8 +1,12 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-center bg-gradient-to-b from-white to-slate-50 py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full">
       <div class="text-center mb-6">
-        <!-- <img src="/logo.svg" alt="Logo" class="mx-auto h-10 w-auto mb-2" /> -->
+        <img
+          src="/images/logo-iatta.png"
+          alt="Logo"
+          class="mx-auto h-10 w-auto mb-4"
+        />
         <h2 class="text-2xl font-extrabold text-slate-800">Create your account</h2>
         <p class="mt-1 text-sm text-slate-500">Set up your account in a few easy steps.</p>
       </div>
@@ -10,19 +14,19 @@
       <form @submit.prevent="onSubmit" class="bg-white p-6 rounded-2xl shadow space-y-4" novalidate>
         <div>
           <label for="name" class="block text-sm font-medium text-slate-700">Full name</label>
-          <input id="name" v-model="form.name" type="text" required class="mt-1 block w-full rounded-md border-slate-200 shadow-sm focus:ring-2 focus:ring-emerald-300" />
+          <input id="name" v-model="form.name" type="text" required class="mt-1 py-1 block w-full rounded-md border-slate-200 shadow-sm focus:ring-2 focus:ring-emerald-300" />
           <p v-if="errors.name" class="mt-1 text-sm text-red-600">{{ errors.name }}</p>
         </div>
 
         <div>
           <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
-          <input id="email" v-model="form.email" type="email" required class="mt-1 block w-full rounded-md border-slate-200 shadow-sm focus:ring-2 focus:ring-emerald-300" />
+          <input id="email" v-model="form.email" type="email" required class="mt-1 py-1 block w-full rounded-md border-slate-200 shadow-sm focus:ring-2 focus:ring-emerald-300" />
           <p v-if="errors.email" class="mt-1 text-sm text-red-600">{{ errors.email }}</p>
         </div>
 
         <div>
           <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
-          <input id="password" v-model="form.password" type="password" required class="mt-1 block w-full rounded-md border-slate-200 shadow-sm focus:ring-2 focus:ring-emerald-300" />
+          <input id="password" v-model="form.password" type="password" required class="mt-1 py-1 block w-full rounded-md border-slate-200 shadow-sm focus:ring-2 focus:ring-emerald-300" />
           <p v-if="errors.password" class="mt-1 text-sm text-red-600">{{ errors.password }}</p>
         </div>
 

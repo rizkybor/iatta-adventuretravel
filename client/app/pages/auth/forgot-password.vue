@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-6">
       <div class="text-center">
         <!-- <img src="/logo.svg" alt="Logo" class="mx-auto h-10 w-auto mb-4" /> -->
@@ -10,7 +10,7 @@
       <form @submit.prevent="onSubmit" class="bg-white p-6 rounded-2xl shadow" novalidate>
         <div>
           <label for="email" class="block text-sm font-medium text-slate-700">Email address</label>
-          <input id="email" v-model="email" type="email" required class="mt-1 block w-full rounded-md border-slate-200 shadow-sm focus:ring-2 focus:ring-emerald-300" />
+          <input id="email" v-model="email" type="email" required class="mt-1 py-1 block w-full rounded-md border-slate-200 shadow-sm focus:ring-2 focus:ring-emerald-300" />
           <p v-if="err" class="mt-1 text-sm text-red-600">{{ err }}</p>
         </div>
 
