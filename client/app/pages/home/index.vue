@@ -264,8 +264,8 @@ import HeroSection from "~/components/HeroSection.vue";
 import { usePageSeo } from '~/composables/usePageSeo'
 
 usePageSeo({
-  title: 'IATTA – Indonesia Adventure Travel Trade Association',
-  description: 'Mendorong ekosistem wisata petualangan berkelanjutan di Indonesia.',
+  title: 'Home – Indonesia Adventure Travel Trade Association',
+  description: 'Menjadikan destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.',
   path: '/',
   image: '/meta/og-image.png',
   type: 'website'
