@@ -57,7 +57,7 @@
     <section id="profile" class="max-w-6xl mx-auto px-6 lg:px-8 py-12">
       <div class="grid lg:grid-cols-3 gap-8 items-start">
         <div class="lg:col-span-2">
-          <h2 class="text-2xl font-bold text-[#08a4ef]">
+          <h2 class="text-xl sm:text-2xl font-bold text-[#08a4ef]">
             1. Profil Organisasi IATTA
           </h2>
           <p
@@ -188,7 +188,7 @@
     <!-- BOARD & ORG -->
     <section id="board" class="py-12">
       <div class="max-w-6xl mx-auto px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-[#08a4ef]">
+        <h2 class="text-xl sm:text-2xl font-bold text-[#08a4ef]">
           3. Struktur Dewan Pengurus Pusat Periode 2025 - 2029
         </h2>
 
