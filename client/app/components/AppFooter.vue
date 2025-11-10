@@ -264,7 +264,7 @@
           <p>
             © <span class="font-medium text-slate-700">{{ year }}</span>
             <span class="font-semibold text-slate-800"
-              >Indonesia Adventure Travel Trade Association</span
+              > - Indonesia Adventure Travel Trade Association</span
             >. All rights reserved.
           </p>
         </div>
