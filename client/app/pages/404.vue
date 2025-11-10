@@ -34,7 +34,7 @@
               Contact Support
             </NuxtLink>
 
-            <NuxtLink to="/sitemap.xml" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-slate-600 hover:underline">
+            <NuxtLink to="/sitemap" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-slate-600 hover:underline">
               View sitemap
             </NuxtLink>
           </div>
