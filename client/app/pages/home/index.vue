@@ -338,7 +338,7 @@ onMounted(async () => {
         "Membangun kapasitas, standar, dan promosi pariwisata petualangan Indonesia yang berkelanjutan.",
       kicker: "Indonesia Adventure Travel Trade Association",
       image:
-        "https://berita.genpi.id/wp-content/uploads/2025/09/IMG-20250910-WA0036.jpg",
+        "/images/hero.png",
       ctas: [
         {
           label: "Tentang IATTA",
