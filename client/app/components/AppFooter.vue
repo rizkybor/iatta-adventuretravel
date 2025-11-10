@@ -138,7 +138,7 @@
         <!-- CONTACT + NEWSLETTER -->
         <div class="text-sm text-slate-700">
           <h4 class="text-sm font-semibold text-slate-900 mb-3">
-            Kontak & Newsletter
+            Address & Newsletter
           </h4>
 
           <address class="not-italic text-slate-600 text-sm mb-3">
