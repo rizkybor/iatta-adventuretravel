@@ -213,7 +213,7 @@
   </main>
 </template>
 
-<!-- pages/members.vue -->
+<!-- pages/membership.vue -->
 <script setup>
 import { ref } from 'vue'
 import { onMounted } from 'vue'

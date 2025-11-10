@@ -41,12 +41,12 @@
           </NuxtLink>
 
           <NuxtLink
-            to="/members"
+            to="/membership"
             class="px-3 py-1 rounded-md text-sm transition-transform"
-            :class="desktopLinkClass('/members')"
-            :aria-current="isActive('/members') ? 'page' : undefined"
+            :class="desktopLinkClass('/membership')"
+            :aria-current="isActive('/membership') ? 'page' : undefined"
           >
-            Members
+            Membership
           </NuxtLink>
 
           <NuxtLink
@@ -144,11 +144,11 @@
           >
 
           <NuxtLink
-            to="/members"
+            to="/membership"
             class="block px-3 py-2 rounded-md text-sm"
-            :class="mobileLinkClass('/members')"
+            :class="mobileLinkClass('/membership')"
             @click="open = false"
-            >Members</NuxtLink
+            >Membership</NuxtLink
           >
 
           <NuxtLink
