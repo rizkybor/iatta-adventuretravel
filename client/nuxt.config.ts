@@ -21,15 +21,7 @@ export default defineNuxtConfig({
   srcDir: "app/",
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-
-  // remove @nuxtjs/tailwindcss from modules if present
   modules: ["@nuxt/eslint", "@nuxt/ui"],
-  // @ts-ignore
-  sitemap: {
-    siteUrl: "https://iatta.or.id",
-    gzip: true,
-  },
-
   // CSS entry relative to srcDir (app/)
   css: ["~/assets/css/tailwind.css"],
 
