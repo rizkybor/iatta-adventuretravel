@@ -53,6 +53,15 @@
           >
             Contact
           </NuxtLink>
+
+          <NuxtLink
+            to="/resource"
+            class="px-3 py-1 rounded-md text-sm transition-transform"
+            :class="desktopLinkClass('/resource')"
+            :aria-current="isActive('/resource') ? 'page' : undefined"
+          >
+            Resource
+          </NuxtLink>
         </div>
       </div>
 
@@ -145,6 +154,15 @@
             @click="open = false"
             >Contact</NuxtLink
           >
+
+           <NuxtLink
+            to="/resource"
+            class="block px-3 py-2 rounded-md text-sm"
+            :class="mobileLinkClass('/resource')"
+            @click="open = false"
+            >Resource</NuxtLink
+          >
+
           <NuxtLink
             to="/auth/signin"
             class="mt-2 inline-block px-3 py-2 rounded-md text-sm text-center font-medium"
