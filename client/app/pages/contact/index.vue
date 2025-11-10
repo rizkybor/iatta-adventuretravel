@@ -225,7 +225,7 @@
 
         <div class="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm">
           <h3 class="text-lg font-semibold text-slate-800">Peta Lokasi</h3>
-          <div class="mt-3 w-full h-48 rounded-md overflow-hidden bg-slate-100">
+          <div class="mt-3 w-full h-63 rounded-md overflow-hidden bg-slate-100">
             <!-- placeholder map: ganti dengan embed Google Maps / Leaflet sesuai kebutuhan -->
             <iframe
               title="IATTA Location"
