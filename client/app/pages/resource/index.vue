@@ -71,129 +71,119 @@
       </div> -->
     </div>
 
-    <!-- Assets grid (mengisi full width layout; aside sudah dikeluarkan) -->
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-      <template v-for="asset in filteredAssets" :key="asset.id">
-        <article
-          class="bg-white border border-slate-100 rounded-2xl p-4 shadow-md flex flex-col h-full"
-        >
-          <div class="flex items-start gap-4">
-            <div
-              class="w-20 h-20 flex items-center justify-center bg-slate-50 rounded-lg overflow-hidden flex-shrink-0"
-            >
-              <img
-                v-if="asset.thumbnail"
-                :src="encodedUrl(asset.thumbnail)"
-                :alt="asset.title + ' thumbnail'"
-                class="w-full h-full object-contain"
+   <!-- REPLACE: responsive grid + cards (1 column on mobile, 2 columns on tablet/desktop) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <template v-for="asset in filteredAssets" :key="asset.id">
+    <article
+      class="card bg-white border border-slate-100 rounded-2xl p-3 sm:p-4 shadow-sm flex flex-col sm:flex-row gap-3 h-full w-full"
+    >
+      <!-- Thumbnail (full-width on mobile, fixed square on sm+) -->
+      <div
+        class="card-thumb w-full sm:w-20 h-40 sm:h-20 flex items-center justify-center bg-slate-50 rounded-lg overflow-hidden flex-shrink-0"
+      >
+        <img
+          v-if="asset.thumbnail"
+          :src="encodedUrl(asset.thumbnail)"
+          :alt="asset.title + ' thumbnail'"
+          class="w-full h-full object-contain"
+        />
+        <div v-else class="text-slate-400 text-xs text-center px-2">
+          No preview
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 min-w-0 flex flex-col">
+        <div class="flex items-start gap-2">
+          <h3 class="font-semibold text-slate-900 truncate">
+            {{ asset.title }}
+          </h3>
+
+          <div class="ml-auto flex items-center">
+            <label class="inline-flex items-center gap-2 text-sm cursor-pointer select-none">
+              <input
+                type="checkbox"
+                :value="asset.id"
+                v-model="selected"
+                class="w-4 h-4"
               />
-              <div v-else class="text-slate-400 text-xs text-center px-2">
-                No preview
-              </div>
-            </div>
-
-            <div class="flex-1 min-w-0">
-              <h3 class="font-semibold text-slate-900 truncate">
-                {{ asset.title }}
-              </h3>
-              <p class="text-sm text-slate-600 mt-1 line-clamp-3">
-                {{ asset.description }}
-              </p>
-
-              <div class="mt-3 flex flex-wrap items-center gap-2">
-                <span
-                  class="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700"
-                  >Tipe: {{ asset.type }}</span
-                >
-                <template v-if="asset.tags && asset.tags.length">
-                  <span
-                    v-for="t in asset.tags"
-                    :key="t"
-                    class="text-xs px-2 py-1 rounded-md border text-slate-700"
-                    >{{ t }}</span
-                  >
-                </template>
-              </div>
-            </div>
-
-            <div class="flex flex-col items-end gap-2">
-              <label class="inline-flex items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
-                  :value="asset.id"
-                  v-model="selected"
-                  class="w-4 h-4"
-                />
-                <span class="text-sm">Pilih</span>
-              </label>
-            </div>
+              <span class="text-sm">Pilih</span>
+            </label>
           </div>
+        </div>
 
-          <div class="mt-4 flex flex-wrap items-center gap-2">
+        <p class="text-sm text-slate-600 mt-2 line-clamp-3">
+          {{ asset.description }}
+        </p>
+
+        <div class="mt-3 flex flex-wrap items-center gap-2">
+          <span class="text-xs px-2 py-1 rounded-md bg-slate-100 text-slate-700">
+            Tipe: {{ asset.type }}
+          </span>
+          <template v-if="asset.tags && asset.tags.length">
+            <span v-for="t in asset.tags" :key="t" class="text-xs px-2 py-1 rounded-md border text-slate-700">
+              {{ t }}
+            </span>
+          </template>
+        </div>
+
+        <!-- File actions: compact buttons, wrap sensibly -->
+        <div class="mt-3">
+          <div class="flex flex-wrap items-center gap-2">
             <template v-for="file in asset.files" :key="file.name">
-              <!-- DOWNLOAD PDF BUTTON  -->
-              <button
-                @click="downloadFile(file)"
-                class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-emerald-500 text-emerald-600 text-sm font-medium transition-all duration-200 ease-in-out hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-600 active:bg-emerald-100 focus:ring-2 focus:ring-emerald-300 focus:outline-none hover:shadow-sm"
-                :title="'Download ' + file.name"
-              >
-                <svg
-                  class="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
+              <div class="flex items-center gap-2">
+                <!-- compact download -->
+                <button
+                  @click="downloadFile(file)"
+                  class="file-btn compact inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-emerald-500 text-emerald-600 text-sm font-medium transition-all duration-150 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-600 active:bg-emerald-100 focus:ring-2 focus:ring-emerald-300 focus:outline-none"
+                  :title="'Download ' + file.name"
                 >
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                <span>Download {{ file.label }}</span>
-              </button>
+                  <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  <span class="truncate max-w-[8rem] sm:max-w-[12rem]">
+                    {{ shortFileLabel(file.name) }}
+                  </span>
+                </button>
 
-              <!-- PREVIEW PDF BUTTON  -->
-              <button
-                v-if="file.previewable"
-                @click="previewFile(file)"
-                class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-600 text-sm font-medium transition-all duration-200 ease-in-out hover:bg-sky-50 hover:text-sky-700 hover:border-sky-600 active:bg-sky-100 focus:ring-2 focus:ring-sky-300 focus:outline-none hover:shadow-sm"
-                :title="'Preview ' + file.name"
-              >
-                <svg
-                  class="w-4 h-4 transition-transform duration-200 group-hover:scale-110"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
+                <!-- compact preview (icon + optional small label) -->
+                <button
+                  v-if="file.previewable"
+                  @click="previewFile(file)"
+                  class="file-btn compact inline-flex items-center gap-2 px-2.5 py-1.5 rounded-md border border-sky-500 text-sky-600 text-sm font-medium transition-all duration-150 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-600 active:bg-sky-100 focus:ring-2 focus:ring-sky-300 focus:outline-none"
+                  :title="'Preview ' + file.name"
                 >
-                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                <span>Preview</span>
-              </button>
+                  <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                   <span class="truncate max-w-[8rem] sm:max-w-[12rem]">
+                    Preview
+                  </span>
+                </button>
 
-              <span class="text-xs text-slate-500 ml-2">{{ file.size }}</span>
+                <div class="text-[12px] text-slate-500">
+                  {{ file.size }}
+                </div>
+              </div>
             </template>
 
-            <div class="ml-auto text-xs text-slate-500">
+            <!-- updated date pinned to right on sm+, below on mobile -->
+            <!-- <div class="ml-auto mt-2 sm:mt-0 text-[12px] text-slate-500">
               Updated: {{ formatDate(asset.updatedAt) }}
-            </div>
+            </div> -->
           </div>
-        </article>
-      </template>
-
-      <div
-        v-if="!filteredAssets.length"
-        class="col-span-full p-6 rounded-2xl border border-slate-100 bg-white text-center text-slate-600"
-      >
-        Tidak ada asset yang cocok.
+        </div>
       </div>
-    </div>
+    </article>
+  </template>
+
+  <div v-if="!filteredAssets.length" class="col-span-full p-6 rounded-2xl border border-slate-100 bg-white text-center text-slate-600">
+    Tidak ada asset yang cocok.
+  </div>
+</div>
 
     <!-- Footer small -->
     <footer
@@ -411,6 +401,15 @@ function formatDate(d) {
   }
 }
 
+function shortFileLabel(fileName) {
+  if (!fileName) return "";
+  // Hapus prefix dan ekstensi
+  return fileName
+    .replace(/^IATTA-Logo-Adventure-Indonesia-/, "") // buang awalan standar
+    .replace(/^IATTA-Adventure Indonesia-/, "") // kalau ada variasi lain
+    .replace(/\.[^/.]+$/, ""); // buang ekstensi (mis. .png / .pdf)
+}
+
 function bulkDownload() {
   const filesToDownload = [];
   selected.value.forEach((id) => {
@@ -427,6 +426,86 @@ function bulkDownload() {
 </script>
 
 <style scoped>
+/* --- Consolidated responsive card & button styles --- */
+
+/* baseline */
+.card-thumb {
+  min-width: 0;
+  overflow: hidden;
+}
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* compact buttons: used for file actions */
+.file-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 0.375rem; /* rounded-md */
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+  box-sizing: border-box;
+}
+
+/* sensible touch target while compact */
+.file-btn.compact {
+  min-height: 36px;          /* compact but tappable */
+  padding: 0.25rem 0.6rem;   /* px ~ 10-12, py ~ 4 */
+  font-size: 13px;
+}
+
+/* fallback for any non-compact file-btn (if present) */
+.file-btn.default {
+  min-height: 40px;
+  padding: 0.5rem 0.75rem;
+  font-size: 14px;
+}
+
+/* truncation helpers */
+.file-btn .truncate,
+.file-btn .truncate > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* breakpoint adjustments: very small phones */
+@media (max-width: 360px) {
+  .card-thumb { height: 12rem; } /* slightly taller preview on tiny screens */
+  .file-btn.compact { font-size: 12px; min-height: 34px; padding: 0.2rem 0.5rem; }
+  .file-btn .truncate { max-width: 7.2rem; } /* keep label short */
+}
+
+/* small phones (typical mobiles) */
+@media (min-width: 361px) and (max-width: 639px) {
+  .card-thumb { height: 10.5rem; }
+  .file-btn.compact { font-size: 13px; min-height: 36px; padding: 0.25rem 0.6rem; }
+  .file-btn .truncate { max-width: 9.5rem; }
+}
+
+/* tablets (sm+) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .card-thumb { height: 5rem; width: 5rem; }
+  .file-btn.compact { min-height: 36px; padding: 0.3rem 0.7rem; font-size: 13px; }
+  .file-btn .truncate { max-width: 10.5rem; }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  .card-thumb { height: 5rem; width: 5rem; }
+  .file-btn.compact { min-height: 38px; padding: 0.35rem 0.8rem; font-size: 14px; }
+  .file-btn .truncate { max-width: 14rem; }
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
 /* Visual polish */
 section {
   color-scheme: light;
