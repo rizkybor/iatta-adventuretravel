@@ -51,7 +51,7 @@
                 class="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-200"
                 aria-label="Search site"
               />
-              <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-sm">
+              <button type="submit"  class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-400 to-teal-600 text-white text-sm font-medium shadow-sm hover:from-emerald-400 hover:to-teal-700 hover:shadow-md focus:ring-2 focus:ring-sky-400 focus:outline-none transition-all duration-200 ease-in-out w-full sm:w-auto">
                 Cari
               </button>
             </div>
@@ -85,11 +85,12 @@
             <dl class="mt-4 text-sm text-slate-700 space-y-2">
               <div>
                 <dt class="font-medium">Sekretariat</dt>
-                <dd>info@iattaplus.id • +62 21 555 1234</dd>
+                <dd>info@iatta.or.id</dd>
               </div>
               <div>
                 <dt class="font-medium">Office</dt>
-                <dd>Jl. Merdeka No. 77, Jakarta</dd>
+                <dd>Wisma Kemang 31, Jl. Kemang Raya No. 31 lt
+              3, Bangka, Mampang Prapatan, Jakarta Selatan</dd>
               </div>
             </dl>
 
