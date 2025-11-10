@@ -31,22 +31,19 @@
             to="/"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 text-white font-semibold shadow hover:bg-emerald-600 transition"
           >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M3 12 L12 3 L21 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            Kembali ke Beranda
+            Beranda
           </NuxtLink>
 
           <NuxtLink
             to="/contact"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-slate-200 bg-white text-slate-800 hover:shadow transition"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-1 rounded-lg border border-slate-200 bg-white text-slate-800 hover:shadow transition"
           >
             Hubungi Kami
           </NuxtLink>
 
           <NuxtLink
             to="/sitemap.xml"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm text-slate-600 hover:underline transition"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-1 rounded-lg text-sm text-slate-600 hover:underline transition"
           >
             Lihat sitemap
           </NuxtLink>
@@ -75,13 +72,17 @@
               aria-label="Pesan singkat"
             />
 
-            <button
-              type="submit"
-              class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-slate-900 text-white text-sm hover:bg-slate-800 transition w-full sm:w-auto"
-              aria-label="Kirim pesan singkat"
-            >
-              Kirim
-            </button>
+           <button
+  type="submit"
+  class="inline-flex items-center justify-center px-4 py-2 rounded-lg 
+         bg-gradient-to-r from-emerald-400 to-teal-600 text-white text-sm font-medium
+         shadow-sm hover:from-emerald-400 hover:to-teal-700 hover:shadow-md 
+         focus:ring-2 focus:ring-sky-400 focus:outline-none transition-all 
+         duration-200 ease-in-out w-full sm:w-auto"
+  aria-label="Kirim pesan singkat"
+>
+  Kirim
+</button>
           </div>
 
           <p v-if="qcMessage" class="mt-2 text-xs" :class="qcStatus === 'ok' ? 'text-emerald-600' : 'text-rose-600'" aria-live="polite">
@@ -125,7 +126,7 @@
           </dl>
 
           <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="mailto:hello@iatta.or.id" class="w-full sm:w-auto px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-800 hover:shadow transition">Email Sekretariat</a>
+            <a href="mailto:info@iatta.or.id" class="w-full sm:w-auto px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-800 hover:shadow transition">Email Sekretariat</a>
             <NuxtLink to="/about" class="w-full sm:w-auto px-4 py-2 rounded-lg bg-emerald-100 text-emerald-800 text-center">Tentang IATTA</NuxtLink>
           </div>
         </div>

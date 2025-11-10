@@ -13,7 +13,11 @@
       <!-- left: brand + links -->
       <div class="flex items-center gap-6">
         <NuxtLink to="/" class="flex items-center gap-3">
-          <img src="/images/logo-iatta.png" alt="Logo" class="bg-white rounded-xl p-1 mx-auto h-10 w-auto " />
+          <img
+            src="/images/logo-iatta.png"
+            alt="Logo"
+            class="bg-white rounded-xl p-1 mx-auto h-10 w-auto"
+          />
         </NuxtLink>
 
         <!-- desktop links -->
@@ -46,21 +50,21 @@
           </NuxtLink>
 
           <NuxtLink
-            to="/contact"
-            class="px-3 py-1 rounded-md text-sm transition-transform"
-            :class="desktopLinkClass('/contact')"
-            :aria-current="isActive('/contact') ? 'page' : undefined"
-          >
-            Contact
-          </NuxtLink>
-
-          <NuxtLink
             to="/resource"
             class="px-3 py-1 rounded-md text-sm transition-transform"
             :class="desktopLinkClass('/resource')"
             :aria-current="isActive('/resource') ? 'page' : undefined"
           >
             Resource
+          </NuxtLink>
+
+          <NuxtLink
+            to="/contact"
+            class="px-3 py-1 rounded-md text-sm transition-transform"
+            :class="desktopLinkClass('/contact')"
+            :aria-current="isActive('/contact') ? 'page' : undefined"
+          >
+            Contact
           </NuxtLink>
         </div>
       </div>
@@ -148,19 +152,19 @@
           >
 
           <NuxtLink
-            to="/contact"
-            class="block px-3 py-2 rounded-md text-sm"
-            :class="mobileLinkClass('/contact')"
-            @click="open = false"
-            >Contact</NuxtLink
-          >
-
-           <NuxtLink
             to="/resource"
             class="block px-3 py-2 rounded-md text-sm"
             :class="mobileLinkClass('/resource')"
             @click="open = false"
             >Resource</NuxtLink
+          >
+
+          <NuxtLink
+            to="/contact"
+            class="block px-3 py-2 rounded-md text-sm"
+            :class="mobileLinkClass('/contact')"
+            @click="open = false"
+            >Contact</NuxtLink
           >
 
           <NuxtLink
@@ -322,14 +326,14 @@ button:focus {
   font-size: 16px;
 }
 
-
 /* di bagian style scoped */
 header {
   /* fokus hanya pada properti yang ingin ditransisikan */
-  transition-property: background-color, background-image, color, box-shadow, border-color, backdrop-filter;
+  transition-property: background-color, background-image, color, box-shadow,
+    border-color, backdrop-filter;
   /* agar Tailwind classes tidak mencegah transisi custom */
   transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* backdrop */
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
@@ -342,7 +346,9 @@ header {
 }
 
 /* contoh: pasang pada link desktop */
-.nav-link:hover { transform: translateY(-1px); }
+.nav-link:hover {
+  transform: translateY(-1px);
+}
 
 /* transisi untuk box-shadow / border yang mungkin berubah pada scroll */
 .header-elevated {
