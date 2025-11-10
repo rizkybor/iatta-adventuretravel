@@ -3,6 +3,9 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
+# setelah RUN npm ci
+RUN npm ls @nuxtjs/sitemap --depth=0 || true
+RUN node -e "console.log('RESOLVE:', require.resolve('@nuxtjs/sitemap'))" || true
 COPY . .
 RUN npm run build
 
