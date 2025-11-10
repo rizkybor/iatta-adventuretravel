@@ -335,7 +335,7 @@ onMounted(async () => {
     props: {
       title: "IATTA: Advancing Adventure Tourism",
       subtitle:
-        "Membangun kapasitas, standar, dan promosi pariwisata petualangan Indonesia yang berkelanjutan.",
+        "Building capacity, standards and promotion of sustainable Indonesian adventure tourism.",
       kicker: "Indonesia Adventure Travel Trade Association",
       image:
         "/images/hero.png",

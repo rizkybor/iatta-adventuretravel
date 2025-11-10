@@ -272,7 +272,7 @@ const assets = ref([
     title: "Brand Guidelines",
     description:
       "Panduan merek lengkap untuk komunikasi dan materi cetak (format landscape).",
-    type: "guideline",
+    type: ".pdf",
     tags: ["brand", "guideline"],
     thumbnail: "/images/resource-cover-guideline.png",
     updatedAt: "2025-11-01",
@@ -292,7 +292,7 @@ const assets = ref([
     title: "Standar Usaha Berbasis Risiko",
     description:
       "Standar operasional berbasis risiko untuk pelaku usaha wisata petualangan (edisi 2025).",
-    type: "guideline",
+    type: ".pdf",
     tags: ["standar", "risiko", "guideline"],
     thumbnail: "/images/resource-cover-standar-usaha.png",
     updatedAt: "2025-11-01",
@@ -312,7 +312,7 @@ const assets = ref([
     title: "Safety Code Wisata Petualangan B",
     description:
       "Kode keselamatan operasional untuk aktivitas wisata petualangan — versi B (rekomendasi SOP & checklist).",
-    type: "guideline",
+    type: ".pptx",
     tags: ["safety", "operasional", "guideline"],
     thumbnail: "/images/resource-cover-safety-code.png",
     updatedAt: "2025-11-01",
@@ -334,7 +334,7 @@ const assets = ref([
     title: "Logo Pack - IATTA",
     description:
       "Kumpulan aset logo (mono & full) dalam varian square dan rectangle, siap untuk web & cetak.",
-    type: "logo",
+    type: ".png",
     tags: ["logo", "brand"],
     thumbnail: "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
     updatedAt: "2025-10-30",
