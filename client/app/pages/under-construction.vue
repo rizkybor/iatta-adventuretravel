@@ -42,7 +42,7 @@
           </NuxtLink>
 
           <NuxtLink
-            to="/sitemap.xml"
+            to="/sitemap"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-1 rounded-lg text-sm text-slate-600 hover:underline transition"
           >
             Lihat sitemap
