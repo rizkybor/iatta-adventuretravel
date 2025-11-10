@@ -274,7 +274,7 @@ const assets = ref([
       "Panduan merek lengkap untuk komunikasi dan materi cetak (format landscape).",
     type: "guideline",
     tags: ["brand", "guideline"],
-    thumbnail: "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
+    thumbnail: "/images/resource-cover-guideline.png",
     updatedAt: "2025-11-01",
     files: [
       {
@@ -294,7 +294,7 @@ const assets = ref([
       "Standar operasional berbasis risiko untuk pelaku usaha wisata petualangan (edisi 2025).",
     type: "guideline",
     tags: ["standar", "risiko", "guideline"],
-    thumbnail: "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
+    thumbnail: "/images/resource-cover-standar-usaha.png",
     updatedAt: "2025-11-01",
     files: [
       {
@@ -314,7 +314,7 @@ const assets = ref([
       "Kode keselamatan operasional untuk aktivitas wisata petualangan — versi B (rekomendasi SOP & checklist).",
     type: "guideline",
     tags: ["safety", "operasional", "guideline"],
-    thumbnail: "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
+    thumbnail: "/images/resource-cover-safety-code.png",
     updatedAt: "2025-11-01",
     files: [
       {
