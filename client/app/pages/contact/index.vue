@@ -175,11 +175,11 @@
             </li>
             <li>
               <span class="font-medium text-slate-800">Joni Kurniawan:</span>
-              +62 812-6417-356 555 1234
+              +62 812-6417-356
             </li>
             <li>
               <span class="font-medium text-slate-800">Zulham Peliang:</span>
-              +62 815-1707-2423 555 1234
+              +62 815-1707-2423
             </li>
             <!-- <li>
               <span class="font-medium text-slate-800">Jam Operasional:</span>
