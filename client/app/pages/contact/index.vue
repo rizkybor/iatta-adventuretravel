@@ -159,9 +159,9 @@
           <h3 class="text-lg font-semibold text-slate-800">Detail Kontak</h3>
           <ul class="mt-4 space-y-3 text-sm text-slate-700">
             <li>
-              <span class="font-medium text-slate-800">Alamat:</span> Jl. Wisma
-              31, Jl. Kemang Raya No. 31 lt 3, Bangka, Mampang Prapatan, Jakarta
-              Selatan
+              <span class="font-medium text-slate-800">Alamat:</span> Wisma
+              Kemang 31, Jl. Kemang Raya No. 31 lt 3, Bangka, Mampang Prapatan,
+              Jakarta Selatan
             </li>
             <li>
               <span class="font-medium text-slate-800">Email:</span>
