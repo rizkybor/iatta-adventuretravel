@@ -118,7 +118,7 @@
             <button
               :disabled="submitting"
               type="submit"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 text-white shadow hover:opacity-95 disabled:opacity-60"
+              class="inline-flex items-center gap-2 px-4 py-1 rounded-lg bg-emerald-500 text-white shadow hover:opacity-95 disabled:opacity-60"
             >
               <svg
                 v-if="!submitting"
@@ -141,7 +141,7 @@
             <button
               type="button"
               @click="resetForm"
-              class="px-4 py-2 rounded-lg border"
+              class="px-4 py-1 rounded-lg border border-slate-200 text-slate-700 hover:bg-amber-50 hover:border-amber-300 hover:text-amber-700 focus-visible:ring-2 focus-visible:ring-amber-200 transition-colors duration-200"
             >
               Reset
             </button>
@@ -159,23 +159,32 @@
           <h3 class="text-lg font-semibold text-slate-800">Detail Kontak</h3>
           <ul class="mt-4 space-y-3 text-sm text-slate-700">
             <li>
-              <span class="font-medium text-slate-800">Alamat:</span> Jl.
-              Merdeka No. 77, Jakarta
+              <span class="font-medium text-slate-800">Alamat:</span> Jl. Wisma
+              31, Jl. Kemang Raya No. 31 lt 3, Bangka, Mampang Prapatan, Jakarta
+              Selatan
             </li>
             <li>
               <span class="font-medium text-slate-800">Email:</span>
-              <a class="text-[#08a4ef]" href="mailto:indoadventure.travel@gmail.com"
-                > indoadventure.travel@gmail.com</a
+              <a class="text-[#08a4ef]" href="mailto:info@iatta.or.id">
+                info@iatta.or.id</a
               >
             </li>
             <li>
-              <span class="font-medium text-slate-800">Telepon:</span> +62 21
-              555 1234
+              <span class="font-medium text-slate-800">Amalia Yunita:</span> +62
+              812-9491-388
             </li>
             <li>
+              <span class="font-medium text-slate-800">Joni Kurniawan:</span>
+              +62 812-6417-356 555 1234
+            </li>
+            <li>
+              <span class="font-medium text-slate-800">Zulham Peliang:</span>
+              +62 815-1707-2423 555 1234
+            </li>
+            <!-- <li>
               <span class="font-medium text-slate-800">Jam Operasional:</span>
               Senin–Jumat, 09:00–17:00 WIB
-            </li>
+            </li> -->
           </ul>
 
           <div class="mt-4 flex flex-wrap gap-2">
@@ -220,10 +229,15 @@
             <!-- placeholder map: ganti dengan embed Google Maps / Leaflet sesuai kebutuhan -->
             <iframe
               title="IATTA Location"
-              src="https://www.google.com/maps?q=Jakarta&output=embed"
               class="w-full h-full border-0"
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3966.0637506503053!2d106.814285!3d-6.255332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMTUnMTkuMiJTIDEwNsKwNDgnNTEuNCJF!5e0!3m2!1sen!2sid!4v1762776520896!5m2!1sen!2sid"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
               loading="lazy"
-            />
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </aside>
@@ -341,7 +355,7 @@ async function handleSubmit() {
   } catch (err) {
     statusType.value = "error";
     statusMessage.value =
-      "Terjadi kesalahan saat mengirim. Silakan coba lagi atau hubungi indoadventure.travel@gmail.com";
+      "Terjadi kesalahan saat mengirim. Silakan coba lagi atau hubungi info@iatta.or.id";
   } finally {
     submitting.value = false;
   }
