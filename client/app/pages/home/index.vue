@@ -445,7 +445,7 @@ const latestNews = [
   {
     title: "Amalia Yunita Pimpin IATTA, Targetkan Wisata Petualangan Indonesia Jadi Destinasi Dunia!",
     date: "Sep 2025",
-    desc: "Indonesia Adventure Travel Trade Association (IATTA) memiliki visi besar untuk menjadikan Indonesia sebagai destinasi utama wisata petualangan Indonesia di kancah global. Visi ini mencakup aspek kualitas, keberlanjutan, dan daya saing yang tinggi di pasar internasional. Upaya serius terus dilakukan untuk mewujudkan impian tersebut, termasuk melalui Musyawarah Nasional (Munas) yang baru-baru ini diselenggarakan.",
+    desc: "Indonesia Adventure Travel Trade Association (IATTA) memiliki visi besar untuk menjadikan Indonesia sebagai destinasi utama wisata petualangan Indonesia di kancah global. Visi ini mencakup aspek kualitas, keberlanjutan, dan daya saing yang tinggi di pasar internasional.",
     image:
       "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0008-e1758092470249.jpg",
   },
@@ -460,8 +460,7 @@ const latestNews = [
     title:
       "IATTA Ingin Indonesia Jadi Destinasi Utama Wisata Petualangan Dunia",
     date: "Sep 2025",
-    desc: `Indonesiainside.id – Indonesia Adventure Travel Trade Association (IATTA) ingin Indonesia menjadi destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.
-“Saya selalu katakan bahwa dagingnya orang datang ke Indonesia itu ada dua, petualangan dan budaya. Ini yang harus kita teriakkan bahwa wisata petualangan jangan dibiarkan, Komisi Pak Prabowo tadi mengatakan bahwa future-nya dari Pak Presiden sendiri bukan di migas, tapi pariwisata,” kata Ketua Umum IATTA 2017-2025 Cahyo Alkantana dalam Musyawarah Nasional IATTA di Jakarta, Selasa.`,
+    desc: `Indonesiainside.id – Indonesia Adventure Travel Trade Association (IATTA) ingin Indonesia menjadi destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.`,
     image:
       "https://indonesiainside.id/wp-content/uploads/2025/09/964887_720.jpg",
   },
