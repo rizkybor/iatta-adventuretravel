@@ -269,19 +269,18 @@ const modal = ref({ open: false, file: null });
 const assets = ref([
   {
     id: "brand-guidelines",
-    title: "IATTA Brand Guidelines",
+    title: "Brand Guidelines",
     description:
-      "Brand guidelines lengkap untuk komunikasi dan cetak (landscape).",
+      "Panduan merek lengkap untuk komunikasi dan materi cetak (format landscape).",
     type: "guideline",
     tags: ["brand", "guideline"],
-    thumbnail:
-      "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
+    thumbnail: "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
     updatedAt: "2025-11-01",
     files: [
       {
-        label: "PDF - BRANDGUIDELINES BOOK (LR)",
-        name: "IATTA-Adventure Indonesia-BRANDGUIDELINES BOOK-LR.pdf",
-        url: "/resources_download/IATTA-Adventure Indonesia-BRANDGUIDELINES BOOK-LR.pdf",
+        label: "PDF - Brand Guidelines Book (LR)",
+        name: "IATTA-Adventure-Indonesia-BRANDGUIDELINES-BOOK-LR.pdf",
+        url: "/resources_download/IATTA-Adventure-Indonesia-BRANDGUIDELINES-BOOK-LR.pdf",
         size: "3.2MB",
         type: "application/pdf",
         previewable: true,
@@ -289,14 +288,55 @@ const assets = ref([
     ],
   },
   {
+    id: "standar-usaha",
+    title: "Standar Usaha Berbasis Risiko",
+    description:
+      "Standar operasional berbasis risiko untuk pelaku usaha wisata petualangan (edisi 2025).",
+    type: "guideline",
+    tags: ["standar", "risiko", "guideline"],
+    thumbnail: "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
+    updatedAt: "2025-11-01",
+    files: [
+      {
+        label: "PDF - Standar Usaha Berbasis Risiko 2025",
+        name: "IATTA-Standar-Usaha-Berbasis-Risiko-2025.pdf",
+        url: "/resources_download/IATTA-Standar-Usaha-Berbasis-Risiko-2025.pdf",
+        size: "3.2MB",
+        type: "application/pdf",
+        previewable: true,
+      },
+    ],
+  },
+  {
+    id: "safety-code",
+    title: "Safety Code Wisata Petualangan B",
+    description:
+      "Kode keselamatan operasional untuk aktivitas wisata petualangan — versi B (rekomendasi SOP & checklist).",
+    type: "guideline",
+    tags: ["safety", "operasional", "guideline"],
+    thumbnail: "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
+    updatedAt: "2025-11-01",
+    files: [
+      {
+        label: "PPTX - Safety Code Wisata Petualangan B",
+        name: "IATTA-Safety-Code-Wisata-Petualangan-B.pptx",
+        url: "/resources_download/IATTA-Safety-Code-Wisata-Petualangan-B.pptx",
+        size: "3.2MB",
+        // MIME type for PowerPoint (pptx)
+        type: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        // kebanyakan viewer browser tidak preview pptx langsung
+        previewable: false,
+      },
+    ],
+  },
+  {
     id: "logo-pack",
     title: "Logo Pack - IATTA",
     description:
-      "Kumpulan logo (mono & full) dalam beberapa variasi: square & rectangle.",
+      "Kumpulan aset logo (mono & full) dalam varian square dan rectangle, siap untuk web & cetak.",
     type: "logo",
     tags: ["logo", "brand"],
-    thumbnail:
-      "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
+    thumbnail: "/resources_download/IATTA-Logo-Adventure-Indonesia-Rectangle.png",
     updatedAt: "2025-10-30",
     files: [
       {
