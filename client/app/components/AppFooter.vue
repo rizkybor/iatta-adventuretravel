@@ -143,7 +143,7 @@
 
           <address class="not-italic text-slate-600 text-sm mb-3">
             <div class="mb-1">
-              <strong>Alamat: </strong>Jl. Wisma 31, Jl. Kemang Raya No. 31 lt
+              Wisma Kemang 31, Jl. Kemang Raya No. 31 lt
               3, Bangka, Mampang Prapatan, Jakarta Selatan
             </div>
             <a
