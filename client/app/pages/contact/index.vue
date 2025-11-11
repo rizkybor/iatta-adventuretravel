@@ -189,7 +189,7 @@
 
           <div class="mt-4 flex flex-wrap gap-2">
             <a
-              href="#"
+              href="https://www.instagram.com/adventuretravel.id"
               class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:bg-[#08a4ef]/6 text-sm"
             >
               <svg
