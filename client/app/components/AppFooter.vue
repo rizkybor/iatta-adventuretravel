@@ -43,14 +43,13 @@
               </svg>
             </a>
 
-            <a
+            <!-- <a
               href="https://www.youtube.com/@iattaindonesia"
               class="p-2 rounded-md hover:bg-emerald-50 text-slate-600 focus-visible:ring-2 focus-visible:ring-emerald-200 transition-colors"
               aria-label="IATTA on YouTube"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <!-- YouTube icon -->
               <svg
                 class="w-5 h-5"
                 viewBox="0 0 24 24"
@@ -61,7 +60,7 @@
                   d="M10 15.5v-7l6 3.5-6 3.5ZM21.8 8.001a3 3 0 0 0-2.12-2.12C17.99 5.5 12 5.5 12 5.5s-5.99 0-7.68.38A3 3 0 0 0 2.2 8.001 31.7 31.7 0 0 0 1.8 12a31.7 31.7 0 0 0 .38 3.999 3 3 0 0 0 2.12 2.12c1.69.38 7.68.38 7.68.38s5.99 0 7.68-.38a3 3 0 0 0 2.12-2.12A31.7 31.7 0 0 0 22.2 12a31.7 31.7 0 0 0-.38-3.999Z"
                 />
               </svg>
-            </a>
+            </a> -->
           </div>
         </div>
 
