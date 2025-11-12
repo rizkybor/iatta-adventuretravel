@@ -226,6 +226,17 @@
               <h3 class="font-semibold text-lg mb-2">{{ news.title }}</h3>
               <p class="text-sm text-slate-500 mb-4">{{ news.date }}</p>
               <p class="text-slate-600 text-sm">{{ news.desc }}</p>
+              <div class="mt-4">
+                <a
+                  v-if="news.link"
+                  :href="news.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:underline"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
             </div>
           </article>
         </div>
@@ -337,8 +348,7 @@ onMounted(async () => {
       subtitle:
         "Building capacity, standards and promotion of sustainable Indonesian adventure tourism.",
       kicker: "Indonesia Adventure Travel Trade Association",
-      image:
-        "/images/hero.png",
+      image: "/images/hero.png",
       ctas: [
         {
           label: "Tentang IATTA",
@@ -443,7 +453,8 @@ const testimonials = [
 
 const latestNews = [
   {
-    title: "Amalia Yunita Pimpin IATTA, Targetkan Wisata Petualangan Indonesia Jadi Destinasi Dunia!",
+    title:
+      "Amalia Yunita Pimpin IATTA, Targetkan Wisata Petualangan Indonesia Jadi Destinasi Dunia!",
     date: "Sep 2025",
     desc: "Indonesia Adventure Travel Trade Association (IATTA) memiliki visi besar untuk menjadikan Indonesia sebagai destinasi utama wisata petualangan Indonesia di kancah global. Visi ini mencakup aspek kualitas, keberlanjutan, dan daya saing yang tinggi di pasar internasional.",
     image:
@@ -457,12 +468,12 @@ const latestNews = [
       "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg",
   },
   {
-    title:
-      "IATTA Ingin Indonesia Jadi Destinasi Utama Wisata Petualangan Dunia",
-    date: "Sep 2025",
-    desc: `Indonesiainside.id – Indonesia Adventure Travel Trade Association (IATTA) ingin Indonesia menjadi destinasi utama wisata petualangan dunia yang berkualitas, berkelanjutan dan berdaya saing global.`,
+    title: "Pariwisata Adventure: Merajut Peluang Emas",
+    date: "Nov 2025",
+    desc: `Indonesia bukan sekadar negara dengan potensi adventure tourism. Dengan lebih dari 17.500 pulau, 400 gunung berapi (129 di antaranya masih aktif), garis pantai terpanjang di dunia yang mencapai 54.720 kilometer, serta 10 Situs Warisan Dunia UNESCO, Indonesia menawarkan keragaman lanskap yang sulit ditandingi oleh destinasi manapun di dunia (GoWithGuide, 2025).`,
     image:
       "https://indonesiainside.id/wp-content/uploads/2025/09/964887_720.jpg",
+    link: "https://muhammadrahmad.com/f/pariwisata-adventure-merajut-peluang-emas",
   },
 ];
 </script>
