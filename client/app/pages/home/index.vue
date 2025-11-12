@@ -204,41 +204,102 @@
       </div>
     </section>
 
-    <!-- LATEST NEWS (IATTA) -->
+    <!-- LATEST NEWS (IATTA) — PAGED 3x3 CAROUSEL -->
     <section class="py-16">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-extrabold text-center mb-8">
           Berita & Pengumuman
         </h2>
-        <div class="grid gap-8 md:grid-cols-3">
-          <article
-            v-for="news in latestNews"
-            :key="news.title"
-            class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition"
+
+        <!-- carousel container -->
+        <div class="relative">
+          <!-- viewport -->
+          <div
+            class="news-viewport overflow-hidden"
+            @touchstart.passive="onTouchStart"
+            @touchmove.passive="onTouchMove"
+            @touchend.passive="onTouchEnd"
           >
-            <img
-              :src="news.image"
-              :alt="news.title"
-              class="h-44 w-full object-cover"
-              loading="lazy"
-            />
-            <div class="p-5">
-              <h3 class="font-semibold text-lg mb-2">{{ news.title }}</h3>
-              <p class="text-sm text-slate-500 mb-4">{{ news.date }}</p>
-              <p class="text-slate-600 text-sm">{{ news.desc }}</p>
-              <div class="mt-4">
-                <a
-                  v-if="news.link"
-                  :href="news.link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:underline"
-                >
-                  Baca Selengkapnya →
-                </a>
+            <!-- track: lebar = pagesCount * 100% -->
+            <div
+              class="news-track grid gap-8"
+              :style="{
+                width: pagesCount * 100 + '%',
+                transform: `translateX(-${currentPage * (100 / pagesCount)}%)`,
+              }"
+            >
+              <!-- each page: grid 3x3 -->
+              <div
+                v-for="pageIndex in pagesCount"
+                :key="'page-' + (pageIndex - 1)"
+                class="news-page px-2 py-1"
+                :style="{ width: 100 / pagesCount + '%' }"
+              >
+                <div class="grid gap-8 md:grid-cols-3">
+                  <article
+                    v-for="news in pageSlice(pageIndex - 1)"
+                    :key="news.title + '-' + (pageIndex - 1)"
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition"
+                  >
+                    <img
+                      :src="news.image"
+                      :alt="news.title"
+                      class="h-44 w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div class="p-5">
+                      <h3 class="font-semibold text-lg mb-2">
+                        {{ news.title }}
+                      </h3>
+                      <p class="text-sm text-slate-500 mb-4">{{ news.date }}</p>
+                      <p class="text-slate-600 text-sm">{{ news.desc }}</p>
+                      <div class="mt-4">
+                        <a
+                          v-if="news.link"
+                          :href="news.link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:underline"
+                        >
+                          Baca Selengkapnya →
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
               </div>
             </div>
-          </article>
+          </div>
+
+          <!-- controls -->
+          <button
+            class="news-nav left-2"
+            :disabled="currentPage === 0"
+            @click="prevPage"
+            aria-label="Sebelumnya"
+          >
+            ‹
+          </button>
+          <button
+            class="news-nav right-2"
+            :disabled="currentPage === pagesCount - 1"
+            @click="nextPage"
+            aria-label="Selanjutnya"
+          >
+            ›
+          </button>
+
+          <!-- dots -->
+          <div class="mt-6 flex items-center justify-center gap-2">
+            <button
+              v-for="(n, i) in pagesCount"
+              :key="'dot-' + i"
+              @click="goToPage(i)"
+              :aria-current="currentPage === i ? 'true' : 'false'"
+              class="w-3 h-3 rounded-full focus:outline-none"
+              :class="currentPage === i ? 'dot-active' : 'dot'"
+            ></button>
+          </div>
         </div>
       </div>
     </section>
@@ -271,7 +332,14 @@
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount, ref, nextTick } from "vue";
+import {
+  onMounted,
+  onBeforeUnmount,
+  nextTick,
+  ref,
+  computed,
+  watch,
+} from "vue";
 import { useHeroStore } from "~/composables/useHeroStore";
 import HeroSection from "~/components/HeroSection.vue";
 import { usePageSeo } from "~/composables/usePageSeo";
@@ -453,21 +521,6 @@ const testimonials = [
 
 const latestNews = [
   {
-    title:
-      "Amalia Yunita Pimpin IATTA, Targetkan Wisata Petualangan Indonesia Jadi Destinasi Dunia!",
-    date: "Sep 2025",
-    desc: "Indonesia Adventure Travel Trade Association (IATTA) memiliki visi besar untuk menjadikan Indonesia sebagai destinasi utama wisata petualangan Indonesia di kancah global. Visi ini mencakup aspek kualitas, keberlanjutan, dan daya saing yang tinggi di pasar internasional.",
-    image:
-      "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0008-e1758092470249.jpg",
-  },
-  {
-    title: "Musyawarah Nasional (Munas) 2025 — Jakarta",
-    date: "Sep 2025",
-    desc: "REDAKSI8.COM, JAKARTA – Indonesia kembali meneguhkan langkahnya menuju panggung internasional sebagai salah satu destinasi utama wisata petualangan dunia. Hal ini tampak jelas dalam Musyawarah Nasional (Munas) Indonesia Adventure Travel Trade Association (IATTA) 2025 yang sukses digelar di Jakarta Design Center, Selasa (16/9/2025).",
-    image:
-      "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg",
-  },
-  {
     title: "Pariwisata Adventure: Merajut Peluang Emas",
     date: "Nov 2025",
     desc: `Indonesia bukan sekadar negara dengan potensi adventure tourism. Dengan lebih dari 17.500 pulau, 400 gunung berapi (129 di antaranya masih aktif), garis pantai terpanjang di dunia yang mencapai 54.720 kilometer, serta 10 Situs Warisan Dunia UNESCO, Indonesia menawarkan keragaman lanskap yang sulit ditandingi oleh destinasi manapun di dunia (GoWithGuide, 2025).`,
@@ -475,7 +528,85 @@ const latestNews = [
       "https://img1.wsimg.com/isteam/ip/b5ae2c75-55e4-40e2-94d3-81c354356a9d/Adventure.jpg/:/rs=w:1280",
     link: "https://muhammadrahmad.com/f/pariwisata-adventure-merajut-peluang-emas",
   },
+  {
+    title:
+      "Munas IATTA 2025 Tegaskan Indonesia Sebagai Surga Wisata Petualangan Dunia",
+    date: "Sep 2025",
+    desc: "REDAKSI8.COM, JAKARTA – Indonesia kembali meneguhkan langkahnya menuju panggung internasional sebagai salah satu destinasi utama wisata petualangan dunia. Hal ini tampak jelas dalam Musyawarah Nasional (Munas) Indonesia Adventure Travel Trade Association (IATTA) 2025 yang sukses digelar di Jakarta Design Center, Selasa (16/9/2025).",
+    image:
+      "https://redaksi8.com/wp-content/uploads/2025/09/IMG-20250917-WA0010-1.jpg",
+    link: "https://redaksi8.com/munas-iatta-2025-tegaskan-indonesia-sebagai-surga-wisata-petualangan-dunia/",
+  },
+  {
+    title: "Pariwisata Adventure: Merajut Peluang Emas",
+    date: "Sep 2025",
+    desc: `Indonesia Adventure Travel Trade Association (IATTA) akan menggelar Musyawarah Nasional (Munas) 2025 pada 16 September mendatang di Jakarta Design Center. Forum ini diharapkan menjadi momentum penting bagi industri wisata petualangan Tanah Air untuk semakin menunjukkan daya saing di kancah global.`,
+    image:
+      "https://berita.genpi.id/wp-content/uploads/2025/09/IMG-20250910-WA0036.jpg",
+    link: "https://berita.genpi.id/munas-iatta-2025-dorong-indonesia-jadi-destinasi-wisata-petualangan-dunia/",
+  },
+  {
+    title:
+      "Gandeng IATTA, Sandiaga Ingin Destinasi Wisata Petualangan Indonesia Jadi Juara Di Asia Tenggara",
+    date: "Apr 2021",
+    desc: "Menteri Pariwisata dan Ekonomi Kreatif Sandiaga Salahuddin Uno berkolaborasi dengan Indonesia Adventure Travel Trade Association (IATTA) untuk menggarap destinasi-destinasi wisata petualangan di tanah air.",
+    image:
+      "https://rmol.id/images/berita/normal/2021/04/781218_02062608042021_Sandiaga_Uno_Podium.jpg",
+    link: "https://rmol.id/politik/read/2021/04/08/482489/gandeng-iatta-sandiaga-ingin-destinasi-wisata-petualangan-indonesia-jadi-juara-di-asia-tenggara",
+  },
 ];
+
+const perPage = 3;
+const currentPage = ref(0);
+const startTouchX = ref(0);
+const deltaX = ref(0);
+
+/* pages count derived dari existing latestNews */
+const pagesCount = computed(() => {
+  return Math.max(1, Math.ceil(latestNews.length / perPage));
+});
+
+/* helper: ambil slice untuk halaman tertentu */
+function pageSlice(pageIndex) {
+  const start = pageIndex * perPage;
+  return latestNews.slice(start, start + perPage);
+}
+
+/* navigation */
+function nextPage() {
+  if (currentPage.value < pagesCount.value - 1) currentPage.value += 1;
+}
+function prevPage() {
+  if (currentPage.value > 0) currentPage.value -= 1;
+}
+function goToPage(i) {
+  currentPage.value = Math.min(Math.max(0, i), pagesCount.value - 1);
+}
+
+/* safeguard: adjust currentPage saat data berubah */
+watch(pagesCount, (newCount) => {
+  if (currentPage.value > newCount - 1)
+    currentPage.value = Math.max(0, newCount - 1);
+});
+
+/* simple touch swipe (left/right) */
+function onTouchStart(e) {
+  startTouchX.value = e.touches ? e.touches[0].clientX : e.clientX;
+  deltaX.value = 0;
+}
+function onTouchMove(e) {
+  const x = e.touches ? e.touches[0].clientX : e.clientX;
+  deltaX.value = x - startTouchX.value;
+}
+function onTouchEnd() {
+  const threshold = 60; // px untuk swipe
+  if (deltaX.value < -threshold) {
+    nextPage();
+  } else if (deltaX.value > threshold) {
+    prevPage();
+  }
+  deltaX.value = 0;
+}
 </script>
 
 <style>
@@ -578,5 +709,67 @@ main {
 img {
   -webkit-user-select: none;
   user-select: none;
+}
+
+.news-viewport {
+  position: relative;
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.news-track {
+  display: flex;
+  transition: transform 420ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  will-change: transform;
+}
+
+/* each page akan berisi grid 3x3 item */
+.news-page {
+  box-sizing: border-box;
+}
+
+/* nav buttons */
+.news-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(2, 6, 23, 0.06);
+}
+.news-nav:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.news-nav.left-2 {
+  left: 0.5rem;
+}
+.news-nav.right-2 {
+  right: 0.5rem;
+}
+
+/* dots */
+.dot {
+  background: rgba(148, 163, 184, 0.22);
+}
+.dot-active {
+  background: rgb(16, 185, 129); /* emerald-500 */
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+/* responsive: jika layar lebih kecil, tetap 3 columns pada md, fallback 1 col on small screens */
+@media (max-width: 767px) {
+  .news-page .md\:grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 </style>
