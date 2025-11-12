@@ -546,6 +546,23 @@ const latestNews = [
     link: "https://berita.genpi.id/munas-iatta-2025-dorong-indonesia-jadi-destinasi-wisata-petualangan-dunia/",
   },
   {
+    title: "Pariwisata Petualangan Jadi Tren Global",
+    date: "Sep 2025",
+    desc: `JAKARTA, NusaBali - Kementerian Pariwisata menyebut pariwisata petualangan atau adventure tourism menjadi tren yang digemari oleh wisatawan secara global. "Pariwisata petualangan kini menjadi tren global karena wisatawan tidak hanya mencari hiburan, tapi juga pengalaman yang menantang dan berkesan juga otentik, karena kaitannya juga dengan budaya," kata Asisten Deputi Manajemen Industri Kemenpar Budi Supriyanto dalam Musyawarah Nasional IATTA yang digelar di Jakarta, seperti dilansir Antara, Selasa.`,
+    image:
+      "https://www.nusabali.com/article_images/201519/pariwisata-petualangan-jadi-tren-global-800-2025-09-17-094253_0.jpg",
+    link: "https://www.nusabali.com/berita/201519/pariwisata-petualangan-jadi-tren-global",
+  },
+  {
+    title:
+      "Kemenpar: Adventure Tourism Jadi Aset Strategis Pariwisata Indonesia",
+    date: "Sep 2025",
+    desc: `JAKARTA, suaramerdeka.com – Kementerian Pariwisata menyampaikan bahwa wisata petualangan atau adventure tourism kini tengah menjadi salah satu tren global yang diminati banyak wisatawan. "Pariwisata petualangan kini menjadi tren global karena wisatawan tidak hanya mencari hiburan, tapi juga pengalaman yang menantang dan berkesan juga otentik, karena kaitannya juga dengan budaya," kata Asisten Deputi Manajemen Industri Kemenpar Budi Supriyanto dalam Musyawarah Nasional IATTA di Jakarta, Selasa.`,
+    image:
+      "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/134/2025/09/16/IMG-20250916-WA0117-2302742952.jpg",
+    link: "https://jakarta.suaramerdeka.com/nasional/13415925647/kemenpar-adventure-tourism-jadi-aset-strategis-pariwisata-indonesia",
+  },
+  {
     title:
       "Gandeng IATTA, Sandiaga Ingin Destinasi Wisata Petualangan Indonesia Jadi Juara Di Asia Tenggara",
     date: "Apr 2021",
