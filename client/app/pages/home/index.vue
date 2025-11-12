@@ -472,7 +472,7 @@ const latestNews = [
     date: "Nov 2025",
     desc: `Indonesia bukan sekadar negara dengan potensi adventure tourism. Dengan lebih dari 17.500 pulau, 400 gunung berapi (129 di antaranya masih aktif), garis pantai terpanjang di dunia yang mencapai 54.720 kilometer, serta 10 Situs Warisan Dunia UNESCO, Indonesia menawarkan keragaman lanskap yang sulit ditandingi oleh destinasi manapun di dunia (GoWithGuide, 2025).`,
     image:
-      "https://indonesiainside.id/wp-content/uploads/2025/09/964887_720.jpg",
+      "https://img1.wsimg.com/isteam/ip/b5ae2c75-55e4-40e2-94d3-81c354356a9d/Adventure.jpg/:/rs=w:1280",
     link: "https://muhammadrahmad.com/f/pariwisata-adventure-merajut-peluang-emas",
   },
 ];
