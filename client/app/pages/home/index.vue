@@ -521,6 +521,54 @@ const testimonials = [
 
 const latestNews = [
   {
+    title: "Pengurus DPW IATTA Sulut Periode 2025-2030 Resmi Dilantik",
+    date: "Nov 2025",
+    desc: `JOURNALTELEGRAF - Pengurus Dewan Pimpinan Wilayah (DPW) Indonesia Adventure Travel Trade Association (IATTA) Sulawesi Utara (Sulut) resmi dilantik oleh Ketua Umum IATTA, di Ma'nda Cafe & Resto, tepi Danau Tondano, Sabtu 22 November 2025.`,
+    image:
+      "https://assets.pikiran-rakyat.com/crop/0x0:0x0/720x0/webp/photo/2025/11/22/3754023822.jpg",
+    link: "https://journaltelegraf.pikiran-rakyat.com/sulut/pr-3679810975/pengurus-dpw-iatta-sulut-periode-2025-2030-resmi-dilantik",
+  },
+  {
+    title: "Pengurus DPW IATTA Sulut Dilantik, Fokus Angkat Wisata Petualangan",
+    date: "Nov 2025",
+    desc: `MINAHASA - Pengurus Dewan Pimpinan Wilayah (DPW) Indonesia Adventure Travel Trade Association (IATTA) Sulawesi Utara (Sulut) resmi dilantik oleh Ketua Umum IATTA, Amalia Yunita, di salah satu kafe di tepi Danau Tondano, Kabupaten Minahasa, Sabtu (22/11).`,
+    image:
+      "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,f_auto,q_auto:best,w_640/v1634025439/01kap0ww91cerfphyazn2717w6.jpg",
+    link: "https://kumparan.com/manadobacirita/26IK7cvPEDH?utm_source=Desktop&utm_medium=copy-to-clipboard&shareID=BDaOHgN3kjEh",
+  },
+  {
+    title: "IATTA Sulut Resmi Dilantik, Prioritaskan Keamanan dan Wisata Berkelanjutan di Minahasa",
+    date: "Nov 2025",
+    desc: `INTANANEWS.ID – Dewan Pimpinan Wilayah (DPW) Indonesia Adventure Travel Trade Association (IATTA) Sulawesi Utara (Sulut) resmi dilantik di Ma’nda Cafe & Resto, tepi Danau Tondano, Minahasa, Sabtu (22/11/2025).`,
+    image:
+      "https://intananews.id/wp-content/uploads/2025/11/Screenshot_20251123_032408_PhotoEditor.jpg",
+    link: "https://intananews.id/berita/iatta-sulut-resmi-dilantik-prioritaskan-keamanan-dan-wisata-berkelanjutan-di-minahasa/",
+  },
+  {
+    title: "Pengurus DPW IATTA Sulut Periode 2025-2030 Resmi Dilantik",
+    date: "Nov 2025",
+    desc: `Pilarportal.com,Minahasa – Pengurus Dewan Pimpinan Wilayah (DPW) Indonesia Adventure Travel Trade Association (IATTA) Sulawesi Utara (Sulut) resmi dilantik oleh Ketua Umum IATTA, di Ma’nda Cafe & Resto, tepi Danau Tondano, Sabtu (22/11/2025).`,
+    image:
+      "https://pilarportal.com/wp-content/uploads/2025/11/IMG-20251123-WA0030.jpg",
+    link: "https://pilarportal.com/23/11/2025/pengurus-dpw-iatta-sulut-periode-2025-2030-resmi-dilantik/",
+  },
+  {
+    title: "Daftar Nama Pengurus DPW IATTA Sulut Periode 2025-2030 yang Baru Dilantik",
+    date: "Nov 2025",
+    desc: `TRIBUNMANADO.CO.ID - Sabtu (22/11/2025) suasana di Ma'nda Cafe & Resto, tepi Danau Tondano, Kabupaten Minahasa, Sulawesi Utara ramai dengan kehadiran anggota Indonesia Adventure Travel Trade Association (IATTA).`,
+    image:
+      "https://asset.tribunnews.com/ZsA89BGnWA6yTwe2kMUYQCXWraU=/1200x675/filters:upscale():quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/manado/foto/bank/originals/DPW-IATTA-Pengurus-Dewan-Pimpinan-Wilayah-DPW-Indonesia-Adventure-Travel8700.jpg",
+    link: "https://manado.tribunnews.com/manado/1856692/daftar-nama-pengurus-dpw-iatta-sulut-periode-2025-2030-yang-baru-dilantik",
+  },
+{
+    title: "Duet Sumoked-Maili Nahkodai IATTA Sulut",
+    date: "Nov 2025",
+    desc: `Sulut, LestariNews.com – Asosiasi yang fokus pada wisata petualangan, Indonesia Adventure Travel Trade Association (IATTA), baru saja punya pengurus baru untuk wilayah Sulawesi Utara (Sulut)!`,
+    image:
+      "https://lestarinews.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-11-23-at-11.59.03-780x470.jpeg",
+    link: "https://lestarinews.com/duet-sumoked-maili-nahkodai-iatta-sulut/",
+  },
+  {
     title: "Pariwisata Adventure: Merajut Peluang Emas",
     date: "Nov 2025",
     desc: `Indonesia bukan sekadar negara dengan potensi adventure tourism. Dengan lebih dari 17.500 pulau, 400 gunung berapi (129 di antaranya masih aktif), garis pantai terpanjang di dunia yang mencapai 54.720 kilometer, serta 10 Situs Warisan Dunia UNESCO, Indonesia menawarkan keragaman lanskap yang sulit ditandingi oleh destinasi manapun di dunia (GoWithGuide, 2025).`,
