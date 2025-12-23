@@ -521,6 +521,15 @@ const testimonials = [
 
 const latestNews = [
   {
+    title:
+      "Audiensi dengan Direktur Pemanfaatan Jasa Lingkungan Kawasan Konservasi, Ditjen KSDAE, Kementerian LHK. Dr. Nandang Prihadi, S.Hut., M.Sc.",
+    date: "Nov 2025",
+    desc: `
+    Banyak yang membutuhkan pedoman SAFETY untuk masing-masing tempat dan aktivitas, misalnya di air terjun Wera di Sulteng terdapat kegiatan trekking dan ada potensi bahaya naiknya TMA secara signifikan,`,
+    image: "/images/article.jpeg",
+    link: "",
+  },
+  {
     title: "Pengurus DPW IATTA Sulut Periode 2025-2030 Resmi Dilantik",
     date: "Nov 2025",
     desc: `JOURNALTELEGRAF - Pengurus Dewan Pimpinan Wilayah (DPW) Indonesia Adventure Travel Trade Association (IATTA) Sulawesi Utara (Sulut) resmi dilantik oleh Ketua Umum IATTA, di Ma'nda Cafe & Resto, tepi Danau Tondano, Sabtu 22 November 2025.`,
@@ -537,7 +546,8 @@ const latestNews = [
     link: "https://kumparan.com/manadobacirita/26IK7cvPEDH?utm_source=Desktop&utm_medium=copy-to-clipboard&shareID=BDaOHgN3kjEh",
   },
   {
-    title: "IATTA Sulut Resmi Dilantik, Prioritaskan Keamanan dan Wisata Berkelanjutan di Minahasa",
+    title:
+      "IATTA Sulut Resmi Dilantik, Prioritaskan Keamanan dan Wisata Berkelanjutan di Minahasa",
     date: "Nov 2025",
     desc: `INTANANEWS.ID – Dewan Pimpinan Wilayah (DPW) Indonesia Adventure Travel Trade Association (IATTA) Sulawesi Utara (Sulut) resmi dilantik di Ma’nda Cafe & Resto, tepi Danau Tondano, Minahasa, Sabtu (22/11/2025).`,
     image:
@@ -553,14 +563,15 @@ const latestNews = [
     link: "https://pilarportal.com/23/11/2025/pengurus-dpw-iatta-sulut-periode-2025-2030-resmi-dilantik/",
   },
   {
-    title: "Daftar Nama Pengurus DPW IATTA Sulut Periode 2025-2030 yang Baru Dilantik",
+    title:
+      "Daftar Nama Pengurus DPW IATTA Sulut Periode 2025-2030 yang Baru Dilantik",
     date: "Nov 2025",
     desc: `TRIBUNMANADO.CO.ID - Sabtu (22/11/2025) suasana di Ma'nda Cafe & Resto, tepi Danau Tondano, Kabupaten Minahasa, Sulawesi Utara ramai dengan kehadiran anggota Indonesia Adventure Travel Trade Association (IATTA).`,
     image:
       "https://asset.tribunnews.com/ZsA89BGnWA6yTwe2kMUYQCXWraU=/1200x675/filters:upscale():quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/manado/foto/bank/originals/DPW-IATTA-Pengurus-Dewan-Pimpinan-Wilayah-DPW-Indonesia-Adventure-Travel8700.jpg",
     link: "https://manado.tribunnews.com/manado/1856692/daftar-nama-pengurus-dpw-iatta-sulut-periode-2025-2030-yang-baru-dilantik",
   },
-{
+  {
     title: "Duet Sumoked-Maili Nahkodai IATTA Sulut",
     date: "Nov 2025",
     desc: `Sulut, LestariNews.com – Asosiasi yang fokus pada wisata petualangan, Indonesia Adventure Travel Trade Association (IATTA), baru saja punya pengurus baru untuk wilayah Sulawesi Utara (Sulut)!`,
