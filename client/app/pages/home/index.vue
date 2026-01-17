@@ -110,7 +110,10 @@
             alt="IATTA - Adventure"
             class="w-full h-auto object-cover"
             loading="lazy"
-            onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60'"
+            onerror="
+              this.src =
+                'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60'
+            "
           />
         </div>
       </div>
@@ -383,7 +386,7 @@ function recalcDuration() {
   if (!track.value) return;
   const childNodes = Array.from(track.value.children).slice(
     0,
-    marqueeItems.length
+    marqueeItems.length,
   );
   if (!childNodes.length) return;
 
@@ -520,6 +523,16 @@ const testimonials = [
 ];
 
 const latestNews = [
+  {
+    title:
+      "Indonesia Adventure Travel Trade Association (IATTA) merancang kolaborasi strategis dengan Kementerian Pariwisata (Kemenpar)",
+    date: "Jan 2026",
+    desc: `
+    JAKARTA - Untuk memperkuat pengembangan wisata petualangan (adventure tourism) nasional, dengan fokus utama pada aspek keselamatan, keberlanjutan lingkungan, dan daya saing global.
+    Wakil Menteri Pariwisata, Ni Luh Enik Ermawati, menegaskan bahwa wisata petualangan merupakan sektor berisiko tinggi yang membutuhkan koordinasi lintas pemangku kepentingan. Di tengah meningkatnya isu keselamatan pariwisata, terutama pada aktivitas berisiko tinggi seperti wisata bahari dan alam terbuka, kolaborasi dinilai menjadi kebutuhan mendesak.`,
+    image: "/images/article-2.jpeg",
+    link: "",
+  },
   {
     title:
       "Audiensi dengan Direktur Pemanfaatan Jasa Lingkungan Kawasan Konservasi, Ditjen KSDAE, Kementerian LHK. Dr. Nandang Prihadi, S.Hut., M.Sc.",
@@ -736,7 +749,9 @@ function onTouchEnd() {
   user-select: none;
   -webkit-user-drag: none;
   opacity: 0.95;
-  transition: opacity 0.16s ease, transform 0.16s ease;
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s ease;
 }
 .logo-img:hover {
   opacity: 1;
