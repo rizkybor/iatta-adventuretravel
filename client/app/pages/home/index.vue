@@ -525,7 +525,7 @@ const testimonials = [
 const latestNews = [
   {
     title:
-      "Indonesia Adventure Travel Trade Association (IATTA) merancang kolaborasi strategis dengan Kementerian Pariwisata (Kemenpar)",
+      "Merancang kolaborasi strategis dengan Kementerian Pariwisata (Kemenpar)",
     date: "Jan 2026",
     desc: `
     JAKARTA - Untuk memperkuat pengembangan wisata petualangan (adventure tourism) nasional, dengan fokus utama pada aspek keselamatan, keberlanjutan lingkungan, dan daya saing global. Wakil Menteri Pariwisata, Ni Luh Enik Ermawati, menegaskan bahwa wisata petualangan merupakan sektor berisiko tinggi yang membutuhkan koordinasi lintas pemangku kepentingan.`,
