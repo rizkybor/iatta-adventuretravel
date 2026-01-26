@@ -524,6 +524,27 @@ const testimonials = [
 
 const latestNews = [
   {
+    title: "🌎 IATTA WEBINAR SUSTAINABILITY IN ADVENTURE TOURISM🍀",
+    date: "Jan 2026",
+    desc: `
+
+Catat tanggal webinar kami :
+Kamis, 29 Januari 2026
+15:00 - 17:00 (WIB) 
+Online, Zoom Cloud Meetings (link dikirim melalui e-mail, satu hari sebelum acara) 
+
+Daftar sekarang di : bit.ly/SustainAdventure
+Gratis, terbuka untuk umum!
+
+Dapatkan juga:
+✅ E-Sertifikat
+✅ Akses Materi dan Buletin Pelatihan IATTA
+
+Info : Admin 081517072423`,
+    image: "/images/article-3.jpeg",
+    link: "https://bit.ly/SustainAdventure",
+  },
+  {
     title:
       "Merancang kolaborasi strategis dengan Kementerian Pariwisata (Kemenpar)",
     date: "Jan 2026",
