@@ -242,20 +242,37 @@
                   <article
                     v-for="news in pageSlice(pageIndex - 1)"
                     :key="news.title + '-' + (pageIndex - 1)"
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition"
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col"
                   >
-                    <img
-                      :src="news.image"
-                      :alt="news.title"
-                      class="h-44 w-full object-cover"
-                      loading="lazy"
-                    />
-                    <div class="p-5">
+                    <div class="relative">
+                      <img
+                        :src="news.image"
+                        :alt="news.title"
+                        class="h-44 w-full object-cover"
+                        loading="lazy"
+                      />
+                      <span
+                        class="absolute top-3 left-3 px-3 py-1 bg-white/95 backdrop-blur-sm text-xs font-bold uppercase tracking-wider rounded-full shadow-sm"
+                        :class="
+                          news.type === 'webinar'
+                            ? 'text-indigo-600'
+                            : 'text-emerald-600'
+                        "
+                      >
+                        {{ news.type || "Berita" }}
+                      </span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
                       <h3 class="font-semibold text-lg mb-2">
                         {{ news.title }}
                       </h3>
                       <p class="text-sm text-slate-500 mb-4">{{ news.date }}</p>
-                      <p class="text-slate-600 text-sm">{{ news.desc }}</p>
+                      <p
+                        class="text-slate-600 text-sm"
+                        :class="{ 'whitespace-pre-wrap': news.type === 'webinar' }"
+                      >
+                        {{ news.desc }}
+                      </p>
                       <div class="mt-4">
                         <a
                           v-if="news.link"
@@ -264,7 +281,11 @@
                           rel="noopener noreferrer"
                           class="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:underline"
                         >
-                          Baca Selengkapnya →
+                          {{
+                            news.type === "webinar"
+                              ? "Join Us →"
+                              : "Baca Selengkapnya →"
+                          }}
                         </a>
                       </div>
                     </div>
@@ -524,11 +545,10 @@ const testimonials = [
 
 const latestNews = [
   {
+    type: "webinar",
     title: "🌎 IATTA WEBINAR SUSTAINABILITY IN ADVENTURE TOURISM🍀",
     date: "Jan 2026",
-    desc: `
-
-Catat tanggal webinar kami :
+    desc: `Catat tanggal webinar kami :
 Kamis, 29 Januari 2026
 15:00 - 17:00 (WIB) 
 Online, Zoom Cloud Meetings (link dikirim melalui e-mail, satu hari sebelum acara) 
