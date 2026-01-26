@@ -553,8 +553,8 @@ Kamis, 29 Januari 2026
 15:00 - 17:00 (WIB) 
 Online, Zoom Cloud Meetings (link dikirim melalui e-mail, satu hari sebelum acara) 
 
-Daftar sekarang di : bit.ly/SustainAdventure
-Gratis, terbuka untuk umum!
+Daftar sekarang Gratis, terbuka untuk umum!
+Silakan klik "Join Us" di bawah!
 
 Dapatkan juga:
 ✅ E-Sertifikat
