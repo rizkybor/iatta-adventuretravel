@@ -269,7 +269,9 @@
                       <p class="text-sm text-slate-500 mb-4">{{ news.date }}</p>
                       <p
                         class="text-slate-600 text-sm"
-                        :class="{ 'whitespace-pre-wrap': news.type === 'webinar' }"
+                        :class="{
+                          'whitespace-pre-wrap': news.type === 'webinar',
+                        }"
                       >
                         {{ news.desc }}
                       </p>
@@ -544,6 +546,16 @@ const testimonials = [
 ];
 
 const latestNews = [
+  {
+    title:
+      "IPT Trisakti dan IATTA Teken MoU, Perkuat Pengembangan SDM dan Ekosistem Wisata Petualangan",
+    date: "Mar 2026",
+    desc: `
+    BINTARO – Institut Pariwisata Trisakti (IPT) resmi menjalin kerja sama strategis dengan Indonesia Adventure Travel Trade Association (IATTA) melalui penandatanganan Nota Kesepahaman (MoU) yang berlangsung pada Senin (9/3/2026) pukul 13.30 WIB di Kampus IPT Bintaro.
+    Penandatanganan kerja sama ini menjadi langkah penting dalam memperkuat sinergi antara dunia pendidikan tinggi dengan industri pariwisata, khususnya dalam pengembangan sumber daya manusia (SDM), inovasi kurikulum, serta penguatan ekosistem wisata petualangan di Indonesia.`,
+    image: "/images/article-4.jpeg",
+    link: "https://www.mediaindonesiasatu.com/ipt-trisakti-dan-iatta-teken-mou-perkuat-pengembangan-sdm-dan-ekosistem-wisata-petualangan",
+  },
   {
     type: "webinar",
     title: "🌎 IATTA WEBINAR SUSTAINABILITY IN ADVENTURE TOURISM🍀",
