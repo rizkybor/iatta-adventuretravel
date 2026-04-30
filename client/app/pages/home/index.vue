@@ -244,9 +244,14 @@
                     :key="news.title + '-' + (pageIndex - 1)"
                     class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col"
                   >
-                    <div class="relative">
+                    <button
+                      type="button"
+                      class="relative block w-full text-left group"
+                      @click="openViewer(news)"
+                      :aria-label="`Lihat gambar: ${news.title}`"
+                    >
                       <img
-                        :src="news.image"
+                        :src="newsCurrentImage(news)"
                         :alt="news.title"
                         class="h-44 w-full object-cover"
                         loading="lazy"
@@ -259,14 +264,19 @@
                             : 'text-emerald-600'
                         "
                       >
-                        {{ news.type || "Berita" }}
+                        {{ (news.type || "Berita").toUpperCase() }}
                       </span>
-                    </div>
+                      <span
+                        v-if="news.images.length > 1"
+                        class="absolute bottom-3 right-3 px-2.5 py-1 bg-slate-900/70 text-white text-xs font-semibold rounded-full backdrop-blur-sm shadow-sm"
+                      >
+                        {{ (imageIndexById[news._id] ?? 0) + 1 }}/{{ news.images.length }}
+                      </span>
+                    </button>
                     <div class="p-5 flex flex-col flex-grow">
                       <h3 class="font-semibold text-lg mb-2">
                         {{ news.title }}
                       </h3>
-                      <p class="text-sm text-slate-500 mb-4">{{ news.date }}</p>
                       <p
                         class="text-slate-600 text-sm"
                         :class="{
@@ -275,7 +285,7 @@
                       >
                         {{ news.desc }}
                       </p>
-                      <div class="mt-4">
+                      <div class="mt-auto pt-4">
                         <a
                           v-if="news.link"
                           :href="news.link"
@@ -354,6 +364,67 @@
         </div>
       </div>
     </section>
+
+    <div
+      v-if="viewerOpen"
+      class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4"
+      @click.self="closeViewer"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="relative w-full max-w-5xl">
+        <button
+          type="button"
+          class="absolute -top-10 right-0 text-white/90 hover:text-white text-sm font-semibold"
+          @click="closeViewer"
+          aria-label="Tutup"
+        >
+          Tutup
+        </button>
+
+        <div class="bg-slate-900/40 rounded-2xl overflow-hidden shadow-xl">
+          <div class="relative">
+            <img
+              :src="viewerImages[viewerIndex]"
+              class="w-full max-h-[80vh] object-contain bg-black"
+              :alt="viewerTitle"
+            />
+
+            <button
+              v-if="viewerImages.length > 1"
+              type="button"
+              class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl font-semibold flex items-center justify-center"
+              @click="prevViewer"
+              aria-label="Sebelumnya"
+            >
+              ‹
+            </button>
+            <button
+              v-if="viewerImages.length > 1"
+              type="button"
+              class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl font-semibold flex items-center justify-center"
+              @click="nextViewer"
+              aria-label="Selanjutnya"
+            >
+              ›
+            </button>
+
+            <div
+              v-if="viewerImages.length > 1"
+              class="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold"
+            >
+              {{ viewerIndex + 1 }} / {{ viewerImages.length }}
+            </div>
+          </div>
+
+          <div class="px-5 py-4">
+            <div class="text-white font-semibold leading-snug">
+              {{ viewerTitle }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -432,6 +503,26 @@ function recalcDuration() {
 
 /* ResizeObserver + listeners */
 let ro = null;
+let imageRotationTimer = null;
+function onViewerKeydown(e) {
+  if (!viewerOpen.value) return;
+
+  if (e.key === "Escape") {
+    e.preventDefault();
+    closeViewer();
+    return;
+  }
+  if (e.key === "ArrowLeft") {
+    e.preventDefault();
+    prevViewer();
+    return;
+  }
+  if (e.key === "ArrowRight") {
+    e.preventDefault();
+    nextViewer();
+    return;
+  }
+}
 onMounted(async () => {
   // set hero (keep for site consistency)
   const { setHero } = useHeroStore();
@@ -471,11 +562,25 @@ onMounted(async () => {
   if (mq && mq.matches) {
     marqueeStyle.value = { ...marqueeStyle.value, animation: "none" };
   }
+
+  window.addEventListener("keydown", onViewerKeydown);
+
+  if (!mq || !mq.matches) {
+    imageRotationTimer = window.setInterval(() => {
+      newsItems.forEach((item) => {
+        if (item.images.length <= 1) return;
+        const current = imageIndexById.value[item._id] ?? 0;
+        imageIndexById.value[item._id] = (current + 1) % item.images.length;
+      });
+    }, 4500);
+  }
 });
 
 onBeforeUnmount(() => {
   if (ro && track.value) ro.disconnect();
   window.removeEventListener("resize", recalcDuration);
+  window.removeEventListener("keydown", onViewerKeydown);
+  if (imageRotationTimer) window.clearInterval(imageRotationTimer);
 });
 
 /* ---------- content for IATTA ---------- */
@@ -548,6 +653,35 @@ const testimonials = [
 const latestNews = [
   {
     title:
+      "Ayo bergabung menjadi anggota IATTA, dapatkan berbagai macam benefitnya.",
+    date: "Apr 2026",
+    desc: `
+    JAKARTA – IATTA mengundang para profesional, teknisi, dan peminat dunia teknik untuk bergabung dalam keanggotaan resmi kami. Sebagai anggota, Anda tidak hanya mendapatkan identitas profesional yang diakui, tetapi juga akses ke sumber daya teknis, modul pembelajaran mandiri, serta forum diskusi tingkat tinggi. Kami berkomitmen untuk mendukung setiap anggota dalam mencapai standar kompetensi global melalui sinergi dan kolaborasi yang berkelanjutan.`,
+    image: "/images/article-12.jpeg",
+    link: "",
+  },
+  {
+    title:
+      "Talkshow dan Seminar oleh IATTA dalam Marine Actions Expo 2026 di Balai Kartini, Jakarta",
+    date: "Apr 2026",
+    desc: `
+    JAKARTA – Jelajahi cakrawala baru dalam industri maritim melalui rangkaian Talkshow dan Seminar eksklusif yang dipersembahkan oleh IATTA di Marine Actions Expo 2026. Menghadirkan para pakar teknologi dan praktisi industri, sesi ini akan mengupas tuntas tantangan serta peluang integrasi teknologi teknik modern dalam ekosistem laut Indonesia.`,
+    image: "/images/article-10.jpeg",
+    images: ["/images/article-10.jpeg", "/images/article-11.jpeg"],
+    link: "",
+  },
+  {
+    title:
+      "IATTA partisipasi dalam Marine Actions Expo 2026",
+    date: "Apr 2026",
+    desc: `
+    JAKARTA – IATTA dengan bangga mengumumkan partisipasinya dalam Marine Actions Expo 2026, ajang pameran maritim terbesar tahun ini. Kehadiran kami menegaskan komitmen IATTA dalam mendukung transformasi sektor maritim melalui integrasi teknologi otomotif dan teknik yang berkelanjutan.`,
+    image: "/images/article-5.jpeg",
+    images: ["/images/article-5.jpeg", "/images/article-6.jpeg", "/images/article-7.jpeg", "/images/article-8.jpeg", "/images/article-9.jpeg"],
+    link: "",
+  },
+  {
+    title:
       "IPT Trisakti dan IATTA Teken MoU, Perkuat Pengembangan SDM dan Ekosistem Wisata Petualangan",
     date: "Mar 2026",
     desc: `
@@ -574,6 +708,7 @@ Dapatkan juga:
 
 Info : Admin 081517072423`,
     image: "/images/article-3.jpeg",
+    images: ["/images/article-3.jpeg", "/images/article-2.jpeg"],
     link: "https://bit.ly/SustainAdventure",
   },
   {
@@ -704,13 +839,63 @@ const deltaX = ref(0);
 
 /* pages count derived dari existing latestNews */
 const pagesCount = computed(() => {
-  return Math.max(1, Math.ceil(latestNews.length / perPage));
+  return Math.max(1, Math.ceil(newsItems.length / perPage));
 });
 
 /* helper: ambil slice untuk halaman tertentu */
 function pageSlice(pageIndex) {
   const start = pageIndex * perPage;
-  return latestNews.slice(start, start + perPage);
+  return newsItems.slice(start, start + perPage);
+}
+
+const newsItems = latestNews.map((n, i) => {
+  const rawImages = Array.isArray(n.images)
+    ? n.images
+    : Array.isArray(n.image)
+      ? n.image
+      : typeof n.image === "string"
+        ? [n.image]
+        : [];
+
+  return {
+    ...n,
+    _id: n.id ?? `news-${i}`,
+    images: rawImages.filter(Boolean),
+  };
+});
+
+const imageIndexById = ref({});
+function newsCurrentImage(news) {
+  if (!news?.images?.length) return "";
+  const idx = imageIndexById.value[news._id] ?? 0;
+  return news.images[idx % news.images.length];
+}
+
+const viewerOpen = ref(false);
+const viewerImages = ref([]);
+const viewerIndex = ref(0);
+const viewerTitle = ref("");
+function openViewer(news) {
+  const imgs = (news?.images || []).filter(Boolean);
+  if (!imgs.length) return;
+  viewerImages.value = imgs;
+  const idx = imageIndexById.value[news._id] ?? 0;
+  viewerIndex.value = idx % imgs.length;
+  viewerTitle.value = news?.title || "";
+  viewerOpen.value = true;
+}
+function closeViewer() {
+  viewerOpen.value = false;
+}
+function nextViewer() {
+  if (viewerImages.value.length <= 1) return;
+  viewerIndex.value = (viewerIndex.value + 1) % viewerImages.value.length;
+}
+function prevViewer() {
+  if (viewerImages.value.length <= 1) return;
+  viewerIndex.value =
+    (viewerIndex.value - 1 + viewerImages.value.length) %
+    viewerImages.value.length;
 }
 
 /* navigation */
