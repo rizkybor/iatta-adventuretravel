@@ -1,8 +1,8 @@
 <template>
   <main class="min-h-screen bg-white text-slate-900">
     <section class="pt-10">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8">
-        <div class="rounded-2xl border border-slate-100 bg-gradient-to-b from-[#fef9ec] to-white p-8 lg:p-10 shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-slate-100 bg-gradient-to-b from-[#fef9ec] to-white p-6 sm:p-8 lg:p-10 shadow-sm">
           <div class="flex flex-col gap-3">
             <p class="text-xs font-semibold tracking-wider uppercase text-emerald-700">
               Membership
@@ -19,7 +19,7 @@
     </section>
 
     <section class="py-12">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-2">
           <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
             Siapa aja yang jadi membership?
@@ -33,7 +33,7 @@
           <div
             v-for="item in membershipTypes"
             :key="item.title"
-            class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition"
+            class="rounded-2xl border border-slate-100 bg-white p-5 sm:p-6 shadow-sm hover:shadow-md transition"
           >
             <div class="flex items-start gap-4">
               <div
@@ -66,7 +66,7 @@
     </section>
 
     <section class="py-12 bg-slate-50/70 border-y border-slate-100">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-2">
           <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
             Benefit / Manfaat Membership
@@ -80,7 +80,7 @@
           <div
             v-for="b in benefits"
             :key="b.title"
-            class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"
+            class="rounded-2xl border border-slate-100 bg-white p-5 sm:p-6 shadow-sm"
           >
             <div class="flex items-start gap-4">
               <div
@@ -113,7 +113,7 @@
     </section>
 
     <section class="py-12">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid gap-8 lg:grid-cols-2 items-start">
           <div>
             <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
@@ -151,8 +151,8 @@
               @click="idCardViewerOpen = true"
               aria-label="Lihat ID Card"
             >
-              <div class="p-6">
-                <div class="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
+              <div class="p-4 sm:p-6">
+                <div class="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
                   <iframe
                     :src="idCardPdfUrl + '#page=1&view=FitH'"
                     class="absolute inset-0 w-full h-full pointer-events-none"
@@ -177,7 +177,7 @@
     </section>
 
     <section class="py-12">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-2">
           <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
             Table Membership
@@ -212,15 +212,58 @@
           </label>
         </div>
 
-        <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-100 bg-white shadow-sm">
+        <div class="mt-6 grid gap-3 sm:hidden">
+          <div
+            v-for="(m, idx) in pagedMembers"
+            :key="m.id"
+            class="rounded-2xl border border-slate-100 bg-white p-4 shadow-sm"
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div class="min-w-0">
+                <div class="text-xs font-semibold tracking-wider uppercase text-slate-500">
+                  No. {{ pageStartIndex + idx + 1 }}
+                </div>
+                <div class="mt-1 font-semibold text-slate-900 leading-snug">
+                  {{ m.name }}
+                </div>
+                <div class="mt-2 flex items-center gap-2 flex-wrap">
+                  <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ring-1 ring-inset"
+                    :class="typeBadgeClass(m.type)"
+                  >
+                    {{ m.type }}
+                  </span>
+                  <span class="text-xs text-slate-500">
+                    {{ m.location }}
+                  </span>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="text-xs text-slate-500">Brand</div>
+                <div class="mt-0.5 text-sm font-medium text-slate-900">
+                  {{ m.brand || "-" }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            v-if="filteredMembers.length === 0"
+            class="rounded-2xl border border-slate-100 bg-white p-6 text-sm text-slate-500 shadow-sm"
+          >
+            Tidak ada data yang cocok dengan pencarian.
+          </div>
+        </div>
+
+        <div class="mt-6 hidden sm:block overflow-x-auto rounded-2xl border border-slate-100 bg-white shadow-sm">
           <table class="min-w-[1040px] w-full table-auto">
             <thead class="bg-slate-50 text-left text-sm text-slate-700">
               <tr>
-                <th class="px-5 py-4 font-semibold w-[70px]">No.</th>
-                <th class="px-5 py-4 font-semibold">Nama Organisasi / Nama Lengkap</th>
-                <th class="px-5 py-4 font-semibold">Nama Brand</th>
-                <th class="px-5 py-4 font-semibold">Jenis Keanggotaan Terdaftar</th>
-                <th class="px-5 py-4 font-semibold">Kota / Provinsi Domisili</th>
+                <th class="px-3 md:px-5 py-4 font-semibold w-[70px]">No.</th>
+                <th class="px-3 md:px-5 py-4 font-semibold">Nama Organisasi / Nama Lengkap</th>
+                <th class="px-3 md:px-5 py-4 font-semibold">Nama Brand</th>
+                <th class="px-3 md:px-5 py-4 font-semibold">Jenis Keanggotaan Terdaftar</th>
+                <th class="px-3 md:px-5 py-4 font-semibold">Kota / Provinsi Domisili</th>
               </tr>
             </thead>
             <tbody class="text-sm text-slate-700">
@@ -229,16 +272,16 @@
                 :key="m.id"
                 class="border-t border-slate-100 hover:bg-slate-50/60"
               >
-                <td class="px-5 py-4 text-slate-500 tabular-nums">
+                <td class="px-3 md:px-5 py-4 text-slate-500 tabular-nums">
                   {{ pageStartIndex + idx + 1 }}
                 </td>
-                <td class="px-5 py-4 font-medium text-slate-900">
+                <td class="px-3 md:px-5 py-4 font-medium text-slate-900">
                   {{ m.name }}
                 </td>
-                <td class="px-5 py-4">
+                <td class="px-3 md:px-5 py-4">
                   {{ m.brand || "-" }}
                 </td>
-                <td class="px-5 py-4">
+                <td class="px-3 md:px-5 py-4">
                   <span
                     class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ring-1 ring-inset"
                     :class="typeBadgeClass(m.type)"
@@ -246,13 +289,13 @@
                     {{ m.type }}
                   </span>
                 </td>
-                <td class="px-5 py-4">
+                <td class="px-3 md:px-5 py-4">
                   {{ m.location }}
                 </td>
               </tr>
 
               <tr v-if="filteredMembers.length === 0" class="border-t border-slate-100">
-                <td class="px-5 py-8 text-slate-500" colspan="5">
+                <td class="px-3 md:px-5 py-8 text-slate-500" colspan="5">
                   Tidak ada data yang cocok dengan pencarian.
                 </td>
               </tr>
@@ -288,7 +331,7 @@
                 Sebelumnya
               </button>
 
-              <div class="flex items-center gap-1">
+              <div class="hidden sm:flex items-center gap-1">
                 <button
                   v-for="p in pageButtons"
                   :key="String(p)"
@@ -306,6 +349,10 @@
                 >
                   {{ p }}
                 </button>
+              </div>
+
+              <div class="sm:hidden text-sm font-semibold text-slate-700 tabular-nums">
+                {{ currentPage }} / {{ totalPages }}
               </div>
 
               <button
@@ -330,29 +377,28 @@
       aria-modal="true"
     >
       <div class="relative w-full max-w-5xl">
-        <button
-          type="button"
-          class="absolute -top-10 right-0 text-white/90 hover:text-white text-sm font-semibold"
-          @click="idCardViewerOpen = false"
-          aria-label="Tutup"
-        >
-          Tutup
-        </button>
-
         <div class="rounded-2xl overflow-hidden shadow-xl bg-slate-900/40 border border-white/10">
           <div class="p-4 lg:p-6">
+            <button
+              type="button"
+              class="absolute top-3 right-3 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm font-semibold"
+              @click="idCardViewerOpen = false"
+              aria-label="Tutup"
+            >
+              Tutup
+            </button>
             <div class="rounded-xl overflow-hidden bg-white">
               <iframe
                 :src="idCardPdfUrl"
-                class="w-full h-[80vh]"
+                class="w-full h-[75vh] sm:h-[80vh]"
                 title="ID Card IATTA Member"
               />
             </div>
-            <div class="mt-4 flex items-center justify-between gap-3">
+            <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div class="text-sm text-white/80">
                 ID_Card_IATTA_Member.pdf
               </div>
-              <div class="flex items-center gap-3">
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
                   :href="idCardPdfUrl"
                   target="_blank"
