@@ -1,302 +1,598 @@
 <template>
-  <main class="min-h-screen text-slate-900">
-    <!-- Hero -->
-    <section class="bg-gradient-to-b from-[#fef9ec] to-white border border-slate-100 py-10 rounded-xl">
+  <main class="min-h-screen bg-white text-slate-900">
+    <section class="pt-10">
       <div class="max-w-6xl mx-auto px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row items-start justify-between gap-6">
-          <div>
-            <h1 class="text-xl lg:text-2xl font-extrabold text-[#000000]">KEANGGOTAAN IATTA</h1>
-            <p class="mt-2 text-slate-600 max-w-2xl">Bergabunglah dengan ekosistem: akses standar, alat, dan jaringan yang mempercepat dampak pariwisata berkelanjutan.</p>
+        <div class="rounded-2xl border border-slate-100 bg-gradient-to-b from-[#fef9ec] to-white p-8 lg:p-10 shadow-sm">
+          <div class="flex flex-col gap-3">
+            <p class="text-xs font-semibold tracking-wider uppercase text-emerald-700">
+              Membership
+            </p>
+            <h1 class="text-2xl lg:text-3xl font-extrabold text-slate-900">
+              Keanggotaan IATTA
+            </h1>
+            <p class="text-slate-600 max-w-2xl">
+              Bergabung sebagai anggota untuk memperkuat jejaring, akses standar, dan program yang mendorong pariwisata petualangan berkelanjutan.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Why Join / Benefits -->
-    <section id="why-join" class="max-w-6xl mx-auto px-6 lg:px-8 py-12">
-      <div class="grid md:grid-cols-2 gap-8">
-        <div>
-          <h2 class="text-2xl font-semibold text-[#fcb243]">1. Mengapa Bergabung?</h2>
-          <ul class="mt-4 list-disc list-inside text-slate-700 space-y-2">
-            <li>Reputasi melalui sertifikasi dan kepatuhan kode anggota.</li>
-            <li>Akses ke jaringan DPW regional dan toolkit SOP lokal.</li>
-            <li>Peningkatan kapasitas: cohort pelatihan dan eksposur pasar.</li>
-            <li>Akses pasar dan fasilitasi kemitraan.</li>
-          </ul>
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
+            Siapa aja yang jadi membership?
+          </h2>
+          <p class="text-slate-600">
+            IATTA membuka keanggotaan untuk organisasi, perusahaan operator, dan perorangan yang berkomitmen pada standar kualitas, keamanan, dan keberlanjutan.
+          </p>
         </div>
 
-        <div>
-          <h2 class="text-2xl font-semibold text-[#d5e018]">3. Manfaat Anggota</h2>
-          <ul class="mt-4 list-disc list-inside text-slate-700 space-y-2">
-            <li>Unduhan eksklusif: SOP, template, checklist sertifikasi.</li>
-            <li>Prioritas pendaftaran ke program pelatihan dan sertifikasi.</li>
-            <li>Listing di direktori IATTA dan materi pemasaran.</li>
-            <li>Acara khusus anggota dan peluang hibah.</li>
-          </ul>
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <div
+            v-for="item in membershipTypes"
+            :key="item.title"
+            class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center ring-1 ring-inset"
+                :class="item.iconWrapClass"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-6 h-6"
+                  :class="item.iconClass"
+                >
+                  <path v-for="(d, i) in item.iconPaths" :key="i" :d="d" />
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <div class="font-semibold text-slate-900">{{ item.title }}</div>
+                <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+                  {{ item.desc }}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Categories & Fees -->
-    <section id="categories" class=" py-12">
+    <section class="py-12 bg-slate-50/70 border-y border-slate-100">
       <div class="max-w-6xl mx-auto px-6 lg:px-8">
-        <h2 class="text-2xl font-semibold text-[#08a4ef]">2. Kategori Keanggotaan & Kriteria</h2>
-        <p class="mt-3 text-slate-600">Kategori yang jelas untuk menyederhanakan onboarding dan alokasi manfaat.</p>
-        <div class="mt-6 overflow-x-auto">
-          <table class="w-full table-auto bg-white border border-slate-100 rounded-lg shadow-sm">
-            <thead class="bg-[#fef9ec]">
-              <tr class="text-left text-sm text-slate-700">
-                <th class="px-4 py-3">Kategori</th>
-                <th class="px-4 py-3">Kriteria</th>
-                <th class="px-4 py-3">Contoh Anggota</th>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
+            Benefit / Manfaat Membership
+          </h2>
+          <p class="text-slate-600 max-w-3xl">
+            Manfaat dirancang untuk membantu anggota meningkatkan kapasitas operasional, kredibilitas, dan jangkauan kolaborasi lintas pemangku kepentingan.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            v-for="b in benefits"
+            :key="b.title"
+            class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center ring-1 ring-inset"
+                :class="b.iconWrapClass"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-6 h-6"
+                  :class="b.iconClass"
+                >
+                  <path v-for="(d, i) in b.iconPaths" :key="i" :d="d" />
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <div class="font-semibold text-slate-900">{{ b.title }}</div>
+                <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+                  {{ b.desc }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-2 items-start">
+          <div>
+            <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
+              Tampilan ID Card
+            </h2>
+            <p class="mt-2 text-slate-600 leading-relaxed">
+              ID Card dapat digunakan sebagai identitas anggota untuk kebutuhan event, akses program, dan verifikasi.
+            </p>
+            <div class="mt-5 grid gap-3">
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <span class="mt-0.5 w-5 h-5 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center font-semibold">
+                  ✓
+                </span>
+                <div>Desain rapi dan mudah dibaca untuk penggunaan di lapangan.</div>
+              </div>
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <span class="mt-0.5 w-5 h-5 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center font-semibold">
+                  ✓
+                </span>
+                <div>Mencantumkan identitas anggota dan masa berlaku.</div>
+              </div>
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <span class="mt-0.5 w-5 h-5 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center font-semibold">
+                  ✓
+                </span>
+                <div>Dapat ditampilkan dalam format digital maupun cetak.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden">
+            <button
+              type="button"
+              class="w-full text-left block group"
+              @click="idCardViewerOpen = true"
+              aria-label="Lihat ID Card"
+            >
+              <div class="p-6">
+                <div class="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
+                  <iframe
+                    :src="idCardPdfUrl + '#page=1&view=FitH'"
+                    class="absolute inset-0 w-full h-full pointer-events-none"
+                    title="ID Card IATTA Member (Preview)"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/10 via-transparent to-transparent pointer-events-none"></div>
+                  <div class="absolute top-3 left-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-semibold text-slate-700 ring-1 ring-inset ring-slate-200">
+                    PDF
+                  </div>
+                </div>
+                <div class="mt-4 flex items-center justify-between text-sm text-slate-600">
+                  <span>Klik untuk memperbesar</span>
+                  <span class="font-semibold text-emerald-700 group-hover:underline">
+                    View →
+                  </span>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
+            Table Membership
+          </h2>
+          <p class="text-slate-600">
+            Daftar anggota dapat dikelola dan diperbarui secara berkala. Gunakan pencarian untuk memudahkan penelusuran.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <label class="w-full md:max-w-sm">
+            <span class="sr-only">Cari</span>
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="Cari nama / brand / kota..."
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-4 focus:ring-emerald-100"
+            />
+          </label>
+
+          <label class="w-full md:w-auto">
+            <span class="sr-only">Filter</span>
+            <select
+              v-model="typeFilter"
+              class="w-full md:w-56 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-4 focus:ring-emerald-100"
+            >
+              <option value="Semua">Semua jenis</option>
+              <option value="Asosiasi">Asosiasi</option>
+              <option value="Operator">Perusahaan Operator</option>
+              <option value="Perorangan">Perorangan</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-100 bg-white shadow-sm">
+          <table class="min-w-[1040px] w-full table-auto">
+            <thead class="bg-slate-50 text-left text-sm text-slate-700">
+              <tr>
+                <th class="px-5 py-4 font-semibold w-[70px]">No.</th>
+                <th class="px-5 py-4 font-semibold">Nama Organisasi / Nama Lengkap</th>
+                <th class="px-5 py-4 font-semibold">Nama Brand</th>
+                <th class="px-5 py-4 font-semibold">Jenis Keanggotaan Terdaftar</th>
+                <th class="px-5 py-4 font-semibold">Kota / Provinsi Domisili</th>
               </tr>
             </thead>
             <tbody class="text-sm text-slate-700">
-              <tr class="border-t">
-                <td class="px-4 py-3 font-medium">Corporate Member</td>
-                <td class="px-4 py-3">Operator yang terdaftar, >5 karyawan, portofolio program</td>
-                <td class="px-4 py-3">Operator B2B, DMC</td>
+              <tr
+                v-for="(m, idx) in pagedMembers"
+                :key="m.id"
+                class="border-t border-slate-100 hover:bg-slate-50/60"
+              >
+                <td class="px-5 py-4 text-slate-500 tabular-nums">
+                  {{ pageStartIndex + idx + 1 }}
+                </td>
+                <td class="px-5 py-4 font-medium text-slate-900">
+                  {{ m.name }}
+                </td>
+                <td class="px-5 py-4">
+                  {{ m.brand || "-" }}
+                </td>
+                <td class="px-5 py-4">
+                  <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ring-1 ring-inset"
+                    :class="typeBadgeClass(m.type)"
+                  >
+                    {{ m.type }}
+                  </span>
+                </td>
+                <td class="px-5 py-4">
+                  {{ m.location }}
+                </td>
               </tr>
-              <tr class="border-t">
-                <td class="px-4 py-3 font-medium">Associate Member</td>
-                <td class="px-4 py-3">UKM, koperasi, kelompok komunitas</td>
-                <td class="px-4 py-3">Pemandu lokal, UKM</td>
-              </tr>
-              <tr class="border-t">
-                <td class="px-4 py-3 font-medium">Individual Member</td>
-                <td class="px-4 py-3">Pemandu tersertifikasi, praktisi</td>
-                <td class="px-4 py-3">Pemandu, peneliti</td>
+
+              <tr v-if="filteredMembers.length === 0" class="border-t border-slate-100">
+                <td class="px-5 py-8 text-slate-500" colspan="5">
+                  Tidak ada data yang cocok dengan pencarian.
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="mt-8 grid md:grid-cols-2 gap-6">
-          <div class="p-6 bg-white border border-gray-200 rounded-lg">
-            <h4 class="font-semibold">4. Biaya Keanggotaan (Indicative)</h4>
-            <ul class="mt-3 text-slate-700 list-inside list-disc">
-              <li>Corporate: IDR 8.000.000 / tahun</li>
-              <li>Associate: IDR 2.500.000 / tahun</li>
-              <li>Individual: IDR 350.000 / tahun</li>
-            </ul>
-            <p class="mt-3 text-xs text-slate-500">*Biaya final mengikuti keputusan Dewan. Diskon tersedia untuk komitmen multi-tahun dan koperasi komunitas.</p>
+        <div class="mt-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div class="text-sm text-slate-600">
+            Menampilkan {{ showingFrom }}–{{ showingTo }} dari {{ filteredMembers.length }} data
           </div>
 
-          <div class="p-6 bg-white border border-gray-200 rounded-lg">
-            <h4 class="font-semibold">Value Proposition</h4>
-            <p class="mt-2 text-slate-700 text-sm">Penerimaan iuran mendanai sertifikasi, dukungan regional, dan layanan anggota—memastikan keberlanjutan operasional dan kontinuitas program.</p>
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
+            <label class="flex items-center gap-2 text-sm text-slate-600">
+              <span>Tampilkan</span>
+              <select
+                v-model.number="perPage"
+                class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-4 focus:ring-emerald-100"
+              >
+                <option :value="5">5</option>
+                <option :value="10">10</option>
+                <option :value="20">20</option>
+              </select>
+            </label>
+
+            <div class="flex items-center justify-between gap-2">
+              <button
+                type="button"
+                class="px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                :disabled="currentPage === 1"
+                @click="prevTablePage"
+              >
+                Sebelumnya
+              </button>
+
+              <div class="flex items-center gap-1">
+                <button
+                  v-for="p in pageButtons"
+                  :key="String(p)"
+                  type="button"
+                  class="min-w-9 h-9 px-3 rounded-xl text-sm font-semibold"
+                  :class="
+                    p === '...'
+                      ? 'text-slate-400 cursor-default'
+                      : p === currentPage
+                        ? 'bg-emerald-600 text-white'
+                        : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
+                  "
+                  :disabled="p === '...'"
+                  @click="p !== '...' && goToTablePage(p)"
+                >
+                  {{ p }}
+                </button>
+              </div>
+
+              <button
+                type="button"
+                class="px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                :disabled="currentPage === totalPages"
+                @click="nextTablePage"
+              >
+                Selanjutnya
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Registration Process & Form -->
-    <section id="registration" class="max-w-6xl mx-auto px-6 lg:px-8 py-12">
-      <h2 class="text-2xl font-semibold text-[#fcb243]">5. Proses Pendaftaran</h2>
-      <ol class="mt-4 list-decimal list-inside text-slate-700 space-y-3">
-        <li>Baca kategori & pilih tipe keanggotaan yang sesuai.</li>
-        <li>Isi formulir pendaftaran online dengan dokumen pendukung.</li>
-        <li>Review oleh Komite Keanggotaan (3–7 hari kerja).</li>
-        <li>Terima invoice & lakukan pembayaran — onboarding dan listing direktori.</li>
-      </ol>
+    <div
+      v-if="idCardViewerOpen"
+      class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4"
+      @click.self="idCardViewerOpen = false"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="relative w-full max-w-5xl">
+        <button
+          type="button"
+          class="absolute -top-10 right-0 text-white/90 hover:text-white text-sm font-semibold"
+          @click="idCardViewerOpen = false"
+          aria-label="Tutup"
+        >
+          Tutup
+        </button>
 
-      <div class="mt-8 grid lg:grid-cols-2 gap-8">
-        <div>
-          <h3 class="text-lg font-semibold text-slate-800">6. Formulir Pendaftaran Online</h3>
-          <p class="mt-2 text-sm text-slate-600">Isi formulir — kolom wajib ditandai dengan tanda bintang.</p>
-          <form @submit.prevent="submitRegistration" class="mt-4 space-y-4 bg-white p-6 rounded-lg shadow-sm">
-            <div class="grid md:grid-cols-2 gap-4">
-              <label class="block">
-                <span class="text-sm text-slate-700">Nama Lengkap <span class="text-red-500">*</span></span>
-                <input v-model="form.fullName" required class="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm" />
-              </label>
-
-              <label class="block">
-                <span class="text-sm text-slate-700">Email <span class="text-red-500">*</span></span>
-                <input v-model="form.email" type="email" required class="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm" />
-              </label>
+        <div class="rounded-2xl overflow-hidden shadow-xl bg-slate-900/40 border border-white/10">
+          <div class="p-4 lg:p-6">
+            <div class="rounded-xl overflow-hidden bg-white">
+              <iframe
+                :src="idCardPdfUrl"
+                class="w-full h-[80vh]"
+                title="ID Card IATTA Member"
+              />
             </div>
-
-            <label class="block">
-              <span class="text-sm text-slate-700">Organisasi / Perusahaan</span>
-              <input v-model="form.organization" class="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm" />
-            </label>
-
-            <div class="grid md:grid-cols-2 gap-4">
-              <label class="block">
-                <span class="text-sm text-slate-700">Kategori Keanggotaan <span class="text-red-500">*</span></span>
-                <select v-model="form.category" required class="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm">
-                  <option value="Corporate">Corporate</option>
-                  <option value="Associate">Associate</option>
-                  <option value="Individual">Individual</option>
-                </select>
-              </label>
-
-              <label class="block">
-                <span class="text-sm text-slate-700">Telepon</span>
-                <input v-model="form.phone" class="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm" />
-              </label>
+            <div class="mt-4 flex items-center justify-between gap-3">
+              <div class="text-sm text-white/80">
+                ID_Card_IATTA_Member.pdf
+              </div>
+              <div class="flex items-center gap-3">
+                <a
+                  :href="idCardPdfUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm font-semibold"
+                >
+                  Buka di Tab Baru
+                </a>
+                <a
+                  :href="idCardPdfUrl"
+                  download
+                  class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold"
+                >
+                  Download
+                </a>
+              </div>
             </div>
-
-            <label class="block">
-              <span class="text-sm text-slate-700">Dokumen Pendukung (unggah)</span>
-              <input ref="fileInput" @change="onFileChange" type="file" class="mt-1 w-full text-sm" />
-              <p v-if="form.fileName" class="text-xs text-slate-500 mt-2">Dipilih: {{ form.fileName }}</p>
-            </label>
-
-            <div class="flex items-center gap-3">
-              <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 text-white">Kirim Pendaftaran</button>
-              <button type="button" @click="resetForm" class="px-4 py-2 rounded-lg border bg-white border-gray-200">Reset</button>
-            </div>
-
-            <p v-if="registrationMessage" class="text-sm text-green-600">{{ registrationMessage }}</p>
-          </form>
-        </div>
-
-        <aside>
-          <h3 class="text-lg font-semibold text-slate-800">7. Area Dewan Regional (DPW)</h3>
-          <p class="mt-2 text-sm text-slate-600">Direktori DPW dan sumber daya anggota (login diperlukan).</p>
-
-          <div class="mt-4 space-y-3">
-            <button @click="showLogin = true" class="w-full text-left px-4 py-3 rounded-lg border border-gray-200 bg-white">Direktori DPW (Login)</button>
-            <a class="block px-4 py-3 rounded-lg border border-gray-200 bg-white" href="#">Unduh SOP & Toolkit</a>
-            <a class="block px-4 py-3 rounded-lg border border-gray-200 bg-white" href="#">Kode Etik Anggota</a>
-            <a class="block px-4 py-3 rounded-lg border border-gray-200 bg-white" href="#">Update Sertifikasi & Legalitas</a>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- DPW Directory Modal / Login -->
-    <transition name="modal">
-      <div v-if="showLogin" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-        <div class="w-full max-w-md bg-white rounded-lg p-6">
-          <h3 class="text-lg font-semibold">Login Dewan Regional (DPW)</h3>
-          <p class="text-sm text-slate-600">Masukkan kredensial untuk mengakses direktori DPW dan unduhan khusus anggota.</p>
-
-          <form @submit.prevent="onLogin" class="mt-4 space-y-4">
-            <label class="block">
-              <span class="text-sm text-slate-700">Username</span>
-              <input v-model="login.username" required class="mt-1 w-full rounded-md border px-3 py-2 text-sm" />
-            </label>
-            <label class="block">
-              <span class="text-sm text-slate-700">Password</span>
-              <input v-model="login.password" type="password" required class="mt-1 w-full rounded-md border px-3 py-2 text-sm" />
-            </label>
-
-            <div class="flex justify-end gap-3">
-              <button type="button" @click="showLogin = false" class="px-4 py-2 rounded-lg border">Batal</button>
-              <button type="submit" class="px-4 py-2 rounded-lg bg-[#08a4ef] text-white">Masuk</button>
-            </div>
-
-            <p v-if="loginMessage" class="text-sm text-red-600">{{ loginMessage }}</p>
-            <p class="mt-2 text-xs text-slate-500">Masalah akses? Hubungi sekretariat: <a href="mailto:info@iatta.or.id" class="text-[#08a4ef]">info@iatta.or.id</a></p>
-          </form>
-        </div>
-      </div>
-    </transition>
-
-    <!-- Registration Modal (info) -->
-    <transition name="modal">
-      <div v-if="openRegister" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-        <div class="w-full max-w-2xl bg-white rounded-lg p-6">
-          <h3 class="text-lg font-semibold">Pendaftaran Online</h3>
-          <p class="text-sm text-slate-600">Gunakan formulir pendaftaran di halaman ini. Setelah direview, Komite Keanggotaan akan mengirim invoice via email.</p>
-
-          <div class="mt-6 text-right">
-            <button @click="openRegister = false" class="px-4 py-2 rounded-lg border">Tutup</button>
           </div>
         </div>
       </div>
-    </transition>
-
+    </div>
   </main>
 </template>
 
-<!-- pages/membership.vue -->
 <script setup>
-import { ref } from 'vue'
-import { onMounted } from 'vue'
-import { navigateTo } from '#app'
+import { computed, ref, watch } from "vue";
 
-onMounted(() => {
-  // ganti replace: true ke false kalau mau bisa "back" ke halaman ini
-  navigateTo('/under-construction', { replace: true })
-})
+const idCardPdfUrl = "/resources_download/ID_Card_IATTA_Member.pdf";
 
-const showLogin = ref(false)
-const openRegister = ref(false)
-const registrationMessage = ref('')
-const loginMessage = ref('')
+const membershipTypes = [
+  {
+    title: "Asosiasi / Organisasi",
+    desc: "Perkumpulan, komunitas, dan asosiasi terkait wisata petualangan.",
+    iconWrapClass: "bg-emerald-50 ring-emerald-100",
+    iconClass: "text-emerald-700",
+    iconPaths: ["M4 10.5V20a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9.5", "M3 10.5l9-7 9 7", "M9 21v-7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v7"],
+  },
+  {
+    title: "Perusahaan / Operator / Lembaga Edukasi & Sertifikasi",
+    desc: "Operator wisata travel, penyedia aktifitas outdoor, lembaga pelatihan, edukasi, dan sertifikasi.",
+    iconWrapClass: "bg-indigo-50 ring-indigo-100",
+    iconClass: "text-indigo-700",
+    iconPaths: ["M8 7V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1", "M4 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2", "M12 12v3"],
+  },
+  {
+    title: "Perorangan",
+    desc: "Profesional, pengajar, peneliti, praktisi, maupun influencer.",
+    iconWrapClass: "bg-amber-50 ring-amber-100",
+    iconClass: "text-amber-700",
+    iconPaths: ["M20 21a8 8 0 1 0-16 0", "M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4"],
+  },
+];
 
-const fileInput = ref(null)
+const benefits = [
+  {
+    title: "Jejaring Nasional & Peluang Kolaborasi",
+    desc: "Memperluas koneksi lintas daerah dan sektor melalui jejaring anggota, DPW, dan kolaborasi program/event bersama mitra.",
+    iconWrapClass: "bg-emerald-50 ring-emerald-100",
+    iconClass: "text-emerald-700",
+    iconPaths: ["M7 12a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0Z", "M15 7a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0Z", "M15 17a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0Z", "M12 11l3.2-2.2", "M12 13l3.2 2.2"],
+  },
+  {
+    title: "Akses Pelatihan & Pengembangan Kapasitas",
+    desc: "Prioritas informasi dan akses pada program sertifikasi, pelatihan, serta pengembangan kapasitas.",
+    iconWrapClass: "bg-indigo-50 ring-indigo-100",
+    iconClass: "text-indigo-700",
+    iconPaths: ["M4 19.5V6.5A2.5 2.5 0 0 1 6.5 4H20v16H6.5A2.5 2.5 0 0 1 4 17.5", "M8 7h8", "M8 11h8", "M8 15h6"],
+  },
+  {
+    title: "Promosi & Peningkatan Visibilitas",
+    desc: "Meningkatkan visibilitas anggota melalui kanal komunikasi IATTA (publikasi kegiatan, direktori, dan materi informasi sesuai ketentuan).",
+    iconWrapClass: "bg-amber-50 ring-amber-100",
+    iconClass: "text-amber-700",
+    iconPaths: ["M3 11l18-5v12l-18-5v-2Z", "M7 14v6", "M7 20h4"],
+  },
+  {
+    title: "Forum Diskusi & Advokasi Industri",
+    desc: "Ruang diskusi untuk berbagi praktik terbaik dan menyuarakan masukan industri terkait standar, keselamatan, dan keberlanjutan.",
+    iconWrapClass: "bg-sky-50 ring-sky-100",
+    iconClass: "text-sky-700",
+    iconPaths: ["M21 12a7 7 0 0 1-7 7H8l-5 3V12a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7Z", "M8 12h8", "M8 15h5"],
+  },
+  {
+    title: "Akses Informasi & Peluang Kerja Sama",
+    desc: "Akses update informasi program, peluang kemitraan/proyek, dan kolaborasi lintas pihak untuk memperkuat ekosistem wisata petualangan.",
+    iconWrapClass: "bg-violet-50 ring-violet-100",
+    iconClass: "text-violet-700",
+    iconPaths: ["M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1", "M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"],
+  },
+  {
+    title: "Nomor Anggota Resmi, Kartu Anggota & Sertifikat",
+    desc: "Mendapatkan nomor anggota resmi, kartu anggota, dan sertifikat sebagai identitas untuk kebutuhan verifikasi dan akses program.",
+    iconWrapClass: "bg-rose-50 ring-rose-100",
+    iconClass: "text-rose-700",
+    iconPaths: ["M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z", "M8 10h8", "M8 14h6", "M8.5 16.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"],
+  },
+];
 
-const form = ref({
-  fullName: '',
-  email: '',
-  organization: '',
-  category: 'Individual',
-  phone: '',
-  file: null,
-  fileName: ''
-})
+const members = ref([
+  {
+    id: "m-1",
+    name: "Indonesia Adventure Travel Trade Association (IATTA)",
+    brand: "IATTA",
+    type: "Asosiasi",
+    location: "Jakarta",
+  },
+  {
+    id: "m-2",
+    name: "PT Nusantara Adventure Trails",
+    brand: "NusaTrails",
+    type: "Operator",
+    location: "Bandung, Jawa Barat",
+  },
+  {
+    id: "m-3",
+    name: "PT Samudra Eco Journeys",
+    brand: "EcoJourneys",
+    type: "Operator",
+    location: "Denpasar, Bali",
+  },
+  {
+    id: "m-4",
+    name: "Komunitas Pemandu Gunung Indonesia",
+    brand: "-",
+    type: "Asosiasi",
+    location: "Yogyakarta, DIY",
+  },
+  {
+    id: "m-5",
+    name: "Rahma Putri",
+    brand: "-",
+    type: "Perorangan",
+    location: "Lombok, Nusa Tenggara Barat",
+  },
+  {
+    id: "m-6",
+    name: "Dimas Arya",
+    brand: "-",
+    type: "Perorangan",
+    location: "Manado, Sulawesi Utara",
+  },
+]);
 
-const login = ref({ username: '', password: '' })
+const searchQuery = ref("");
+const typeFilter = ref("Semua");
+const idCardViewerOpen = ref(false);
+const perPage = ref(10);
+const currentPage = ref(1);
 
-function onFileChange(e) {
-  const f = e.target.files && e.target.files[0]
-  if (f) {
-    form.value.file = f
-    form.value.fileName = f.name
-  } else {
-    form.value.file = null
-    form.value.fileName = ''
+const filteredMembers = computed(() => {
+  const q = searchQuery.value.trim().toLowerCase();
+  const t = typeFilter.value;
+
+  return members.value.filter((m) => {
+    const matchType = t === "Semua" ? true : m.type === t;
+    if (!q) return matchType;
+
+    const haystack = [m.name, m.brand, m.type, m.location]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    return matchType && haystack.includes(q);
+  });
+});
+
+watch([searchQuery, typeFilter], () => {
+  currentPage.value = 1;
+});
+
+watch([filteredMembers, perPage], () => {
+  if (currentPage.value > totalPages.value) currentPage.value = totalPages.value;
+  if (currentPage.value < 1) currentPage.value = 1;
+});
+
+const totalPages = computed(() => {
+  return Math.max(1, Math.ceil(filteredMembers.value.length / perPage.value));
+});
+
+const pageStartIndex = computed(() => {
+  return (currentPage.value - 1) * perPage.value;
+});
+
+const pagedMembers = computed(() => {
+  const start = pageStartIndex.value;
+  return filteredMembers.value.slice(start, start + perPage.value);
+});
+
+const showingFrom = computed(() => {
+  if (filteredMembers.value.length === 0) return 0;
+  return pageStartIndex.value + 1;
+});
+
+const showingTo = computed(() => {
+  if (filteredMembers.value.length === 0) return 0;
+  return Math.min(pageStartIndex.value + pagedMembers.value.length, filteredMembers.value.length);
+});
+
+const pageButtons = computed(() => {
+  const total = totalPages.value;
+  const cur = currentPage.value;
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+
+  const set = new Set([1, total, cur, cur - 1, cur + 1]);
+  const pages = Array.from(set)
+    .filter((n) => n >= 1 && n <= total)
+    .sort((a, b) => a - b);
+
+  const out = [];
+  for (let i = 0; i < pages.length; i += 1) {
+    const n = pages[i];
+    const prev = pages[i - 1];
+    if (i > 0 && n - prev > 1) out.push("...");
+    out.push(n);
   }
+  return out;
+});
+
+function goToTablePage(p) {
+  currentPage.value = Math.min(Math.max(1, p), totalPages.value);
 }
 
-function resetForm() {
-  form.value = { fullName: '', email: '', organization: '', category: 'Individual', phone: '', file: null, fileName: '' }
-  registrationMessage.value = ''
-  if (fileInput.value) fileInput.value.value = null
+function nextTablePage() {
+  goToTablePage(currentPage.value + 1);
 }
 
-async function submitRegistration() {
-  // Mock submission — ganti dengan integrasi backend (FormData -> API)
-  registrationMessage.value = 'Pendaftaran diterima. Komite akan meninjau dalam 3–7 hari kerja.'
-  // UX: bersihkan form setelah jeda singkat
-  setTimeout(() => resetForm(), 1200)
+function prevTablePage() {
+  goToTablePage(currentPage.value - 1);
 }
 
-function onLogin() {
-  // Mock auth untuk demo — integrasikan dengan sistem otentikasi DPW untuk produksi
-  if (login.value.username === 'dpwadmin' && login.value.password === 'securepassword') {
-    loginMessage.value = ''
-    showLogin.value = false
-    window.alert('Login berhasil — membuka Direktori DPW (placeholder).')
-  } else {
-    loginMessage.value = 'Kredensial tidak valid. Silakan hubungi sekretariat.'
-  }
+function typeBadgeClass(type) {
+  if (type === "Asosiasi") return "bg-emerald-50 text-emerald-700 ring-emerald-100";
+  if (type === "Operator") return "bg-indigo-50 text-indigo-700 ring-indigo-100";
+  return "bg-amber-50 text-amber-700 ring-amber-100";
 }
-
-const year = new Date().getFullYear()
 </script>
 
 <style scoped>
-/* Modal transition */
-.modal-enter-active, .modal-leave-active { transition: opacity .18s ease; }
-.modal-enter-from, .modal-leave-to { opacity: 0; }
-
-/* subtle hover lifts */
-button:hover { transform: translateY(-2px); transition: transform .18s ease; }
-
-/* responsive tweaks */
-@media (min-width: 1024px) {
-  .max-w-6xl { max-width: 1100px; }
+table th,
+table td {
+  vertical-align: middle;
 }
-
-/* accessibility: focus visible */
-input:focus, select:focus, button:focus, a:focus { outline: 3px solid rgba(8,164,239,0.12); outline-offset: 3px; border-radius: 6px; }
-
-/* small polishing for table */
-table th, table td { vertical-align: middle; }
 </style>
