@@ -153,15 +153,13 @@
             >
               <div class="p-4 sm:p-6">
                 <div class="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
-                  <iframe
-                    :src="idCardPdfUrl + '#page=1&view=FitH'"
-                    class="absolute inset-0 w-full h-full pointer-events-none"
-                    title="ID Card IATTA Member (Preview)"
+                  <img
+                    :src="idCardImageUrl"
+                    alt="ID Card IATTA Member"
+                    class="absolute inset-0 w-full h-full object-contain bg-white"
+                    loading="lazy"
                   />
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950/10 via-transparent to-transparent pointer-events-none"></div>
-                  <div class="absolute top-3 left-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-semibold text-slate-700 ring-1 ring-inset ring-slate-200">
-                    PDF
-                  </div>
                 </div>
                 <div class="mt-4 flex items-center justify-between text-sm text-slate-600">
                   <span>Klik untuk memperbesar</span>
@@ -388,19 +386,19 @@
               Tutup
             </button>
             <div class="rounded-xl overflow-hidden bg-white">
-              <iframe
-                :src="idCardPdfUrl"
-                class="w-full h-[75vh] sm:h-[80vh]"
-                title="ID Card IATTA Member"
+              <img
+                :src="idCardImageUrl"
+                alt="ID Card IATTA Member"
+                class="w-full h-[75vh] sm:h-[80vh] object-contain bg-white"
               />
             </div>
             <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div class="text-sm text-white/80">
-                ID_Card_IATTA_Member.pdf
+                ID_Card_IATTA_Member.jpeg
               </div>
               <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
-                  :href="idCardPdfUrl"
+                  :href="idCardImageUrl"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm font-semibold"
@@ -408,7 +406,7 @@
                   Buka di Tab Baru
                 </a>
                 <a
-                  :href="idCardPdfUrl"
+                  :href="idCardImageUrl"
                   download
                   class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold"
                 >
@@ -426,7 +424,7 @@
 <script setup>
 import { computed, ref, watch } from "vue";
 
-const idCardPdfUrl = "/resources_download/ID_Card_IATTA_Member.pdf";
+const idCardImageUrl = "/resources_download/ID_Card_IATTA_Member.jpeg";
 
 const membershipTypes = [
   {
@@ -500,45 +498,73 @@ const benefits = [
 const members = ref([
   {
     id: "m-1",
-    name: "Indonesia Adventure Travel Trade Association (IATTA)",
-    brand: "IATTA",
+    name: "PT. WATERLAND NUSANTARA",
+    brand: "Your Partner in Safety, Travel and Trade of Adventure Tourism",
+    type: "Perorangan",
+    location: "JL. BOULEVARD BLOK O.1/16, TAMAN CIMANGGU, KOTA BOGOR 16163 - INDONESIA",
+  },
+  {
+    id: "m-2",
+    name: "PT Lintas Jeram Nusantara",
+    brand: "Arus Liar",
+    type: "Operator",
+    location: "DKI Jakarta",
+  },
+  {
+    id: "m-3",
+    name: "PT Bramanta Wana Parahita",
+    brand: "Bravo Adventure",
+    type: "Operator",
+    location: "DKI Jakarta",
+  },
+  {
+    id: "m-4",
+    name: "PT MULTI AVENTURA INDONESIA",
+    brand: "CLIMB INDONESIA",
+    type: "Operator",
+    location: "DKI JAKARTA",
+  },
+  {
+    id: "m-5",
+    name: "Stand Up Paddle Indonesia (SUP.ID)",
+    brand: "SUP.ID",
     type: "Asosiasi",
     location: "Jakarta",
   },
   {
-    id: "m-2",
-    name: "PT Nusantara Adventure Trails",
-    brand: "NusaTrails",
-    type: "Operator",
-    location: "Bandung, Jawa Barat",
-  },
-  {
-    id: "m-3",
-    name: "PT Samudra Eco Journeys",
-    brand: "EcoJourneys",
-    type: "Operator",
-    location: "Denpasar, Bali",
-  },
-  {
-    id: "m-4",
-    name: "Komunitas Pemandu Gunung Indonesia",
-    brand: "-",
-    type: "Asosiasi",
-    location: "Yogyakarta, DIY",
-  },
-  {
-    id: "m-5",
-    name: "Rahma Putri",
-    brand: "-",
-    type: "Perorangan",
-    location: "Lombok, Nusa Tenggara Barat",
-  },
-  {
     id: "m-6",
-    name: "Dimas Arya",
-    brand: "-",
+    name: "Ramon Tungka",
+    brand: "",
     type: "Perorangan",
-    location: "Manado, Sulawesi Utara",
+    location: "Jabodetabek",
+  },
+  {
+    id: "m-7",
+    name: "Zulham Peliang",
+    brand: "",
+    type: "Perorangan",
+    location: "Banten",
+  },
+  {
+    id: "m-8",
+    name: "Rizky Ajie Kurniawan",
+    brand: "",
+    type: "Perorangan",
+    location: "Banten",
+  },
+  {
+    id: "m-9",
+    name: "Goa Jomblang",
+    brand: "Goa Jomblang",
+    type: "Operator",
+    location: "Jogjakarta",
+  },
+  {
+    id: "m-10",
+    name: "Sandi Taruni",
+    brand: "Jelajah Outdoor",
+    type: "Perorangan",
+    location: "Bogor / Jawa Barat",
   },
 ]);
 
