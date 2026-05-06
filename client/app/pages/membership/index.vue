@@ -178,7 +178,7 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-2">
           <h2 class="text-xl lg:text-2xl font-bold text-slate-900">
-            Table Membership
+            List Membership
           </h2>
           <p class="text-slate-600">
             Daftar anggota dapat dikelola dan diperbarui secara berkala. Gunakan pencarian untuk memudahkan penelusuran.
