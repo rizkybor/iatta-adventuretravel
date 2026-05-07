@@ -500,7 +500,7 @@ const members = ref([
     id: "m-1",
     name: "PT. WATERLAND NUSANTARA",
     brand: "Your Partner in Safety, Travel and Trade of Adventure Tourism",
-    type: "Perorangan",
+    type: "Operator",
     location: "JL. BOULEVARD BLOK O.1/16, TAMAN CIMANGGU, KOTA BOGOR 16163 - INDONESIA",
   },
   {
